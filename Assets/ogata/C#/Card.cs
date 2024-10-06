@@ -7,11 +7,15 @@ using static UnityEditor.PlayerSettings;
 
 public class Card : MonoBehaviour
 {
+    GameManager gameM;
+
     [SerializeField]
-    private int num; //カードの数字
+    private float num; //カードの数字
     public int SendNum; //カードの情報を送る用
 
-    private bool leftMouseKey = false; 
+    private bool leftMouseKey = false;
+    [SerializeField]
+    private GameObject bullet;
 
     [SerializeField]
     private GameObject BattleLane_01;
@@ -31,11 +35,33 @@ public class Card : MonoBehaviour
     private TextMeshProUGUI numText;
 
     Vector2 MousePos;
-    
-    // Start is called before the first frame update
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetMouseButtonUp(0) && leftMouseKey)
+        {
+            gameM.BulletNum = num;
+            leftMouseKey = false;
+
+            if (collision.gameObject.name == "BattleLane_01")
+            {
+                Instantiate(bullet, Spawner_01.transform.position, Quaternion.identity);
+            }
+            else if (collision.gameObject.name == "BattleLane_02")
+            {
+                Instantiate(bullet, Spawner_02.transform.position, Quaternion.identity);
+            }
+            else if (collision.gameObject.name == "BattleLane_03")
+            {
+                Instantiate(bullet, Spawner_03.transform.position, Quaternion.identity);
+            }
+        }
+
+    }
+
     void Start()
     {
-        SendNum = num;　//送る用の数字の書き込み
+        gameM = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -47,9 +73,7 @@ public class Card : MonoBehaviour
         {
             Vector2 tmpPos = Input.mousePosition;
             MousePos = Camera.main.ScreenToWorldPoint(tmpPos);
-            transform.position = MousePos;
-
-            
+            transform.position = MousePos; 
         }
 
         if (Input.GetMouseButtonUp(0)&& leftMouseKey)

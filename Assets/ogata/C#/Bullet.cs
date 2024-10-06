@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int numBullet; //’e‚Ì”š
+    Rigidbody2D rb;
+    GameManager gameM;
+
+    [SerializeField]
+    private float speed;
+    public float numBullet; //’e‚Ì”š
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameM = FindObjectOfType<GameManager>();
+        rb = GetComponent<Rigidbody2D>();
+
+        numBullet = gameM.BulletNum;
     }
 
     // Update is called once per frame
@@ -18,5 +26,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        rb.velocity = new Vector2(0,speed);
     }
 }
