@@ -4,49 +4,49 @@ using UnityEngine;
 
 public class BulletBehind : MonoBehaviour
 {
-    Bullet bullet;
-    GameManager gameM;
+    Bullet bullet;@//Bullet‚ÌƒXƒNƒŠƒvƒg‚ğQÆ
+    GameManager gameM;@//GameManager‚ÌƒXƒNƒŠƒvƒg‚ğQÆ
 
-    public bool isRed = false;
-    public bool isGreen = false;
-    public bool isBlue = false;
+    public bool isRed = false; //Ô‚Ìî•ñ‚ğ’e‚É“n‚·—p
+    public bool isGreen = false; //—Î‚Ìî•ñ‚ğ’e‚É“n‚·—p
+    public bool isBlue = false; //Â‚Ìî•ñ‚ğ’e‚É“n‚·—p
 
-    public float tmpN;
+    public float tmpN;@//”š‚Ìî•ñ‚ğ’e‚É“n‚·—p
 
     // Update is called once per frame
     void Update()
     {
-        GameObject objParent = transform.parent.gameObject;
-        Bullet bullet = objParent.GetComponent<Bullet>();
+        GameObject objParent = transform.parent.gameObject;@//G‚ê‚½’e‚É‚É”š‚ğ“n‚·—p
+        Bullet bullet = objParent.GetComponent<Bullet>();@//G‚ê‚½’e‚É‚É”š‚ğ“n‚·—p
 
         if (isRed)
         {
-            bullet.isRed = true;
+            bullet.isRed = true; //’e‚ÌÔ‚Ìî•ñ‚ğ“n‚·
         }
         if (isGreen)
         {
-            bullet.isGreen = true;
+            bullet.isGreen = true; //’e‚Ì—Î‚Ìî•ñ‚ğ“n‚·
         }
         if (isBlue)
         {
-            bullet.isBlue = true;
+            bullet.isBlue = true; //’e‚ÌÂ‚Ìî•ñ‚ğ“n‚·
         }
         if(tmpN != 0)
         {
-            bullet.numBullet += tmpN;
-            tmpN = 0;
+            bullet.numBullet += tmpN; //’e‚Ì”š‚Ìî•ñ‚ğ“n‚·
+            tmpN = 0;@//’e‚Ì’l‚ğ‰Šú‰»
         }
     }
 
     public void tmpColor(bool _red,bool _green,bool _blue)
     {
-        isRed = _red; 
-        isGreen = _green; 
-        isBlue = _blue;
+        isRed = _red; //Ô‚Ìî•ñ‚ğó‚¯æ‚é—p
+        isGreen = _green;  //—Î‚Ìî•ñ‚ğó‚¯æ‚é—p
+        isBlue = _blue; //Â‚Ìî•ñ‚ğó‚¯æ‚é—p
     }
 
     public void tmpNum(float _num)
     {
-        tmpN = _num;
+        tmpN = _num;@//”š‚Ìî•ñ‚ğó‚¯æ‚é—p
     }
 }
