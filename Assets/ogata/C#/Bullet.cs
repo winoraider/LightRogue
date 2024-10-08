@@ -27,14 +27,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision == tmpColor)
-        {
-            gameM.tmpRed = isRed;
-            gameM.tmpGreen = isGreen;
-            gameM.tmpBlue = isBlue;
+        
+            if (collision.gameObject.GetComponent<BulletBehind>())
+            {
+            collision.gameObject.GetComponent<BulletBehind>().tmpNum(numBullet);
+            collision.gameObject.GetComponent<BulletBehind>().tmpColor(isRed,isGreen,isBlue);
+                Destroy(this.gameObject);
+            }
 
-            Destroy(this.gameObject);
-        }
+            
+        
     }
 
 
