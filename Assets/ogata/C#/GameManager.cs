@@ -5,6 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public float BulletNum;
+
+    public bool isRed;
+    public bool isGreen;
+    public bool isBlue;
+
+    public bool tmpRed = false;
+    public bool tmpGreen = false;
+    public bool tmpBlue = false;
     // Start is called before the first frame update
     void Start()
     {
