@@ -6,6 +6,7 @@ using UnityEngine;
 public class MoveEnemy : MonoBehaviour
 {
     bool hit = false;
+    [SerializeField] int power;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,13 @@ public class MoveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= new Vector3(0, 1.0f, 0)*Time.deltaTime;
+        if (hit)
+        {
+        }
+        else
+        {
+            transform.position -= new Vector3(0, 1.0f, 0) * Time.deltaTime;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
