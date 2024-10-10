@@ -37,18 +37,17 @@ public class BulletBehind : MonoBehaviour
     {
         GameObject objParent = transform.parent.gameObject;@//G‚ê‚½’e‚É‚É”š‚ğ“n‚·—p
         Bullet bullet = objParent.GetComponent<Bullet>();@//G‚ê‚½’e‚É‚É”š‚ğ“n‚·—p
+        gameM = FindObjectOfType<GameManager>();
 
-        
+        isRed2 = bullet.isRed;
+        isGreen2 = bullet.isGreen;
+        isBlue2 = bullet.isBlue;
     }
     // Update is called once per frame
     void Update()
     {
         GameObject objParent = transform.parent.gameObject;@//G‚ê‚½’e‚É‚É”š‚ğ“n‚·—p
         Bullet bullet = objParent.GetComponent<Bullet>();@//G‚ê‚½’e‚É‚É”š‚ğ“n‚·—p
-
-        isRed2 = bullet.isRed;
-        isGreen2 = bullet.isGreen;
-        isBlue2 = bullet.isBlue;
 
         if (isRed)
         {
@@ -72,8 +71,10 @@ public class BulletBehind : MonoBehaviour
 
     public void tmpState(bool _red, bool _green, bool _blue, float _num)
     {
+        GameObject objParent = transform.parent.gameObject;@//G‚ê‚½’e‚É‚É”š‚ğ“n‚·—p
+        Bullet bullet = objParent.GetComponent<Bullet>();@//G‚ê‚½’e‚É‚É”š‚ğ“n‚·—p
 
-        if(isRed2 && _red && !isGreen2 && !_green && !isBlue2 && !_blue ||!isRed2 && !_red && isGreen2 && _green && !isBlue2 && !_blue ||!isRed2 && !_red && !isGreen2 && !_green && isBlue2 && _blue)
+        if (isRed2 && _red && !isGreen2 && !_green && !isBlue2 && !_blue ||!isRed2 && !_red && isGreen2 && _green && !isBlue2 && !_blue ||!isRed2 && !_red && !isGreen2 && !_green && isBlue2 && _blue)
         {
             tmpN = _num;@//”š‚Ìî•ñ‚ğó‚¯æ‚é—p
             tmpdeath = true;
@@ -87,7 +88,38 @@ public class BulletBehind : MonoBehaviour
 
             tmpN = _num;@//”š‚Ìî•ñ‚ğó‚¯æ‚é—p
 
-            tmpdeath = true;
+            if (!isRed2)
+            {
+                isRed2 = _red; //Ô‚Ìî•ñ‚ğó‚¯æ‚é—p
+            }
+            if (isGreen2)
+            {
+                isGreen2 = _green;  //—Î‚Ìî•ñ‚ğó‚¯æ‚é—p
+            }if (isBlue2)
+            {
+                isBlue2 = _blue;
+            }
+
+            Debug.Log(isRed2);
+            Debug.Log(isGreen2);
+            Debug.Log(isBlue2);
+
+            if (isRed2 && isGreen2 && isBlue2)
+            {
+                bullet.numBullet *= tmpN; //’e‚Ì”š‚Ìî•ñ‚ğ“n‚·
+                Debug.Log(bullet.numBullet);
+                Debug.Log(tmpN);
+                tmpN = 0; //’e‚Ì’l‚ğ‰Šú‰»
+            }
+            else {
+                bullet.numBullet += tmpN; //’e‚Ì”š‚Ìî•ñ‚ğ“n‚·
+                bullet.numBullet *= gameM.mag2color;
+                tmpN = 0; //’e‚Ì’l‚ğ‰Šú‰»
+                bullet.numBullet=Mathf.CeilToInt(bullet.numBullet);
+            }
+
+
+                tmpdeath = true;
         }
     }
 
