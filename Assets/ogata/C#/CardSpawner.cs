@@ -9,8 +9,7 @@ public class CardSpawner : MonoBehaviour
     [SerializeField]
     public GameObject[] cards;
 
-    [SerializeField]
-    private GameObject cardobj;
+    bool[] spawd = new bool[256];
 
     private GameObject cloneCard;
 
@@ -31,25 +30,50 @@ public class CardSpawner : MonoBehaviour
 
         if (!pos01card)
         {
+            
             num = Random.Range(0, cards.Length);
-            cloneCard = Instantiate(cards[num], Spawner01.transform.position, Quaternion.identity);
-            cloneCard.gameObject.GetComponent<Card>().pos01card = true;
-            pos01card = true;
+            if (!spawd[num])
+            {
+                cloneCard = Instantiate(cards[num], Spawner01.transform.position, Quaternion.identity);
+                cloneCard.gameObject.GetComponent<Card>().pos01card = true;
+                pos01card = true;
+                spawd[num] = true;
+            }
+            else
+            {
+                return;
+            }
 
         }
         if (!pos02card)
         {
             num = Random.Range(0, cards.Length);
-            cloneCard = Instantiate(cards[num], Spawner02.transform.position, Quaternion.identity);
-            cloneCard.gameObject.GetComponent<Card>().pos02card = true;
-            pos02card = true;
+            if (!spawd[num])
+            {
+                cloneCard = Instantiate(cards[num], Spawner02.transform.position, Quaternion.identity);
+                cloneCard.gameObject.GetComponent<Card>().pos02card = true;
+                pos02card = true;
+                spawd[num] = true;
+            }
+            else
+            {
+                return;
+            }
         }
         if (!pos03card)
         {
             num = Random.Range(0, cards.Length);
-            cloneCard = Instantiate(cards[num], Spawner03.transform.position, Quaternion.identity);
-            cloneCard.gameObject.GetComponent<Card>().pos03card = true;
-            pos03card = true;
+                if (!spawd[num])
+                {
+                    cloneCard = Instantiate(cards[num], Spawner03.transform.position, Quaternion.identity);
+                    cloneCard.gameObject.GetComponent<Card>().pos03card = true;
+                spawd[num] = true;
+                pos03card = true;
+                }
+                else
+                {
+                    return;
+                }
         }
     }
 }
