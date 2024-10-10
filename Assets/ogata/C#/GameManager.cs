@@ -10,5 +10,6 @@ public class GameManager : MonoBehaviour
     public bool isGreen;　//カードから弾に送るための緑の情報
     public bool isBlue;　//カードから弾に送るための青の情報
 
+    
 
 }

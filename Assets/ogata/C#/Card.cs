@@ -6,10 +6,13 @@ using System.Security.Cryptography;
 public class Card : MonoBehaviour
 {
     GameManager gameM;　//GameManagerのスクリプトを参照
+    CardSpawner cardspaw;
 
     [SerializeField]
-    private float num; //カードの数字
-    public int SendNum; //カードの情報を送る用
+    private int num; //カードの数字
+    //public int SendNum; //カードの情報を送る用
+
+    private Vector2 findpos;
 
     [SerializeField]
     private GameObject ObjectColor;　//カードの色の情報を送る用
@@ -47,6 +50,10 @@ public class Card : MonoBehaviour
     public bool isRed = false;　//カードの色が赤
     public bool isGreen = false;　//カードの色が緑
     public bool isBlue = false;　//カードの色が青
+
+    public bool pos01card = false;
+    public bool pos02card = false;
+    public bool pos03card = false;
 
 
     public Card(bool _red, bool _green, bool _blue){　//カードの色を設定する用
@@ -100,7 +107,8 @@ public class Card : MonoBehaviour
     void Start()
     {
         gameM = GameObject.FindObjectOfType<GameManager>(); //GameManagerの取得
-        
+        cardspaw = GameObject.FindObjectOfType<CardSpawner>();
+        findpos = transform.position; 
     }
 
     // Update is called once per frame
@@ -142,6 +150,29 @@ public class Card : MonoBehaviour
             gameM.isRed = isRed; //カードの赤の情報をGameManagerに送る
             gameM.isGreen = isGreen;　//カードの緑の情報をGameManagerに送る
             gameM.isBlue = isBlue;　//カードの青の情報をGameManagerに送る
+
+            if (Lane_01 || Lane_02 || Lane_03)
+            {
+                if (pos01card)
+                {
+                    cardspaw.pos01card = false;
+                    pos01card = false;
+                }
+                if (pos02card)
+                {
+                    cardspaw.pos02card = false;
+                    pos02card = false;
+                }
+                if (pos03card)
+                {
+                    cardspaw.pos03card = false;
+                    pos03card = false;
+                }
+            }
+            else
+            {
+                transform.position = findpos;
+            }
 
             if (Lane_01)　//01レーンで左キーを離したとき
             {
