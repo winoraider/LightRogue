@@ -9,7 +9,7 @@ public class CardSpawner : MonoBehaviour
     [SerializeField]
     public GameObject[] cards;
 
-    bool[] spawd = new bool[256];
+    public bool[] spawd = new bool[15];
 
     private GameObject cloneCard;
 
@@ -41,6 +41,28 @@ public class CardSpawner : MonoBehaviour
             }
             else
             {
+                for(int i = 0; i < cards.Length; i++)
+                {
+                    if (spawd[i])
+                    {
+                        if (spawd[cards.Length -1])
+                        {
+                            if (!pos01card && !pos02card && !pos03card)
+                            {
+                                for (int n = 0; n < cards.Length; n++)
+                                {
+                                    spawd[n] = false;
+                                }
+                            }
+                        }
+                        continue;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    
+                }
                 return;
             }
 

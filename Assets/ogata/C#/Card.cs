@@ -12,7 +12,7 @@ public class Card : MonoBehaviour
     private int num; //カードの数字
     //public int SendNum; //カードの情報を送る用
 
-    private Vector2 findpos;
+    private Vector2 findpos; //補充されたカードの最初の位置
 
     [SerializeField]
     private GameObject ObjectColor;　//カードの色の情報を送る用
@@ -51,9 +51,9 @@ public class Card : MonoBehaviour
     public bool isGreen = false;　//カードの色が緑
     public bool isBlue = false;　//カードの色が青
 
-    public bool pos01card = false;
-    public bool pos02card = false;
-    public bool pos03card = false;
+    public bool pos01card = false;　//左の位置にある
+    public bool pos02card = false;　//真ん中の位置にある
+    public bool pos03card = false;　//右の位置にある
 
 
     public Card(bool _red, bool _green, bool _blue){　//カードの色を設定する用
@@ -107,8 +107,8 @@ public class Card : MonoBehaviour
     void Start()
     {
         gameM = GameObject.FindObjectOfType<GameManager>(); //GameManagerの取得
-        cardspaw = GameObject.FindObjectOfType<CardSpawner>();
-        findpos = transform.position; 
+        cardspaw = GameObject.FindObjectOfType<CardSpawner>(); //CardSpawnerの取得
+        findpos = transform.position;  
     }
 
     // Update is called once per frame
