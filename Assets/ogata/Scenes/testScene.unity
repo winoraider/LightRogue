@@ -239,6 +239,8 @@ MonoBehaviour:
   isRed: 0
   isGreen: 0
   isBlue: 0
+  mag2color: 1.5
+  mag3color: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

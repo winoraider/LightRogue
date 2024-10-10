@@ -92,10 +92,10 @@ public class BulletBehind : MonoBehaviour
             {
                 isRed2 = _red; //Ô‚Ìî•ñ‚ğó‚¯æ‚é—p
             }
-            if (isGreen2)
+            if (!isGreen2)
             {
                 isGreen2 = _green;  //—Î‚Ìî•ñ‚ğó‚¯æ‚é—p
-            }if (isBlue2)
+            }if (!isBlue2)
             {
                 isBlue2 = _blue;
             }
