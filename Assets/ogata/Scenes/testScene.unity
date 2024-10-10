@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 760052072}
   - component: {fileID: 760052071}
   - component: {fileID: 760052070}
+  - component: {fileID: 760052074}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -483,12 +484,24 @@ Transform:
   m_GameObject: {fileID: 760052069}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0092, y: 1.595, z: 0}
+  m_LocalPosition: {x: 0.0092, y: 2.64, z: 0}
   m_LocalScale: {x: 5.4385, y: 1.1299, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &760052074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760052069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b31529fdbf306b4b89b0ed2a946e127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &950184784
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +671,7 @@ MonoBehaviour:
   - {fileID: 7372923295110693487, guid: 0b9762b6f0c327847a797b63c7cabafd, type: 3}
   - {fileID: 7372923295110693487, guid: e28e13f18efccd04999b88e027446292, type: 3}
   - {fileID: 7372923295110693487, guid: cd8cca92b386d6b4096e077e20b84c1e, type: 3}
-  cardobj: {fileID: 7372923295110693487, guid: 33dd497d2c5f60c428b6e489def08b15, type: 3}
+  spawd: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   Spawner01: {fileID: 950184784}
   Spawner02: {fileID: 1495669869}
   Spawner03: {fileID: 1422575881}

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Bullet : MonoBehaviour
 {
     Rigidbody2D rb; //Rigidbody2Dの取得
     GameManager gameM;　//GameManagerのスクリプトを取得
-
+    public bool tmp = false;
 
     BulletBehind tmpColor;　//色を送るためのスクリプトを取得
 
@@ -25,18 +26,37 @@ public class Bullet : MonoBehaviour
     public bool isGreen = false;　//緑が入っているか判定
     public bool isBlue = false;　//青が入っているか判定
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        
-            if (collision.gameObject.GetComponent<BulletBehind>())　//触れたのがBulletだったとき実行
-            {
-            collision.gameObject.GetComponent<BulletBehind>().tmpNum(numBullet); //このBulletの数字を、触れたBulletに送る
-            collision.gameObject.GetComponent<BulletBehind>().tmpColor(isRed,isGreen,isBlue);　//このBulletの色の情報を、触れたBulletに送る
-                Destroy(this.gameObject);　//このオブジェクトを削除する
-            }
+
+        if (collision.gameObject.GetComponent<BulletBehind>()) //触れたのがBulletだったとき実行
+        {
+            
+            collision.gameObject.GetComponent<BulletBehind>().tmpState(isRed, isGreen, isBlue, numBullet); //このBulletの色の情報を、触れたBulletに送る
+           
+            
+        }
+
+        else
+        {
+            return;
+        }
+
+          
+            
 
             
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Enemy>())
+        {
+            Vector2 force = new Vector2(0, -3);
+            rb.AddForce(force);
+            transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
+            //numBullet -= 1;
+        }
     }
 
 
@@ -63,8 +83,11 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);　//弾の数字が0になったら消える
         }
-
-        rb.velocity = new Vector2(0,speed);　//弾の動き
+        Vector2 force = new Vector2(0, 1);
+        rb.AddForce(force);　//弾の動き
+        if(rb.velocity.y >= speed) {
+            rb.velocity = new Vector2(0,speed);
+        }
     }
 
     private void IsRed()
@@ -135,5 +158,9 @@ public class Bullet : MonoBehaviour
         {
             ObjectColor.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);　//弾の色を黒にする
         }
+    }
+    public void isDestroy()
+    {
+        Destroy(this.gameObject);
     }
 }

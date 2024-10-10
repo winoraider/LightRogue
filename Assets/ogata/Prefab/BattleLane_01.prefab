@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2296785664382989541}
   - component: {fileID: 6557313397699802838}
   - component: {fileID: 7450018770113293900}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BattleLane_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

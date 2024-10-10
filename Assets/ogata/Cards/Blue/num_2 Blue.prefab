@@ -285,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 2
   ObjectColor: {fileID: 8357346875351558536}
-  bullet: {fileID: 5839831857738939097, guid: 85eec827990b6b24484c6ba8c7397f7e, type: 3}
+  bullet: {fileID: 1451187787789374251, guid: 85eec827990b6b24484c6ba8c7397f7e, type: 3}
   BattleLane_01: {fileID: 8806340303954722770, guid: b58ead6cd123ca04a8b2dad10d3905d1, type: 3}
   BattleLane_02: {fileID: 3394836593168552004, guid: e5ffcd44e6bda204d8118ea600fa1a27, type: 3}
   BattleLane_03: {fileID: 8409000366793968206, guid: dbcd23f4afba6a547a1df416d5e6e9aa, type: 3}

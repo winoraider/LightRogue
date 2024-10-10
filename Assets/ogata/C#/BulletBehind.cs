@@ -7,17 +7,48 @@ public class BulletBehind : MonoBehaviour
     Bullet bullet;　//Bulletのスクリプトを参照
     GameManager gameM;　//GameManagerのスクリプトを参照
 
+    [SerializeField]
+    private GameObject deathObj;
+
     public bool isRed = false; //赤の情報を弾に渡す用
     public bool isGreen = false; //緑の情報を弾に渡す用
     public bool isBlue = false; //青の情報を弾に渡す用
 
+    public bool isRed2 = false;
+    public bool isGreen2 = false;
+    public bool isBlue2 = false;
+
     public float tmpN;　//数字の情報を弾に渡す用
 
+    bool tmpdeath  = false;
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if ((tmpdeath))
+        {
+            Destroy(collision.gameObject);
+            tmpdeath = false;
+        }
+        
+    }
+
+    private void Start()
+    {
+        GameObject objParent = transform.parent.gameObject;　//触れた弾にに数字を渡す用
+        Bullet bullet = objParent.GetComponent<Bullet>();　//触れた弾にに数字を渡す用
+
+        
+    }
     // Update is called once per frame
     void Update()
     {
         GameObject objParent = transform.parent.gameObject;　//触れた弾にに数字を渡す用
         Bullet bullet = objParent.GetComponent<Bullet>();　//触れた弾にに数字を渡す用
+
+        isRed2 = bullet.isRed;
+        isGreen2 = bullet.isGreen;
+        isBlue2 = bullet.isBlue;
 
         if (isRed)
         {
@@ -36,17 +67,32 @@ public class BulletBehind : MonoBehaviour
             bullet.numBullet += tmpN; //弾の数字の情報を渡す
             tmpN = 0;　//弾の値を初期化
         }
+        
     }
 
-    public void tmpColor(bool _red,bool _green,bool _blue)
+    public void tmpState(bool _red, bool _green, bool _blue, float _num)
     {
-        isRed = _red; //赤の情報を受け取る用
-        isGreen = _green;  //緑の情報を受け取る用
-        isBlue = _blue; //青の情報を受け取る用
+
+        if(isRed2 && _red && !isGreen2 && !_green && !isBlue2 && !_blue ||!isRed2 && !_red && isGreen2 && _green && !isBlue2 && !_blue ||!isRed2 && !_red && !isGreen2 && !_green && isBlue2 && _blue)
+        {
+            tmpN = _num;　//数字の情報を受け取る用
+            tmpdeath = true;
+        }
+
+        if (!isRed2 && _red || !isGreen2 && _green || !isBlue2 && _blue)
+        {
+            isRed = _red; //赤の情報を受け取る用
+            isGreen = _green;  //緑の情報を受け取る用
+            isBlue = _blue; //青の情報を受け取る用
+
+            tmpN = _num;　//数字の情報を受け取る用
+
+            tmpdeath = true;
+        }
     }
 
-    public void tmpNum(float _num)
+    public void tmpNum()
     {
-        tmpN = _num;　//数字の情報を受け取る用
+        
     }
 }
