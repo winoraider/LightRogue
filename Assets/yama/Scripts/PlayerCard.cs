@@ -5,19 +5,20 @@ using UnityEngine;
 public class PlayerCard : MonoBehaviour
 {
     bool hit = false;
-    [SerializeField] int power;
+    [SerializeField] int pPower;
     int counter = 0;
     private string objName;
+    public int biggerPower;
     // Start is called before the first frame update
     void Start()
     {
-        
+        biggerPower = pPower;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (power <= 0)
+        if (pPower <= 0)
         {
             Destroy(gameObject);
         }
@@ -27,10 +28,11 @@ public class PlayerCard : MonoBehaviour
             if(objName == "enemy")
             {
                 counter++;
-                if (counter >= 144)
+                if (counter >= 60)//1秒たったら
                 {
-                    power -= 1;
+                    pPower -= biggerPower / 3;
                     counter = 0;
+                    Debug.Log("プレイヤー：" + pPower);
                 }
             }
         }
@@ -42,13 +44,30 @@ public class PlayerCard : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        MoveEnemy moveEnemy;
         objName = collision.gameObject.name;
+        GameObject obj = GameObject.Find(objName);
+        moveEnemy = obj.GetComponent<MoveEnemy>();
+        if (pPower < moveEnemy.comparePower)
+        {
+            biggerPower = moveEnemy.comparePower;
+        }
+        else
+        {
+            biggerPower = pPower;
+        }
+        Debug.Log("大きい方の数字" + biggerPower);
         hit = true;
+        /*if(collision.gameObject.tag == "enemy")
+        {
+        
+        }*/
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         objName = "";
         hit = false;
+        biggerPower = pPower;
     }
 }
