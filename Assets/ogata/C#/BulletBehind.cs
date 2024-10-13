@@ -74,6 +74,13 @@ public class BulletBehind : MonoBehaviour
         GameObject objParent = transform.parent.gameObject;　//触れた弾にに数字を渡す用
         Bullet bullet = objParent.GetComponent<Bullet>();　//触れた弾にに数字を渡す用
 
+        if (isRed2 == _red && isGreen2 == _green && isBlue2 == _blue)
+        {
+            tmpN = _num;　//数字の情報を受け取る用
+            tmpdeath = true;
+            return;
+        }
+
         if (isRed2 && _red && !isGreen2 && !_green && !isBlue2 && !_blue ||!isRed2 && !_red && isGreen2 && _green && !isBlue2 && !_blue ||!isRed2 && !_red && !isGreen2 && !_green && isBlue2 && _blue)
         {
             tmpN = _num;　//数字の情報を受け取る用
@@ -87,6 +94,8 @@ public class BulletBehind : MonoBehaviour
             isBlue = _blue; //青の情報を受け取る用
 
             tmpN = _num;　//数字の情報を受け取る用
+
+            
 
             if (!isRed2)
             {
