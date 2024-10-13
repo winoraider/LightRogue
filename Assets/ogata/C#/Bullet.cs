@@ -26,6 +26,12 @@ public class Bullet : MonoBehaviour
     public bool isGreen = false;　//緑が入っているか判定
     public bool isBlue = false;　//青が入っているか判定
 
+    float posY;
+
+    bool min;
+    bool mid;
+    bool max;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
 
@@ -63,6 +69,8 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        posY = transform.position.y;
+
         gameM = FindObjectOfType<GameManager>();　//GameManagerを参照する
         rb = GetComponent<Rigidbody2D>();　//Rigidbodyを参照する
 
@@ -75,11 +83,11 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
+
         ThisColor();　//カラーの表示をする
         numText.text = "" + numBullet;　//弾に数字を表示させる
 
-
-        if(numBullet <= 0)
+        if (numBullet <= 0)
         {
             Destroy(this.gameObject);　//弾の数字が0になったら消える
         }
@@ -87,6 +95,36 @@ public class Bullet : MonoBehaviour
         rb.AddForce(force);　//弾の動き
         if(rb.velocity.y >= speed) {
             rb.velocity = new Vector2(0,speed);
+        }
+        if(numBullet <= 19) {
+            mid = false;
+            max = false;
+
+            transform.localScale = Vector3.up * 0.8f;
+            transform.localScale = new Vector2(0.8f, this.transform.localScale.y);
+            posY = transform.position.y;
+            transform.position = new Vector2(transform.position.x,posY + 0.1f);
+            min = true;
+        }else if (numBullet <= 31 && numBullet >= 20)
+        {
+            min = false;
+            max = false;
+            transform.localScale = Vector3.up * 1f;
+            transform.localScale = new Vector2(1f, this.transform.localScale.y);
+            posY = transform.position.y;
+            transform.position = new Vector2(transform.position.x, posY);
+            mid = true;
+
+        }
+        else if (numBullet >=32)
+        {
+            min = false;
+            mid = false;
+            transform.localScale = Vector3.up * 1.2f;
+            transform.localScale = new Vector2(1.2f, this.transform.localScale.y);
+            posY = transform.position.y;
+            transform.position = new Vector2(transform.position.x, posY - 0.1f);
+            max = true;
         }
     }
 
