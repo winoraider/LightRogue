@@ -37,75 +37,13 @@ public class CardSpawner : MonoBehaviour
 
     private void Start()
     {
+        num = Random.Range(0, cards.Length);
         cloneCard = Instantiate(cards[num], Spawner01.transform.position, Quaternion.identity);
         cloneCard.gameObject.GetComponent<Card>().pos01card = true;
         pos01card = true;
         spawd[num] = true;
-        cloneCard = Instantiate(cards[num], Spawner02.transform.position, Quaternion.identity);
-        cloneCard.gameObject.GetComponent<Card>().pos02card = true;
-        pos01card = true;
-        spawd[num] = true;
-        cloneCard = Instantiate(cards[num], Spawner01.transform.position, Quaternion.identity);
-        cloneCard.gameObject.GetComponent<Card>().pos01card = true;
-        pos01card = true;
-        spawd[num] = true;
-    }
-    private void Update()
-    {
-
-        if (!pos01card)
+        while (true)
         {
-            coolDown1 += 1 * Time.deltaTime; 
-
-            if(coolDown1 < derayTime)
-            {
-                return;
-            }
-
-            num = Random.Range(0, cards.Length);
-            if (!spawd[num])
-            {
-                cloneCard = Instantiate(cards[num], Spawner01.transform.position, Quaternion.identity);
-                cloneCard.gameObject.GetComponent<Card>().pos01card = true;
-                pos01card = true;
-                spawd[num] = true;
-            }
-            else
-            {
-                for(int i = 0; i < cards.Length; i++)
-                {
-                    if (spawd[i])
-                    {
-                        if (spawd[cards.Length -1])
-                        {
-                            if (!pos01card && !pos02card && !pos03card)
-                            {
-                                for (int n = 0; n < cards.Length; n++)
-                                {
-                                    spawd[n] = false;
-                                }
-                            }
-                        }
-                        continue;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                    
-                }
-                return;
-            }
-
-        }
-        if (!pos02card)
-        {
-            coolDown2 += 1 * Time.deltaTime;
-
-            if (coolDown2 < derayTime)
-            {
-                return;
-            }
             num = Random.Range(0, cards.Length);
             if (!spawd[num])
             {
@@ -113,32 +51,112 @@ public class CardSpawner : MonoBehaviour
                 cloneCard.gameObject.GetComponent<Card>().pos02card = true;
                 pos02card = true;
                 spawd[num] = true;
+                break;
             }
-            else
+        }
+        while (true)
+        {
+            num = Random.Range(0, cards.Length);
+            if (!spawd[num])
             {
-                return;
+                cloneCard = Instantiate(cards[num], Spawner03.transform.position, Quaternion.identity);
+                cloneCard.gameObject.GetComponent<Card>().pos03card = true;
+                pos03card = true;
+                spawd[num] = true;
+                break;
+            }
+        }
+        }
+        private void Update()
+    {
+
+        if (!pos01card)
+        {
+            coolDown1 += 1 * Time.deltaTime;
+
+            if (coolDown1 >= derayTime)
+            {
+                
+
+
+                num = Random.Range(0, cards.Length);
+                if (!spawd[num])
+                {
+                    coolDown1 = 0;
+                    cloneCard = Instantiate(cards[num], Spawner01.transform.position, Quaternion.identity);
+                    cloneCard.gameObject.GetComponent<Card>().pos01card = true;
+                    pos01card = true;
+                    spawd[num] = true;
+                }
+                else
+                {
+                    for (int i = 0; i < cards.Length; i++)
+                    {
+                        if (spawd[i])
+                        {
+                            if (spawd[cards.Length - 1])
+                            {
+                                    for (int n = 0; n < cards.Length; n++)
+                                    {
+                                        spawd[n] = false;
+                                    }
+                               
+                            }
+                            continue;
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                    }
+                    return;
+                }
+            }
+
+        }
+        if (!pos02card)
+        {
+            coolDown2 += 1 * Time.deltaTime;
+
+            if (coolDown2 >= derayTime)
+            {
+
+                num = Random.Range(0, cards.Length);
+                if (!spawd[num])
+                {
+                    coolDown2 = 0;
+                    cloneCard = Instantiate(cards[num], Spawner02.transform.position, Quaternion.identity);
+                    cloneCard.gameObject.GetComponent<Card>().pos02card = true;
+                    pos02card = true;
+                    spawd[num] = true;
+                }
+                else
+                {
+                    return;
+                }
             }
         }
         if (!pos03card)
         {
             coolDown3 += 1 * Time.deltaTime;
 
-            if (coolDown3 < derayTime)
+            if (coolDown3 >= derayTime)
             {
-                return;
-            }
-            num = Random.Range(0, cards.Length);
+                num = Random.Range(0, cards.Length);
                 if (!spawd[num])
                 {
+                    coolDown3 = 0;
                     cloneCard = Instantiate(cards[num], Spawner03.transform.position, Quaternion.identity);
                     cloneCard.gameObject.GetComponent<Card>().pos03card = true;
-                spawd[num] = true;
-                pos03card = true;
+                    spawd[num] = true;
+                    pos03card = true;
                 }
                 else
                 {
                     return;
                 }
+            }
         }
     }
 }
