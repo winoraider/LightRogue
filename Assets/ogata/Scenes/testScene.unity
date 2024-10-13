@@ -680,6 +680,7 @@ MonoBehaviour:
   pos01card: 0
   pos02card: 0
   pos03card: 0
+  derayTime: 2
 --- !u!1 &1422575881
 GameObject:
   m_ObjectHideFlags: 0

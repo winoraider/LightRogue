@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CardSpawner : MonoBehaviour
@@ -22,15 +23,45 @@ public class CardSpawner : MonoBehaviour
 
     private int num;
 
+    
+    private float coolDown1;
+    private float coolDown2;
+    private float coolDown3;
+
     public bool pos01card = false;
     public bool pos02card = false;
     public bool pos03card = false;
+
+    [SerializeField]
+    private float derayTime;
+
+    private void Start()
+    {
+        cloneCard = Instantiate(cards[num], Spawner01.transform.position, Quaternion.identity);
+        cloneCard.gameObject.GetComponent<Card>().pos01card = true;
+        pos01card = true;
+        spawd[num] = true;
+        cloneCard = Instantiate(cards[num], Spawner02.transform.position, Quaternion.identity);
+        cloneCard.gameObject.GetComponent<Card>().pos02card = true;
+        pos01card = true;
+        spawd[num] = true;
+        cloneCard = Instantiate(cards[num], Spawner01.transform.position, Quaternion.identity);
+        cloneCard.gameObject.GetComponent<Card>().pos01card = true;
+        pos01card = true;
+        spawd[num] = true;
+    }
     private void Update()
     {
 
         if (!pos01card)
         {
-            
+            coolDown1 += 1 * Time.deltaTime; 
+
+            if(coolDown1 < derayTime)
+            {
+                return;
+            }
+
             num = Random.Range(0, cards.Length);
             if (!spawd[num])
             {
@@ -69,6 +100,12 @@ public class CardSpawner : MonoBehaviour
         }
         if (!pos02card)
         {
+            coolDown2 += 1 * Time.deltaTime;
+
+            if (coolDown2 < derayTime)
+            {
+                return;
+            }
             num = Random.Range(0, cards.Length);
             if (!spawd[num])
             {
@@ -84,6 +121,12 @@ public class CardSpawner : MonoBehaviour
         }
         if (!pos03card)
         {
+            coolDown3 += 1 * Time.deltaTime;
+
+            if (coolDown3 < derayTime)
+            {
+                return;
+            }
             num = Random.Range(0, cards.Length);
                 if (!spawd[num])
                 {

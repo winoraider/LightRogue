@@ -7,7 +7,7 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 
 public class MoveEnemy : MonoBehaviour
 {
-    int counter;
+    float counter;
     bool hit = false;
     [SerializeField] int nowPower;
     public int comparePower;
@@ -31,7 +31,7 @@ public class MoveEnemy : MonoBehaviour
         {
             if (objName == "pCard")
             {
-                counter++;
+                counter += 1 * Time.deltaTime;
                 if (counter >= 60)//1•b‚½‚Á‚½‚ç
                 {
                     nowPower -= playerCard.biggerPower / 3;
@@ -51,9 +51,14 @@ public class MoveEnemy : MonoBehaviour
     {
         comparePower = nowPower;
         objName = collision.gameObject.name;
-        GameObject obj = GameObject.Find(objName);
-        playerCard = obj.GetComponent<PlayerCard>();
+
+        if(collision.gameObject.GetComponent<PlayerCard>()) { 
         hit = true;
+        }
+
+        //GameObject obj = GameObject.Find(objName);
+        //playerCard = obj.GetComponent<PlayerCard>();
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)

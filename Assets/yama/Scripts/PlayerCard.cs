@@ -6,7 +6,7 @@ public class PlayerCard : MonoBehaviour
 {
     bool hit = false;
     [SerializeField] int pPower;
-    int counter = 0;
+    float counter = 0;
     private string objName;
     public int biggerPower;
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class PlayerCard : MonoBehaviour
         {
             if(objName == "enemy")
             {
-                counter++;
+                counter += 1 * Time.deltaTime;
                 if (counter >= 60)//1秒たったら
                 {
                     pPower -= biggerPower / 3;
@@ -48,20 +48,22 @@ public class PlayerCard : MonoBehaviour
         objName = collision.gameObject.name;
         if(collision.gameObject.GetComponent<MoveEnemy>())//触れたオブジェクトがMoveEnemyのコンポーネントを持っていたら
         {
+            hit = true;
 
+            if (pPower < collision.gameObject.GetComponent<MoveEnemy>().comparePower)
+            {
+                biggerPower = collision.gameObject.GetComponent<MoveEnemy>().comparePower;
+            }
+            else
+            {
+                biggerPower = pPower;
+            }
+            Debug.Log("大きい方の数字" + biggerPower);
         }
-        GameObject obj = GameObject.Find(objName);
-        moveEnemy = obj.GetComponent<MoveEnemy>();
-        if (pPower < moveEnemy.comparePower)
-        {
-            biggerPower = moveEnemy.comparePower;
-        }
-        else
-        {
-            biggerPower = pPower;
-        }
-        Debug.Log("大きい方の数字" + biggerPower);
-        hit = true;
+        //GameObject obj = GameObject.Find(objName);
+        //moveEnemy = obj.GetComponent<MoveEnemy>();
+        
+        
         /*if(collision.gameObject.tag == "enemy")
         {
         
