@@ -52,10 +52,10 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Enemy>())
         {
-            Vector2 force = new Vector2(0, -3);
-            rb.AddForce(force);
-            transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
-            //numBullet -= 1;
+            //Vector2 force = new Vector2(0, -3);
+            //rb.AddForce(force);
+            //transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
+            ////numBullet -= 1;
         }
     }
 

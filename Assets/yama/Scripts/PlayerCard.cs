@@ -46,6 +46,10 @@ public class PlayerCard : MonoBehaviour
     {
         MoveEnemy moveEnemy;
         objName = collision.gameObject.name;
+        if(collision.gameObject.GetComponent<MoveEnemy>())//触れたオブジェクトがMoveEnemyのコンポーネントを持っていたら
+        {
+
+        }
         GameObject obj = GameObject.Find(objName);
         moveEnemy = obj.GetComponent<MoveEnemy>();
         if (pPower < moveEnemy.comparePower)
