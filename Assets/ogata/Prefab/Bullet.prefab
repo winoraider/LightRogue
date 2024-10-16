@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tmp: 0
   ObjectColor: {fileID: 3674451290265333885}
-  speed: 2
+  speed: 1
   numBullet: 3
   numText: {fileID: 7631824141109988772}
   isRed: 0

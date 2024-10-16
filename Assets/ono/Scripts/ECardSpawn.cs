@@ -11,15 +11,11 @@ public class ECardSpawn : MonoBehaviour
     [SerializeField] GameObject ESpawner_02;
     [SerializeField] GameObject ESpawner_03;
 
-    [SerializeField] float elapsedTime = 0.0f;
-    [SerializeField] float durationTime = 5.0f;
-    [SerializeField] float force = -0.2f;
-
-    Rigidbody2D rb;
+    [SerializeField] float elapsedTime;//åoâﬂéûä‘
+    [SerializeField] float durationTime;//Å™êßå¿
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
