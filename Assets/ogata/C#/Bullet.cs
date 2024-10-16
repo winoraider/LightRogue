@@ -28,9 +28,9 @@ public class Bullet : MonoBehaviour
 
     float posY;
 
-    bool min;
-    bool mid;
-    bool max;
+    public bool min;
+    public bool mid;
+    public bool max;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -47,11 +47,6 @@ public class Bullet : MonoBehaviour
         {
             return;
         }
-
-          
-            
-
-            
         
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -69,7 +64,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        posY = transform.position.y;
+       
 
         gameM = FindObjectOfType<GameManager>();　//GameManagerを参照する
         rb = GetComponent<Rigidbody2D>();　//Rigidbodyを参照する
@@ -87,43 +82,57 @@ public class Bullet : MonoBehaviour
         ThisColor();　//カラーの表示をする
         numText.text = "" + numBullet;　//弾に数字を表示させる
 
+        rb.velocity = new Vector2(0, speed);
+
         if (numBullet <= 0)
         {
             Destroy(this.gameObject);　//弾の数字が0になったら消える
         }
-        Vector2 force = new Vector2(0, 1);
-        rb.AddForce(force);　//弾の動き
-        if(rb.velocity.y >= speed) {
-            rb.velocity = new Vector2(0,speed);
-        }
-        if(numBullet <= 19) {
-            mid = false;
-            max = false;
+            
+        
+        if(numBullet <= 19 && !min) {
 
-            transform.localScale = Vector3.up * 0.8f;
-            transform.localScale = new Vector2(0.8f, this.transform.localScale.y);
-            posY = transform.position.y;
-            transform.position = new Vector2(transform.position.x,posY + 0.1f);
+            transform.localScale = new Vector2(0.8f, 0.8f);
+            if (mid)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + 0.1f);
+                mid = false;
+            }
+            if (max)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + 0.2f);
+                max = false;
+            }          
             min = true;
-        }else if (numBullet <= 31 && numBullet >= 20)
+        }else if (numBullet <= 31 && numBullet >= 20 && !mid)
         {
-            min = false;
-            max = false;
-            transform.localScale = Vector3.up * 1f;
-            transform.localScale = new Vector2(1f, this.transform.localScale.y);
+            transform.localScale = new Vector2(1f, 1f);
             posY = transform.position.y;
-            transform.position = new Vector2(transform.position.x, posY);
+            if (max)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + 0.1f);
+                max = false;
+            }else if (min)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y - 0.1f);
+                min = false;
+            }
             mid = true;
 
         }
-        else if (numBullet >=32)
-        {
-            min = false;
-            mid = false;
-            transform.localScale = Vector3.up * 1.2f;
-            transform.localScale = new Vector2(1.2f, this.transform.localScale.y);
-            posY = transform.position.y;
-            transform.position = new Vector2(transform.position.x, posY - 0.1f);
+        else if (numBullet >=32 && !max)
+        {                
+            transform.localScale = new Vector2(1.2f,1.2f);
+            if (min)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y -0.2f);
+                min = false;
+            }
+            if (mid)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y - 0.1f);
+                mid = false;
+            }
             max = true;
         }
     }
