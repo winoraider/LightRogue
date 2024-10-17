@@ -44,7 +44,6 @@ public class PlayerCard : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        MoveEnemy moveEnemy;
         objName = collision.gameObject.name;
         if(collision.gameObject.GetComponent<MoveEnemy>())//触れたオブジェクトがMoveEnemyのコンポーネントを持っていたら
         {
