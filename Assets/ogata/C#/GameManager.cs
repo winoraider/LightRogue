@@ -6,6 +6,20 @@ public class GameManager : MonoBehaviour
 {
     public float BulletNum; //カードから弾に送るための数字の情報
 
+    [SerializeField]
+    public float NeedEXP;
+    [SerializeField]
+    public float AddNeedEXP;
+    [SerializeField]
+    public float PlayerLevel;
+
+    [SerializeField]
+    public int ColorLevel;
+    [SerializeField]
+    public int CardLevel;
+    [SerializeField]
+    public int HpLevel;
+
     public bool isRed;　//カードから弾に送るための赤の情報
     public bool isGreen;　//カードから弾に送るための緑の情報
     public bool isBlue;　//カードから弾に送るための青の情報
