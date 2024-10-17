@@ -57,6 +57,9 @@ MonoBehaviour:
   isRed: 0
   isGreen: 0
   isBlue: 0
+  min: 0
+  mid: 0
+  max: 0
 --- !u!58 &4501497664468459158
 CircleCollider2D:
   m_ObjectHideFlags: 0
