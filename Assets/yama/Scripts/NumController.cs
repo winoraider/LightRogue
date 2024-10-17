@@ -31,8 +31,10 @@ public class NumController : MonoBehaviour
 
         if (hit)
         {
+            Debug.Log("1111");
             if (eBullet)
             {
+                Debug.Log("active");
                 counter += 1;
                 if (counter >= 1)//1•b‚½‚Á‚½‚ç
                 {
