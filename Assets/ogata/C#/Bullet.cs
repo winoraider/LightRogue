@@ -49,10 +49,6 @@ public class Bullet : MonoBehaviour
         }
         
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Debug.Log("—£‚ê‚Ü‚µ‚½");
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Enemy>())
