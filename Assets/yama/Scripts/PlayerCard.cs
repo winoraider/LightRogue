@@ -20,7 +20,7 @@ public class PlayerCard : MonoBehaviour
     {
         if (pPower <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         if (hit)
