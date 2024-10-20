@@ -85,7 +85,11 @@ public class LevelUpUi : MonoBehaviour
             gameM.HpLevel++;
             HpPow=false;
         }
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "‘I‚ñ‚Å‚­‚¾‚³‚¢";
         Time.timeScale = 1;
+        OKButton.SetActive(false);
         gameObject.SetActive(false);
+
     }
 }

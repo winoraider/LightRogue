@@ -26,7 +26,7 @@ public class EXPbar : MonoBehaviour
         slider.value = nowExp  / gameM.NeedEXP;
         if (Input.GetKeyDown(KeyCode.A))
         {
-            nowExp += 19f;
+            nowExp += 1;
         }
         if(slider.value >= 1)
         { 
