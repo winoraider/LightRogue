@@ -603,6 +603,7 @@ MonoBehaviour:
     max: 1000
   - min: 1000
     max: 2000
+  numText: {fileID: 138075231}
 --- !u!1 &441539581
 GameObject:
   m_ObjectHideFlags: 0

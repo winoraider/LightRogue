@@ -34,10 +34,13 @@ public class NumController : MonoBehaviour
             if (eBullet)
             {
                 counter += 1;
-                if (counter >= 1)//1•b‚½‚Á‚½‚ç
+                if (counter >= 144)//1•b‚½‚Á‚½‚ç
                 {
                     bullet.numBullet -= biggerPower / 3;
                     eBullet.GetComponent<EnemyNumController>().nowPower -= biggerPower / 3;
+                    if(eBullet.GetComponent<EnemyNumController>().nowPower <= 0) {
+                        Destroy(eBullet);
+                    }
                     bullet.numBullet = Mathf.CeilToInt(bullet.numBullet);
                     counter = 0;
                 }
@@ -53,9 +56,9 @@ public class NumController : MonoBehaviour
             hit = true;
             eBullet = collision.gameObject;
 
-            if (pPower < eBullet.GetComponent<EnemyNumController>().comparePower)
+            if (pPower < eBullet.GetComponent<EnemyNumController>().nowPower)
             {
-                biggerPower = eBullet.GetComponent<EnemyNumController>().comparePower;
+                biggerPower = eBullet.GetComponent<EnemyNumController>().nowPower;
             }
             else
             {

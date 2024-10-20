@@ -11,7 +11,6 @@ public class EnemyNumController : MonoBehaviour
     float counter;
     bool hit = false;
     public float nowPower = 0;
-    public float comparePower;
     private string objName;
     NumController numController;
 
@@ -27,7 +26,7 @@ public class EnemyNumController : MonoBehaviour
     {
         if (nowPower <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         if (hit)
@@ -53,7 +52,7 @@ public class EnemyNumController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        comparePower = nowPower;
+        //Debug.Log("“–‚½‚Á‚½Žž‚Ì”Žš = " + nowPower);
         objName = collision.gameObject.name;
 
         if(collision.gameObject.GetComponent<NumController>()) { 
