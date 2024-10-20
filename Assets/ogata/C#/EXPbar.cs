@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class EXPbar : MonoBehaviour
 {
+
     Slider slider;
     GameManager gameM;
 
     [SerializeField]
-    private float nowExp;
+    public float nowExp;
 
     [SerializeField]
     private GameObject LevelUpUi;
@@ -23,13 +25,13 @@ public class EXPbar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.value = nowExp  / gameM.NeedEXP;
+        slider.value = nowExp / gameM.NeedEXP;
         if (Input.GetKeyDown(KeyCode.A))
         {
             nowExp += 1;
         }
-        if(slider.value >= 1)
-        { 
+        if (slider.value >= 1)
+        {
             LevelUpUi.SetActive(true);
             gameM.PlayerLevel++;
             nowExp = nowExp % gameM.NeedEXP;

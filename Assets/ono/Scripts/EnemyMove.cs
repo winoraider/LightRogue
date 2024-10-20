@@ -6,11 +6,18 @@ public class EnemyMove : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    EXPbar expbar;
+
     [SerializeField]float force;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(0, force), ForceMode2D.Impulse);
+        expbar = FindObjectOfType<EXPbar>();
+        
+    }
+    private void Update()
+    {
+        rb.velocity = new Vector2(0, force);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -21,5 +28,9 @@ public class EnemyMove : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+    }
+    private void OnDestroy()
+    {
+        expbar.nowExp += 1;
     }
 }
