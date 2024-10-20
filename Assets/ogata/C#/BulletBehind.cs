@@ -76,7 +76,21 @@ public class BulletBehind : MonoBehaviour
 
         if (isRed2 == _red && isGreen2 == _green && isBlue2 == _blue)
         {
+
             tmpN = _num;@//”š‚Ìî•ñ‚ğó‚¯æ‚é—p
+
+            if (isRed == _red && !_green && !_blue)
+            {
+                tmpN += gameM.SingleAdd * gameM.RedAddPowLevel;
+            }
+            if (!_red && isGreen == _green && !_blue)
+            {
+                tmpN += gameM.SingleAdd * gameM.GreenAddPowLevel;
+            }
+            if (!_red && !_green && isBlue == _blue)
+            {
+                tmpN += gameM.SingleAdd * gameM.BlueAddPowLevel;
+            }
             tmpdeath = true;
             return;
         }

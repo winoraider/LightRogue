@@ -59,6 +59,7 @@ public class CardSpawner : MonoBehaviour
             num = Random.Range(0, cards.Length);
             if (!spawd[num])
             {
+
                 cloneCard = Instantiate(cards[num], Spawner03.transform.position, Quaternion.identity);
                 cloneCard.gameObject.GetComponent<Card>().pos03card = true;
                 pos03card = true;

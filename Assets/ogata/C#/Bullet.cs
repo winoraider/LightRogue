@@ -25,6 +25,7 @@ public class Bullet : MonoBehaviour
     public bool isRed = false;　//赤が入っているか判定
     public bool isGreen = false;　//緑が入っているか判定
     public bool isBlue = false;　//青が入っているか判定
+    
 
     float posY;
 
@@ -64,7 +65,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        
 
         gameM = FindObjectOfType<GameManager>();　//GameManagerを参照する
         rb = GetComponent<Rigidbody2D>();　//Rigidbodyを参照する

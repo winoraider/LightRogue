@@ -14,11 +14,30 @@ public class GameManager : MonoBehaviour
     public float PlayerLevel;
 
     [SerializeField]
-    public int ColorLevel;
+    public float SinglePow;
     [SerializeField]
-    public int CardLevel;
+    public float ALLPow;
     [SerializeField]
-    public int HpLevel;
+    public float SingleAdd;
+    [SerializeField]
+    public float DoubleAdd;
+
+    [SerializeField]
+    public int RedPowLevel;
+    [SerializeField]
+    public int GreenPowLevel;
+    [SerializeField]
+    public int BluePowLevel;
+    [SerializeField]
+    public float ALLPowLevel;
+    [SerializeField]
+    public int RedAddPowLevel;
+    [SerializeField]
+    public int GreenAddPowLevel;
+    [SerializeField]
+    public int BlueAddPowLevel;
+
+
 
     public bool isRed;　//カードから弾に送るための赤の情報
     public bool isGreen;　//カードから弾に送るための緑の情報
