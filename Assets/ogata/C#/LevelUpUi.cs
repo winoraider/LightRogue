@@ -17,6 +17,8 @@ public class LevelUpUi : MonoBehaviour
     private bool CardPow;
     private bool HpPow;
 
+    private int LevelBonus;
+
     
     // Start is called before the first frame update
     void Start()
@@ -32,59 +34,104 @@ public class LevelUpUi : MonoBehaviour
         
     }
 
-    public void OnClick1()
+    public void RedEne()
     {
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "弾の色を混ぜた際のパワー倍率が＋0.1される";
+        cardtext.text = "レッドカードのパワーが[+3]される";
         if (OKButton != null)
         {
             OKButton.SetActive(true);
         }
-        ColorPow = true;
-        CardPow = false;
-        HpPow = false;
+        LevelBonus = 0;
     }
-    public void OnClick2()
+    public void GreenEne()
     {
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "編成されている全てのカードのパワーが１プラスされる";
+        cardtext.text = "グリーンカードのパワーが[+3]される";
         if (OKButton != null)
         {
             OKButton.SetActive(true);
         }
-        ColorPow = false;
-        CardPow = true;
-        HpPow = false;
+        LevelBonus = 1;
     }
-    public void OnClick3()
+    public void BlueEne()
     {
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "プレイヤーのHPが20プラスされる";
+        cardtext.text = "ブルーカードのパワーが[+3]される";
         if (OKButton != null)
         {
             OKButton.SetActive(true);
         }
-        ColorPow = false;
-        CardPow = false;
-        HpPow = true;
+        LevelBonus = 2;
+    }
+    public void ALLEne()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "全てのカードのパワーが[+1]される";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 3;
+    }
+    public void RedAdd()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "レッド同士を組み合わせることでパワーボーナス[+5]される";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 4;
+    }
+    public void GreenAdd()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "グリーン同士を組み合わせることでパワーボーナス[+5]される";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 5;
+    }
+    public void BlueAdd()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "ブルー同士を組み合わせることでパワーボーナス[+5]される";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 6;
     }
     public void OkClick()
     {
-        if (ColorPow)
+        switch (LevelBonus)
         {
-            gameM.ColorLevel++;
-            ColorPow = false;
+            case 0:
+                gameM.RedPowLevel++;
+                break;
+            case 1:
+                gameM.GreenPowLevel++;
+                break;
+            case 2:
+                gameM.BluePowLevel++;
+                break;
+            case 3:
+                gameM.ALLPowLevel++;
+                break;
+            case 4:
+                gameM.RedAddPowLevel++;
+                break;
+            case 5:
+                gameM.GreenAddPowLevel++;
+                break;
+            case 6:
+                gameM.BlueAddPowLevel++;
+                break;
         }
-        if (CardPow)
-        {
-            gameM.CardLevel++;
-            CardPow = false;
-        }
-        if (HpPow)
-        {
-            gameM.HpLevel++;
-            HpPow=false;
-        }
+
+
         Text cardtext = CardUI.GetComponent<Text>();
         cardtext.text = "選んでください";
         Time.timeScale = 1;
