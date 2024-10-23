@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour
     public int GreenAddPowLevel;
     [SerializeField]
     public int BlueAddPowLevel;
+    [SerializeField]
+    public int YellowAddPowLevel;
+    [SerializeField]
+    public int MagentaAddPowLevel;
+    [SerializeField]
+    public int CyanAddPowLevel;
 
 
 
@@ -46,4 +52,5 @@ public class GameManager : MonoBehaviour
     public float mag2color; //“ñF”{—¦
     public float mag3color; //OF”{—¦
 
+   
 }
