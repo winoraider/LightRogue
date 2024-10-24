@@ -10,21 +10,32 @@ public class EnemyNumController : MonoBehaviour
 {
     float counter;
     bool hit = false;
-    public float nowPower = 0;
+
+    private float nowPower;
+    public float NowPower
+    {
+        get { return this.nowPower; }
+        set { this.nowPower = value; }
+    }
     public float comparePower;
     private string objName;
-    NumController numController;
+
+    private GameObject eCard;
 
     [SerializeField] TextMeshProUGUI numText;
-    // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
+        eCard = GameObject.Find("EnemyManager");
+        ECardSpawn eCardSpawn = eCard.GetComponent<ECardSpawn>();
+
+        nowPower = eCardSpawn.NPower;
+        Debug.Log("Npower is new" + nowPower);
+        Debug.Log("Npower" + eCardSpawn.NPower);
         if (nowPower <= 0)
         {
             Destroy(gameObject);
@@ -48,6 +59,7 @@ public class EnemyNumController : MonoBehaviour
         {
             transform.position += new Vector3(0, -1.0f, 0) * Time.deltaTime;
         }
+
         numText.text = "" + nowPower;
     }
 

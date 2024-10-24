@@ -12,7 +12,7 @@ public class NumController : MonoBehaviour
     public float biggerPower;
     Bullet bullet;
 
-    // Start is called before the first frame update
+    public EnemyNumController enemyNumController;
     void Start()
     {
         bullet = GetComponent<Bullet>();
@@ -37,7 +37,8 @@ public class NumController : MonoBehaviour
                 if (counter >= 1)//1•b‚½‚Á‚½‚ç
                 {
                     bullet.numBullet -= biggerPower / 3;
-                    eBullet.GetComponent<EnemyNumController>().nowPower -= biggerPower / 3;
+                    float nPower = enemyNumController.NowPower;
+                    nPower -= biggerPower / 3;
                     bullet.numBullet = Mathf.CeilToInt(bullet.numBullet);
                     counter = 0;
                 }

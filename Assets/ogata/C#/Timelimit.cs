@@ -32,6 +32,6 @@ public class Timelimit : MonoBehaviour
             minutes--;
             seconds = 60;
         }
-        TimeText.text = minutes + ":"+ (int) seconds;
+        TimeText.text = minutes + ":"+ seconds.ToString("00");
     }
 }
