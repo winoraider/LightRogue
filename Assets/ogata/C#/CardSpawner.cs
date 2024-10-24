@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CardSpawner : MonoBehaviour
 {
-
     Card card;
     [SerializeField]
     public List <GameObject> cards;
