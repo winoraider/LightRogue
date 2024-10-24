@@ -9,7 +9,7 @@ public class Card : MonoBehaviour
     CardSpawner cardspaw;
 
     [SerializeField]
-    private float num; //カードの数字
+    public float num; //カードの数字
     //public int SendNum; //カードの情報を送る用
 
     private Vector2 findpos; //補充されたカードの最初の位置

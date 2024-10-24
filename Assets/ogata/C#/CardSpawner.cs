@@ -8,7 +8,7 @@ public class CardSpawner : MonoBehaviour
 
     Card card;
     [SerializeField]
-    public GameObject[] cards;
+    public List <GameObject> cards;
 
     public bool[] spawd = new bool[15];
 
@@ -37,14 +37,14 @@ public class CardSpawner : MonoBehaviour
 
     private void Start()
     {
-        num = Random.Range(0, cards.Length);
+        num = Random.Range(0, cards.Count);
         cloneCard = Instantiate(cards[num], Spawner01.transform.position, Quaternion.identity);
         cloneCard.gameObject.GetComponent<Card>().pos01card = true;
         pos01card = true;
         spawd[num] = true;
         while (true)
         {
-            num = Random.Range(0, cards.Length);
+            num = Random.Range(0, cards.Count);
             if (!spawd[num])
             {
                 cloneCard = Instantiate(cards[num], Spawner02.transform.position, Quaternion.identity);
@@ -56,7 +56,7 @@ public class CardSpawner : MonoBehaviour
         }
         while (true)
         {
-            num = Random.Range(0, cards.Length);
+            num = Random.Range(0, cards.Count);
             if (!spawd[num])
             {
 
@@ -80,7 +80,7 @@ public class CardSpawner : MonoBehaviour
                 
 
 
-                num = Random.Range(0, cards.Length);
+                num = Random.Range(0, cards.Count);
                 if (!spawd[num])
                 {
                     coolDown1 = 0;
@@ -91,13 +91,13 @@ public class CardSpawner : MonoBehaviour
                 }
                 else
                 {
-                    for (int i = 0; i < cards.Length; i++)
+                    for (int i = 0; i < cards.Count; i++)
                     {
                         if (spawd[i])
                         {
-                            if (spawd[cards.Length - 1])
+                            if (spawd[cards.Count - 1])
                             {
-                                    for (int n = 0; n < cards.Length; n++)
+                                    for (int n = 0; n < cards.Count; n++)
                                     {
                                         spawd[n] = false;
                                     }
@@ -123,7 +123,7 @@ public class CardSpawner : MonoBehaviour
             if (coolDown2 >= derayTime)
             {
 
-                num = Random.Range(0, cards.Length);
+                num = Random.Range(0, cards.Count);
                 if (!spawd[num])
                 {
                     coolDown2 = 0;
@@ -144,7 +144,7 @@ public class CardSpawner : MonoBehaviour
 
             if (coolDown3 >= derayTime)
             {
-                num = Random.Range(0, cards.Length);
+                num = Random.Range(0, cards.Count);
                 if (!spawd[num])
                 {
                     coolDown3 = 0;

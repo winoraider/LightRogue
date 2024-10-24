@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
     public float SingleAdd;
     [SerializeField]
     public float DoubleAdd;
+    [SerializeField]
+    public float DoubleMag;
+    [SerializeField]
+    public float WhiteMag;
+    [SerializeField]
+    public float WhiteAdd;
 
     [SerializeField]
     public int RedPowLevel;
@@ -36,6 +42,29 @@ public class GameManager : MonoBehaviour
     public int GreenAddPowLevel;
     [SerializeField]
     public int BlueAddPowLevel;
+    [SerializeField]
+    public int YellowAddPowLevel;
+    [SerializeField]
+    public int MagentaAddPowLevel;
+    [SerializeField]
+    public int CyanAddPowLevel;
+    [SerializeField]
+    public int YellowMagPowLevel;
+    [SerializeField]
+    public int MagentaMagPowLevel;
+    [SerializeField]
+    public int CyanMagPowLevel;
+    [SerializeField]
+    public float WhiteMagPowLevel;
+    [SerializeField]
+    public float WhiteAddPowLevel;
+
+    [SerializeField]
+    public float RedCardAdd;
+    [SerializeField]
+    public float GreenCardAdd;
+    [SerializeField]
+    public float BlueCardAdd;
 
 
 
@@ -46,4 +75,5 @@ public class GameManager : MonoBehaviour
     public float mag2color; //ìÒêFî{ó¶
     public float mag3color; //éOêFî{ó¶
 
+   
 }
