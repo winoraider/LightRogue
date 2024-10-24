@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelUpUi : MonoBehaviour
 {
     GameManager gameM;
+    Card card;
 
     [SerializeField]
     private GameObject CardUI;
@@ -200,8 +201,59 @@ public class LevelUpUi : MonoBehaviour
         }
         LevelBonus = 9;
     }
+    public void YellowMag()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "イエロー生成時の倍率が[+0.5]される";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 10;
+    }
+    public void MagentaMag()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "マゼンタ生成時の倍率が[+0.5]される";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 11;
+    }
+    public void CyanMag()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "シアン生成時の倍率が[+0.5]される";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 12;
+    }
+    public void WhiteMag()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "ホワイト生成時の倍率が[+0.5]される";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 13;
+    }
+    public void WhiteAdd()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "ホワイト同士を組み合わせることでパワーボーナス[+50]される";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 14;
+    }
     public void OkClick()
     {
+        card = FindAnyObjectByType<Card>();
         switch (LevelBonus)
         {
             case 0:
@@ -233,6 +285,21 @@ public class LevelUpUi : MonoBehaviour
                 break;
             case 9:
                 gameM.CyanAddPowLevel++;
+                break;
+            case 10:
+                gameM.YellowMagPowLevel++;
+                break;
+            case 11:
+                gameM.MagentaMagPowLevel++;
+                break;
+            case 12:
+                gameM.CyanMagPowLevel++;
+                break;
+                case 13:
+                gameM.WhiteMagPowLevel++;
+                break;
+                case 14:
+                gameM.WhiteAddPowLevel++;
                 break;
         }
 

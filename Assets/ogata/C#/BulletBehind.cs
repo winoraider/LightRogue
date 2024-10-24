@@ -76,21 +76,38 @@ public class BulletBehind : MonoBehaviour
 
         if (isRed2 == _red && isGreen2 == _green && isBlue2 == _blue)
         {
-
+            Debug.Log("ŒÄ‚Ño‚µ");
             tmpN = _num;@//”š‚Ìî•ñ‚ğó‚¯æ‚é—p
 
-            if (isRed == _red && !_green && !_blue)
+            if (isRed2 == _red && !_green && !_blue)
             {
                 tmpN += gameM.SingleAdd * gameM.RedAddPowLevel;
             }
-            if (!_red && isGreen == _green && !_blue)
+            if (!_red && isGreen2 == _green && !_blue)
             {
                 tmpN += gameM.SingleAdd * gameM.GreenAddPowLevel;
             }
-            if (!_red && !_green && isBlue == _blue)
+            if (!_red && !_green && isBlue2 == _blue)
             {
                 tmpN += gameM.SingleAdd * gameM.BlueAddPowLevel;
             }
+            if (isRed2 == _red && isGreen2 ==_green && !_blue)
+            {
+                tmpN += gameM.DoubleAdd * gameM.YellowAddPowLevel;
+            }
+            if (!_red && isGreen2 == _green && isBlue2 ==_blue)
+            {
+                tmpN += gameM.DoubleAdd * gameM.CyanAddPowLevel;
+            }
+            if (isRed2 == _red && !_green && isBlue2 == _blue)
+            {
+                tmpN += gameM.DoubleAdd * gameM.MagentaAddPowLevel;
+            }
+            if (isRed2 == _red && isGreen == _green && isBlue2 == _blue)
+            {
+                tmpN += gameM.WhiteAdd * gameM.WhiteAddPowLevel;
+            }
+            tmpN += gameM.ALLPow * gameM.ALLPowLevel;
             tmpdeath = true;
             return;
         }
@@ -129,14 +146,25 @@ public class BulletBehind : MonoBehaviour
 
             if (isRed2 && isGreen2 && isBlue2)
             {
-                bullet.numBullet *= tmpN; //’e‚Ì”š‚Ìî•ñ‚ğ“n‚·
+                bullet.numBullet *= tmpN + gameM.WhiteMag * gameM.WhiteMagPowLevel; //’e‚Ì”š‚Ìî•ñ‚ğ“n‚·
                 Debug.Log(bullet.numBullet);
                 Debug.Log(tmpN);
                 tmpN = 0; //’e‚Ì’l‚ğ‰Šú‰»
             }
             else {
                 bullet.numBullet += tmpN; //’e‚Ì”š‚Ìî•ñ‚ğ“n‚·
-                bullet.numBullet *= gameM.mag2color;
+                if (isRed2 && isGreen2 && !isBlue2)
+                {
+                    bullet.numBullet *= gameM.mag2color + gameM.DoubleMag * gameM.YellowMagPowLevel;
+                }
+                if (isRed2 && !isGreen2 && isBlue2)
+                {
+                    bullet.numBullet *= gameM.mag2color + gameM.DoubleMag * gameM.MagentaMagPowLevel;
+                }
+                if (!isRed2 && isGreen2 && isBlue2)
+                {
+                    bullet.numBullet *= gameM.mag2color + gameM.DoubleMag * gameM.CyanMagPowLevel;
+                }
                 tmpN = 0; //’e‚Ì’l‚ğ‰Šú‰»
                 bullet.numBullet=Mathf.CeilToInt(bullet.numBullet);
             }
