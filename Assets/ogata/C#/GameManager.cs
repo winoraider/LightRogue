@@ -59,6 +59,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public float WhiteAddPowLevel;
 
+    [SerializeField]
+    public float RedCardAdd;
+    [SerializeField]
+    public float GreenCardAdd;
+    [SerializeField]
+    public float BlueCardAdd;
+
 
 
     public bool isRed;　//カードから弾に送るための赤の情報

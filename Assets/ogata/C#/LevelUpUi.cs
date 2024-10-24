@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +6,15 @@ public class LevelUpUi : MonoBehaviour
 {
     GameManager gameM;
     Card card;
+    CardSpawner spawner;
 
     [SerializeField]
     private GameObject CardUI;
 
     [SerializeField]
     private GameObject OKButton;
+
+    [SerializeField] private GameObject AddCard;
 
     [SerializeField]
     private GameObject Spawner_01;
@@ -27,6 +29,9 @@ public class LevelUpUi : MonoBehaviour
 
     [SerializeField]
    private  GameObject[] LevelUpButtans;
+
+    [SerializeField]
+    private GameObject AddDeck;
 
     private int RandomNum;
 
@@ -44,10 +49,14 @@ public class LevelUpUi : MonoBehaviour
     [SerializeField]
     private bool LevelUpstart;
 
-    
+    private int Rednum;
+    private int Greennum;
+    private int Bluenum;
+
     // Start is called before the first frame update
     void Start()
     {
+        spawner = FindObjectOfType<CardSpawner>();
         gameM = FindObjectOfType<GameManager>();
         OKButton.SetActive(false);
         gameObject.SetActive(false);
@@ -64,7 +73,7 @@ public class LevelUpUi : MonoBehaviour
             {
                 while (true)
                 {
-                    RandomNum = Random.Range(0, LevelUpButtans.Length);
+                    RandomNum = UnityEngine.Random.Range(0, LevelUpButtans.Length);
                     if (usedcard[RandomNum] == true)
                     {
                         return;
@@ -251,6 +260,36 @@ public class LevelUpUi : MonoBehaviour
         }
         LevelBonus = 14;
     }
+    public void RedCardAdd()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "レッドカードを一枚追加する";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 15;
+    }
+    public void GreenCardAdd()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "グリーンカードを一枚追加する";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 16;
+    }
+    public void BlueCardAdd()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "ブルーカードを一枚追加する";
+        if (OKButton != null)
+        {
+            OKButton.SetActive(true);
+        }
+        LevelBonus = 17;
+    }
     public void OkClick()
     {
         card = FindAnyObjectByType<Card>();
@@ -300,6 +339,42 @@ public class LevelUpUi : MonoBehaviour
                 break;
                 case 14:
                 gameM.WhiteAddPowLevel++;
+                break;
+            case 15:
+                Rednum++;
+                if(Rednum > 3)
+                {
+                    Rednum = 1;
+                }
+                GameObject gameObject1 = Instantiate(AddCard);
+                spawner.cards.Add(gameObject1);
+                spawner.cards[spawner.cards.Count - 1].gameObject.GetComponent<Card>().isRed = true;
+                spawner.cards[spawner.cards.Count - 1].gameObject.GetComponent<Card>().num = Rednum;
+                gameObject1.gameObject.transform.parent = AddDeck.transform;
+                break;
+            case 16:
+                Greennum++;
+                if (Greennum > 3)
+                {
+                    Greennum = 1;
+                }
+                gameObject1 = Instantiate(AddCard);
+                spawner.cards.Add(gameObject1);
+                spawner.cards[spawner.cards.Count-1].gameObject.GetComponent<Card>().isGreen = true;
+                spawner.cards[spawner.cards.Count - 1].gameObject.GetComponent<Card>().num = Greennum;
+                gameObject1.gameObject.transform.parent = AddDeck.transform;
+                break;
+            case 17:
+                Bluenum++;
+                if (Bluenum > 3)
+                {
+                    Bluenum = 1;
+                }
+                gameObject1 = Instantiate(AddCard);
+                spawner.cards.Add(gameObject1);
+                spawner.cards[spawner.cards.Count-1].gameObject.GetComponent<Card>().isBlue = true;
+                spawner.cards[spawner.cards.Count - 1].gameObject.GetComponent<Card>().num = Bluenum;
+                gameObject1.gameObject.transform.parent = AddDeck.transform;
                 break;
         }
 
