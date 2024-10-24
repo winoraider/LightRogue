@@ -6,8 +6,8 @@ using UnityEngine;
 public class ExpPoint : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject ExpPos;
+
+    EXPbar ExpPos;
 
     private float forcePow;
 
@@ -17,41 +17,100 @@ public class ExpPoint : MonoBehaviour
     [SerializeField]
     Vector2 force;
 
+    [SerializeField]
+    Vector2 forceDeb;
+
+    float veloy;
+    float velox;
+    float forcex = 1.5f;
+    float forcey = 5;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.GetComponent<EXPbar>())
+        {
+            ExpPos.nowExp++;
+            Destroy(this.gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        transform.parent = GameObject.Find ("GameField").transform;
+        ExpPos = FindObjectOfType<EXPbar>();   
         rb = GetComponent<Rigidbody2D>();
         veloX = Random.Range(-5, 5);
-        rb.velocity = new Vector2(veloX,8);
+        rb.velocity = new Vector2(veloX,10);
+        veloy = 10;
+        velox = 10;
+        force = new Vector2(forcex, forcey);
     }
 
     // Update is called once per frame
     void Update()
     {
-        forcePow += 0.01f;
+        force = new Vector2(forcex, forcey);
+        if(transform.position.x < ExpPos.transform.position.x + 1 && transform.position.x > ExpPos.transform.position.x - 1)
+        {
+            Debug.Log("ç∂âE");
+            velox -= 10 * Time.deltaTime;
+            if(velox < 0)
+            {
+                velox = 0;
+            }
+        }
+        if (transform.position.y < ExpPos.transform.position.y + 1 && transform.position.y > ExpPos.transform.position.y - 1)
+        {
+            Debug.Log("è„â∫");
+            veloy -= 3 * Time.deltaTime;
+            if (veloy < 0)
+            {
+                veloy = 0;
+            }
+        }
 
-        if (transform.position.y  <  ExpPos.transform.position.y) {
-           force = new Vector2(0, forcePow);
-            Debug.Log("â∫Ç…à⁄ìÆ");
-            rb.AddForce(force);
-        }else if (transform.position.y > ExpPos.transform.position.y)
+        
+        if (transform.position.y < ExpPos.transform.position.y)
         {
-            force = new Vector2(0, -forcePow);
-            Debug.Log("è„Ç…à⁄ìÆ");
-            rb.AddForce(force);
+            if (transform.position.x < ExpPos.transform.position.x)
+            {
+                force = new Vector2(forcex, forcey);
+            }
+            if (transform.position.x > ExpPos.transform.position.x)
+            {
+                force = new Vector2(-forcex, forcey);
+            }
         }
-        if (transform.position.x > ExpPos.transform.position.x)
+        if (transform.position.y > ExpPos.transform.position.y)
         {
-            force = new Vector2(-forcePow, 0);
-            Debug.Log("ç∂Ç…à⁄ìÆ");
-            rb.AddForce(force);
+            if (transform.position.x < ExpPos.transform.position.x)
+            {
+                force = new Vector2(forcex, -forcey);
+            }
+            if (transform.position.x > ExpPos.transform.position.x)
+            {
+                force = new Vector2(-forcex, -forcey);
+            }
         }
-        else if (transform.position.x < ExpPos.transform.position.x)
+        rb.AddForce(force);
+        if(rb.velocity.y > veloy)
         {
-             force = new Vector2(forcePow, 0);
-            Debug.Log("âEÇ…à⁄ìÆ");
-            rb.AddForce(force);
+            rb.velocity = new Vector2(rb.velocity.x, veloy);
         }
-       
+        if (rb.velocity.y < -veloy)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -veloy);
+        }
+        if (rb.velocity.x > velox)
+        {
+            rb.velocity = new Vector2(velox, rb.velocity.y);
+        }
+        if (rb.velocity.x < -velox)
+        {
+            rb.velocity = new Vector2(-velox, rb.velocity.y);
+        }
+        forceDeb = new Vector2(-rb.velocity.x, rb.velocity.y);
     }
+   
 }
