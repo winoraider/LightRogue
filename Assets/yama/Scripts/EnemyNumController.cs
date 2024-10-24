@@ -4,18 +4,15 @@ using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
-using TMPro;
 
 public class EnemyNumController : MonoBehaviour
 {
     float counter;
     bool hit = false;
-    public float nowPower = 0;
+    [SerializeField] public float nowPower;
     public float comparePower;
     private string objName;
     NumController numController;
-
-    [SerializeField] TextMeshProUGUI numText;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +45,6 @@ public class EnemyNumController : MonoBehaviour
         {
             transform.position += new Vector3(0, -1.0f, 0) * Time.deltaTime;
         }
-        numText.text = "" + nowPower;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -59,6 +55,7 @@ public class EnemyNumController : MonoBehaviour
         if(collision.gameObject.GetComponent<NumController>()) { 
         hit = true;
         }
+
         //GameObject obj = GameObject.Find(objName);
         //playerCard = obj.GetComponent<PlayerCard>();
         

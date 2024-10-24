@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class AroundPlayer : MonoBehaviour
 {
+    [SerializeField] float angleSpeed;
     [SerializeField] float angle = 0.0f;
     [SerializeField] float radius = 2.0f;
-    [SerializeField] GameObject center = null;
+    [SerializeField] GameObject center;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,9 @@ public class AroundPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //transform.position = center.transform.position;
         transform.position = RotateAroundZ(center.transform.position, angle, radius);
-        angle += 0.05f;
+        angle += angleSpeed;
     }
 
     // ZŽ²‰ñ“]
