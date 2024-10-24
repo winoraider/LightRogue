@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 using TMPro;
 using System;
 using Unity.VisualScripting;
+using JetBrains.Annotations;
 
 [Serializable]
 public struct Data 
@@ -17,9 +18,7 @@ public class ECardSpawn : MonoBehaviour
 {
     [SerializeField] GameObject Ebullet; //敵のたま(カード)
 
-    [SerializeField] GameObject ESpawner_01;　//弾のSpawn位置(1～3)
-    [SerializeField] GameObject ESpawner_02;
-    [SerializeField] GameObject ESpawner_03;
+    [SerializeField] List<GameObject> eSpawmers = new List<GameObject>();
 
     [SerializeField] float elapsedTime;//経過時間
     [SerializeField] float durationTime;//↑制限
@@ -29,15 +28,27 @@ public class ECardSpawn : MonoBehaviour
     
     [SerializeField] List<Data> hp = new List<Data>();
 
-    [SerializeField] TextMeshProUGUI numText;
+    private float nPower;
 
-    void Start()
+    public float NPower
     {
+        get { return nPower; }
+        set { nPower = value; }
+    }
+
+    [SerializeField] EnemyNumController enemyNumController;
+
+    void Awake()
+    {
+        enemyNumController = FindObjectOfType<EnemyNumController>();
+        if (enemyNumController == null)
+        {
+            Debug.LogError("EnemyNumController not found!");
+        }
     }
 
     void Update()
     {
-        
         WaveCount();
         EnemyCardSpawn();
     }
@@ -47,37 +58,20 @@ public class ECardSpawn : MonoBehaviour
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= durationTime)
         {
-
-            int r =UnityEngine. Random.Range(1, 4);
+            Vector2 scale = Vector2.one;
+            int r = UnityEngine. Random.Range(0, 3);
             elapsedTime = 0.0f;
-            Debug.Log(r);
-            if (r == 1)
-            {
-                float enemyValue = GenereteEnemy();
-                GameObject enemyObj = Instantiate(Ebullet, ESpawner_01.transform.position, Quaternion.identity);
-                EnemyNumController enemyNumController = Ebullet.GetComponent<EnemyNumController>();
-                enemyNumController.nowPower = enemyValue;
-                numText.text = "" + enemyNumController.nowPower;
-                r = 0;
-            }
-            else if (r == 2)
-            {
-                float enemyValue = GenereteEnemy();
-                GameObject enemyObj = Instantiate(Ebullet, ESpawner_01.transform.position, Quaternion.identity);
-                EnemyNumController enemyNumController = Ebullet.GetComponent<EnemyNumController>();
-                enemyNumController.nowPower = enemyValue;
-                numText.text = "" + enemyNumController.nowPower;
-                r = 0;
-            }
-            else if (r == 3)
-            {
-                float enemyValue = GenereteEnemy();
-                GameObject enemyObj = Instantiate(Ebullet, ESpawner_01.transform.position, Quaternion.identity);
-                EnemyNumController enemyNumController = Ebullet.GetComponent<EnemyNumController>();
-                enemyNumController.nowPower = enemyValue;
-                numText.text = "" + enemyNumController.nowPower;
-                r = 0;
-            }
+            Debug.Log("レーン" + r);
+
+            float enemyValue = GenereteEnemy();
+            GameObject enemyObj = Instantiate(Ebullet, eSpawmers[r].transform.position, Quaternion.identity);
+            nPower = enemyNumController.NowPower;
+            Debug.Log("NowPower type: " + enemyNumController.NowPower.GetType());
+            nPower = enemyValue;
+            Debug.Log("value " + enemyValue + "max" + hp[waves].max + "nowpower" + nPower) ;
+            enemyObj.transform.localScale = scale * (0.8f + 0.4f * enemyValue / hp[waves].max);
+            Debug.Log("Enemy scale: " + enemyObj.transform.localScale);
+            r = 0;
         }
     }
 
@@ -89,6 +83,6 @@ public class ECardSpawn : MonoBehaviour
     }
     int GenereteEnemy()
     {
-        return UnityEngine.Random.Range((int)hp[waves].min, (int)hp[waves].max);
+        return UnityEngine.Random.Range((int)hp[waves].min,(int)hp[waves].max+1);
     }
 }
