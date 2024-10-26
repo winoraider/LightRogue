@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Device;
 
 public class NumController : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class NumController : MonoBehaviour
     private GameObject eBullet;
     public float biggerPower;
     Bullet bullet;
+    GameObject tRed;
+    GameObject tGreen;
+    GameObject tBlue;
+    GameObject tCyan;
+    GameObject tMagenta;
+    GameObject tYellow;
+    GameObject tWhite;
 
     // Start is called before the first frame update
     void Start()
@@ -77,5 +85,40 @@ public class NumController : MonoBehaviour
     {
         hit = false;
         biggerPower = pPower;
+    }
+
+    private void ThisColor()
+    {
+        if (bullet.isRed && !bullet.isGreen && !bullet.isBlue)　//弾の色の情報が赤だけだった場合
+        {
+            tRed.SetActive(true);
+        }
+        else if (!bullet.isRed && bullet.isGreen && !bullet.isBlue)　//弾の色の情報が緑だけだった場合
+        {
+            tGreen.SetActive(true);
+        }
+        else if (!bullet.isRed && !bullet.isGreen && bullet.isBlue)　//弾の色の情報が青だけだった場合
+        {
+            tBlue.SetActive(true);
+        }
+        else if (bullet.isRed && bullet.isGreen && !bullet.isBlue)　//弾の色の情報が赤と緑だった場合
+        {
+            tMagenta.SetActive(true);
+        }
+        else if (bullet.isRed && !bullet.isGreen && bullet.isBlue) //弾の色の情報が赤と青だった場合
+        {
+            tYellow.SetActive(true);
+        }
+        else if (!bullet.isRed && bullet.isGreen && bullet.isBlue) //弾の色の情報が緑と青だった場合
+        {
+            tCyan.SetActive(true);
+        }
+        else if (bullet.isRed && bullet.isGreen && bullet.isBlue) //弾の色の情報が赤、緑、青が揃っていた場合
+        {
+            tWhite.SetActive(true);
+        }
+        else //弾の色の情報が不明だった場合
+        {
+        }
     }
 }
