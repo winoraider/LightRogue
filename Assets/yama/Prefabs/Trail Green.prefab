@@ -4938,8 +4938,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79d7a9537f05204796c65967009c011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  around: {fileID: 0}
   angleSpeed: 5
-  angle: 120
+  angle: 0
   radius: 2
   center: {fileID: 0}
 --- !u!96 &4714815278240848139
