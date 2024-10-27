@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class ExpPoint : MonoBehaviour
@@ -53,7 +52,7 @@ public class ExpPoint : MonoBehaviour
         force = new Vector2(forcex, forcey);
         if(transform.position.x < ExpPos.transform.position.x + 1 && transform.position.x > ExpPos.transform.position.x - 1)
         {
-            Debug.Log("ç∂âE");
+            Debug.Log("ÔøΩÔøΩÔøΩE");
             velox -= 10 * Time.deltaTime;
             if(velox < 0)
             {
@@ -62,7 +61,7 @@ public class ExpPoint : MonoBehaviour
         }
         if (transform.position.y < ExpPos.transform.position.y + 1 && transform.position.y > ExpPos.transform.position.y - 1)
         {
-            Debug.Log("è„â∫");
+            Debug.Log("ÔøΩ„â∫");
             veloy -= 3 * Time.deltaTime;
             if (veloy < 0)
             {

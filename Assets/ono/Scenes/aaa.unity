@@ -321,6 +321,18 @@ MonoBehaviour:
   RedCardAdd: 0
   GreenCardAdd: 0
   BlueCardAdd: 0
+  RedWidePrism: 0
+  GreenWidePrism: 0
+  BlueWidePrism: 0
+  RedUpPrism: 0
+  GreenUpPrism: 0
+  BlueUpPrism: 0
+  RedCountSensor: 0
+  GreenCountSensor: 0
+  BlueCountSensor: 0
+  RedCount: 0
+  GreenCount: 0
+  BlueCount: 0
   isRed: 0
   isGreen: 0
   isBlue: 0
@@ -4726,8 +4738,8 @@ SceneRoots:
   - {fileID: 2580411735802563748}
   - {fileID: 259768955622069983}
   - {fileID: 36423885}
-  - {fileID: 1108963353}
   - {fileID: 279329106}
   - {fileID: 1506243274}
-  - {fileID: 468538583}
+  - {fileID: 1108963353}
   - {fileID: 2115591257}
+  - {fileID: 468538583}
