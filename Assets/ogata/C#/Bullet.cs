@@ -86,13 +86,14 @@ public class Bullet : MonoBehaviour
         if(Bubble)
         {
             BubbleCount += 1 * Time.deltaTime;
-            if(BubbleCount  >= 1) {
-                numBullet = numBullet * 1.1f;
+            if (BubbleCount >= 1)
+            {
+                numBullet = numBullet * 1.3f;
                 numBullet = Mathf.CeilToInt(numBullet);
-               BubbleCount = 0;
+                BubbleCount = 0;
                 BubbleCount2++;
             }
-            if(BubbleCount2 >= 10)
+            if (BubbleCount2 >= 10)
             {
                 Destroy(this.gameObject);
             }

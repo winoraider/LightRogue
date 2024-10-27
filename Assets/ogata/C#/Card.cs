@@ -210,9 +210,37 @@ public class Card : MonoBehaviour
                     if (gameM.RedCount == 5)
                     {
                         num *= 2;
+                        gameM.RedCount = 0;
+                    }
+                    if (gameM.GreenCount == 5)
+                    {
+                        num *= 2;
+                        gameM.GreenCount = 0;
+                    }
+                    if (gameM.BlueCount == 5)
+                    {
+                        num *= 2;
+                        gameM.BlueCount = 0;
                     }
                 }
-                if (isRed && gameM.RedUpPrism == 1 || isGreen && gameM.GreenUpPrism == 1 || isBlue && gameM.BlueUpPrism == 1)
+                if (isRed && gameM.RedUpPrism == 1 && gameM.RedWidePrism == 1 || isGreen && gameM.GreenUpPrism == 1 && gameM.GreenWidePrism == 1 || isBlue && gameM.BlueUpPrism == 1 && gameM.BlueWidePrism == 1)
+                {
+                    num = num / 4;
+                    num = Mathf.CeilToInt(num);
+                    BulletObject = Instantiate(bullet, Spawner_01.transform.position, Quaternion.identity); //弾を出す
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                    BulletObject = Instantiate(bullet, new Vector2(Spawner_01.transform.position.x, Spawner_01.transform.position.y + 1f), Quaternion.identity);
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                    BulletObject = Instantiate(bullet, Spawner_02.transform.position, Quaternion.identity);
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                    BulletObject = Instantiate(bullet, new Vector2(Spawner_02.transform.position.x, Spawner_02.transform.position.y + 1f), Quaternion.identity);
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                }
+                else if (isRed && gameM.RedUpPrism == 1 || isGreen && gameM.GreenUpPrism == 1 || isBlue && gameM.BlueUpPrism == 1)
                 {
                     num = num / 2;
                     num = Mathf.CeilToInt(num);
@@ -223,20 +251,7 @@ public class Card : MonoBehaviour
                     BulletObject.GetComponent<Bullet>().numBullet = num;
                     if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
                 }
-                else if(isRed && gameM.RedWidePrism >= 2 || isGreen && gameM.GreenWidePrism >= 2 || isBlue && gameM.BlueWidePrism >= 2)
-                {
-                    num = num / 3;
-                    num = Mathf.CeilToInt(num);
-                    BulletObject = Instantiate(bullet, Spawner_01.transform.position, Quaternion.identity); //弾を出す
-                    BulletObject.GetComponent<Bullet>().numBullet = num;
-                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
-                    BulletObject = Instantiate(bullet, Spawner_02.transform.position, Quaternion.identity);
-                    BulletObject.GetComponent<Bullet>().numBullet = num;
-                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
-                    BulletObject = Instantiate(bullet, Spawner_03.transform.position, Quaternion.identity);
-                    BulletObject.GetComponent<Bullet>().numBullet = num;
-                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
-                }
+               
                 else if(isRed && gameM.RedWidePrism == 1 || isGreen && gameM.GreenWidePrism == 1 || isBlue　&& gameM.BlueWidePrism == 1)
                 {
                     num = num / 2;
@@ -259,7 +274,46 @@ public class Card : MonoBehaviour
             }
             else if (Lane_02)　//02レーンで左キーを離したとき
             {
-                if (isRed && gameM.RedUpPrism == 1 || isGreen && gameM.GreenUpPrism == 1 || isBlue && gameM.BlueUpPrism == 1)
+                if (gameM.RedCountSensor || gameM.GreenCountSensor || gameM.BlueCountSensor)
+                {
+                    if (isRed) gameM.RedCount++;
+                    if (isGreen) gameM.GreenCount++;
+                    if (isBlue) gameM.BlueCount++;
+
+                    if (gameM.RedCount == 5)
+                    {
+                        num *= 2;
+                        gameM.RedCount = 0;
+                    }
+                    if (gameM.GreenCount == 5)
+                    {
+                        num *= 2;
+                        gameM.GreenCount = 0;
+                    }
+                    if (gameM.BlueCount == 5)
+                    {
+                        num *= 2;
+                        gameM.BlueCount = 0;
+                    }
+                }
+                if (isRed && gameM.RedUpPrism == 1 && gameM.RedWidePrism == 1 || isGreen && gameM.GreenUpPrism == 1 && gameM.GreenWidePrism == 1 || isBlue && gameM.BlueUpPrism == 1 && gameM.BlueWidePrism == 1)
+                {
+                    num = num / 4;
+                    num = Mathf.CeilToInt(num);
+                    BulletObject = Instantiate(bullet, Spawner_01.transform.position, Quaternion.identity); //弾を出す
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                    BulletObject = Instantiate(bullet, new Vector2(Spawner_01.transform.position.x, Spawner_01.transform.position.y + 1f), Quaternion.identity);
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                    BulletObject = Instantiate(bullet, Spawner_03.transform.position, Quaternion.identity);
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                    BulletObject = Instantiate(bullet, new Vector2(Spawner_03.transform.position.x, Spawner_03.transform.position.y + 1f), Quaternion.identity);
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                }
+                else if (isRed && gameM.RedUpPrism == 1 || isGreen && gameM.GreenUpPrism == 1 || isBlue && gameM.BlueUpPrism == 1)
                 {
                     num = num / 2;
                     num = Mathf.CeilToInt(num);
@@ -267,20 +321,6 @@ public class Card : MonoBehaviour
                     BulletObject.GetComponent<Bullet>().numBullet = num;
                     if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
                     BulletObject = Instantiate(bullet, new Vector2(Spawner_02.transform.position.x, Spawner_02.transform.position.y + 1f), Quaternion.identity);
-                    BulletObject.GetComponent<Bullet>().numBullet = num;
-                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
-                }
-                else if (isRed && gameM.RedWidePrism >= 2 || isGreen && gameM.GreenWidePrism >= 2 || isBlue && gameM.BlueWidePrism >= 2)
-                {
-                    num = num / 3;
-                    num = Mathf.CeilToInt(num);
-                    BulletObject = Instantiate(bullet, Spawner_01.transform.position, Quaternion.identity); //弾を出す
-                    BulletObject.GetComponent<Bullet>().numBullet = num;
-                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
-                    BulletObject = Instantiate(bullet, Spawner_02.transform.position, Quaternion.identity);
-                    BulletObject.GetComponent<Bullet>().numBullet = num;
-                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
-                    BulletObject = Instantiate(bullet, Spawner_03.transform.position, Quaternion.identity);
                     BulletObject.GetComponent<Bullet>().numBullet = num;
                     if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
                 }
@@ -307,7 +347,46 @@ public class Card : MonoBehaviour
             }
             else if (Lane_03)　//03レーンで左キーを離したとき
             {
-                if (isRed && gameM.RedUpPrism == 1 || isGreen && gameM.GreenUpPrism == 1 || isBlue && gameM.BlueUpPrism == 1)
+                if (gameM.RedCountSensor || gameM.GreenCountSensor || gameM.BlueCountSensor)
+                {
+                    if (isRed) gameM.RedCount++;
+                    if (isGreen) gameM.GreenCount++;
+                    if (isBlue) gameM.BlueCount++;
+
+                    if (gameM.RedCount == 5)
+                    {
+                        num *= 2;
+                        gameM.RedCount = 0;
+                    }
+                    if (gameM.GreenCount == 5)
+                    {
+                        num *= 2;
+                        gameM.GreenCount = 0;
+                    }
+                    if (gameM.BlueCount == 5)
+                    {
+                        num *= 2;
+                        gameM.BlueCount = 0;
+                    }
+                }
+                if (isRed && gameM.RedUpPrism == 1 && gameM.RedWidePrism == 1 || isGreen && gameM.GreenUpPrism == 1 && gameM.GreenWidePrism == 1 || isBlue && gameM.BlueUpPrism == 1 && gameM.BlueWidePrism == 1)
+                {
+                    num = num / 4;
+                    num = Mathf.CeilToInt(num);
+                    BulletObject = Instantiate(bullet, Spawner_02.transform.position, Quaternion.identity); //弾を出す
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                    BulletObject = Instantiate(bullet, new Vector2(Spawner_02.transform.position.x, Spawner_02.transform.position.y + 1f), Quaternion.identity);
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                    BulletObject = Instantiate(bullet, Spawner_03.transform.position, Quaternion.identity);
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                    BulletObject = Instantiate(bullet, new Vector2(Spawner_03.transform.position.x, Spawner_03.transform.position.y + 1f), Quaternion.identity);
+                    BulletObject.GetComponent<Bullet>().numBullet = num;
+                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
+                }
+                else if (isRed && gameM.RedUpPrism == 1 || isGreen && gameM.GreenUpPrism == 1 || isBlue && gameM.BlueUpPrism == 1)
                 {
                     num = num / 2;
                     num = Mathf.CeilToInt(num);
@@ -318,21 +397,6 @@ public class Card : MonoBehaviour
                     BulletObject.GetComponent<Bullet>().numBullet = num;
                     if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
                 } 
-
-                else if (isRed && gameM.RedWidePrism >= 2 || isGreen && gameM.GreenWidePrism >= 2 || isBlue && gameM.BlueWidePrism >= 2)
-                {
-                    num = num / 3;
-                    num = Mathf.CeilToInt(num);
-                    BulletObject = Instantiate(bullet, Spawner_01.transform.position, Quaternion.identity); //弾を出す
-                    BulletObject.GetComponent<Bullet>().numBullet = num;
-                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
-                    BulletObject = Instantiate(bullet, Spawner_02.transform.position, Quaternion.identity);
-                    BulletObject.GetComponent<Bullet>().numBullet = num;
-                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
-                    BulletObject = Instantiate(bullet, Spawner_03.transform.position, Quaternion.identity);
-                    BulletObject.GetComponent<Bullet>().numBullet = num;
-                    if (Bubble) BulletObject.GetComponent<Bullet>().Bubble = true;
-                }
                 else if (isRed && gameM.RedWidePrism == 1 || isGreen && gameM.GreenWidePrism == 1 || isBlue && gameM.BlueWidePrism == 1)
                 {
                     num = num / 2;
