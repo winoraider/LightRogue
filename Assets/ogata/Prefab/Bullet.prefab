@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pBullet: {fileID: 1451187787789374251}
   biggerPower: 0
+  enemyNumController: {fileID: 127502286347666719, guid: b94be3562985b7a439de762c81847494, type: 3}
 --- !u!1 &1714706884717715868
 GameObject:
   m_ObjectHideFlags: 0

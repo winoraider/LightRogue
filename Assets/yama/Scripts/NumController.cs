@@ -12,7 +12,8 @@ public class NumController : MonoBehaviour
     public float biggerPower;
     Bullet bullet;
 
-    public EnemyNumController enemyNumController;
+    private EnemyNumController enemyNumController;
+
     void Start()
     {
         bullet = GetComponent<Bullet>();
@@ -36,10 +37,12 @@ public class NumController : MonoBehaviour
                 counter += 1;
                 if (counter >= 1)//1秒たったら
                 {
+                    //Debug.Log("before" + enemyNumController.NowPower);
                     bullet.numBullet -= biggerPower / 3;
-                    float nPower = enemyNumController.NowPower;
-                    nPower -= biggerPower / 3;
-                    bullet.numBullet = Mathf.CeilToInt(bullet.numBullet);
+                    enemyNumController.NowPower -= biggerPower / 3;
+                    //Debug.Log("after" + enemyNumController.NowPower);
+                    bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
+                    enemyNumController.NowPower = Mathf.FloorToInt(enemyNumController.NowPower);
                     counter = 0;
                 }
             }
@@ -51,18 +54,20 @@ public class NumController : MonoBehaviour
         //EnemyNumController eNum;
         if(collision.gameObject.GetComponent<EnemyNumController>())//触れたオブジェクトがMoveEnemyのコンポーネントを持っていたら
         {
+            enemyNumController = collision.gameObject.GetComponent<EnemyNumController>();
             hit = true;
             eBullet = collision.gameObject;
 
-            if (pPower < eBullet.GetComponent<EnemyNumController>().comparePower)
+            if (pPower < enemyNumController.NowPower)
             {
-                biggerPower = eBullet.GetComponent<EnemyNumController>().comparePower;
+                biggerPower = enemyNumController.NowPower;
             }
             else
             {
                 biggerPower = pPower;
             }
-            Debug.Log("大きい方の数字" + biggerPower);
+            
+            //Debug.Log("大きい方の数字" + biggerPower);
         }
         //GameObject obj = GameObject.Find(objName);
         //moveEnemy = obj.GetComponent<MoveEnemy>();

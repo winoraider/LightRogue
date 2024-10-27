@@ -300,6 +300,9 @@ MonoBehaviour:
   ALLPow: 0
   SingleAdd: 0
   DoubleAdd: 0
+  DoubleMag: 0
+  WhiteMag: 0
+  WhiteAdd: 0
   RedPowLevel: 0
   GreenPowLevel: 0
   BluePowLevel: 0
@@ -307,6 +310,17 @@ MonoBehaviour:
   RedAddPowLevel: 0
   GreenAddPowLevel: 0
   BlueAddPowLevel: 0
+  YellowAddPowLevel: 0
+  MagentaAddPowLevel: 0
+  CyanAddPowLevel: 0
+  YellowMagPowLevel: 0
+  MagentaMagPowLevel: 0
+  CyanMagPowLevel: 0
+  WhiteMagPowLevel: 0
+  WhiteAddPowLevel: 0
+  RedCardAdd: 0
+  GreenCardAdd: 0
+  BlueCardAdd: 0
   isRed: 0
   isGreen: 0
   isBlue: 0
@@ -477,7 +491,6 @@ MonoBehaviour:
     max: 1000
   - min: 1000
     max: 2000
-  enemyNumController: {fileID: 127502286347666719, guid: b94be3562985b7a439de762c81847494, type: 3}
 --- !u!1 &441539581
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,71 +984,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534076338}
   m_CullTransparentMesh: 1
---- !u!1001 &757697852
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 127502286347666719, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: eCardSpawn
-      value: 
-      objectReference: {fileID: 347720575}
-    - target: {fileID: 1358493465762959874, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_Constraints
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493990194290621819, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8198817303411486090, guid: b94be3562985b7a439de762c81847494, type: 3}
-      propertyPath: m_Name
-      value: Enemy (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b94be3562985b7a439de762c81847494, type: 3}
 --- !u!1 &770264996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,8 +1335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb1f41f360301c4ba7873ac48b252f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 0
-  seconds: 10
+  minutes: 2
+  seconds: 0
   TimeText: {fileID: 859030733}
 --- !u!1 &919140922
 GameObject:
@@ -4070,6 +4018,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardUI: {fileID: 2144938536}
   OKButton: {fileID: 2074951845}
+  AddCard: {fileID: 0}
+  Spawner_01: {fileID: 0}
+  Spawner_02: {fileID: 0}
+  Spawner_03: {fileID: 0}
+  LevelUpButtans: []
+  AddDeck: {fileID: 0}
+  LevelBonus: 0
+  LevelUpstart: 0
 --- !u!114 &2115591254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4775,4 +4731,3 @@ SceneRoots:
   - {fileID: 1506243274}
   - {fileID: 468538583}
   - {fileID: 2115591257}
-  - {fileID: 757697852}

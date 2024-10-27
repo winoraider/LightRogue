@@ -1,11 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using TMPro;
 using System;
-using Unity.VisualScripting;
-using JetBrains.Annotations;
 
 [Serializable]
 public struct Data 
@@ -30,23 +25,6 @@ public class ECardSpawn : MonoBehaviour
 
     private float nPower;
 
-    public float NPower
-    {
-        get { return nPower; }
-        set { nPower = value; }
-    }
-
-    [SerializeField] EnemyNumController enemyNumController;
-
-    void Awake()
-    {
-        enemyNumController = FindObjectOfType<EnemyNumController>();
-        if (enemyNumController == null)
-        {
-            Debug.LogError("EnemyNumController not found!");
-        }
-    }
-
     void Update()
     {
         WaveCount();
@@ -61,16 +39,12 @@ public class ECardSpawn : MonoBehaviour
             Vector2 scale = Vector2.one;
             int r = UnityEngine. Random.Range(0, 3);
             elapsedTime = 0.0f;
-            Debug.Log("ÉåÅ[Éì" + r);
-
-            float enemyValue = GenereteEnemy();
+            float enemyValue = GenerateEnemy();
             GameObject enemyObj = Instantiate(Ebullet, eSpawmers[r].transform.position, Quaternion.identity);
-            nPower = enemyNumController.NowPower;
-            Debug.Log("NowPower type: " + enemyNumController.NowPower.GetType());
-            nPower = enemyValue;
-            Debug.Log("value " + enemyValue + "max" + hp[waves].max + "nowpower" + nPower) ;
+            EnemyNumController enemyNumController = enemyObj.GetComponent<EnemyNumController>();
+            enemyNumController.SetManager(this);
+            enemyNumController.NowPower = enemyValue;
             enemyObj.transform.localScale = scale * (0.8f + 0.4f * enemyValue / hp[waves].max);
-            Debug.Log("Enemy scale: " + enemyObj.transform.localScale);
             r = 0;
         }
     }
@@ -79,9 +53,8 @@ public class ECardSpawn : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         waves = (int)currentTime / 60;
-        Debug.Log(waves);
     }
-    int GenereteEnemy()
+    int GenerateEnemy()
     {
         return UnityEngine.Random.Range((int)hp[waves].min,(int)hp[waves].max+1);
     }

@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1461d4084f80547aff64088d66c863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: -0.5
+  force: -0.2
 --- !u!114 &127502286347666719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,5 +423,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comparePower: 0
+  eCard: {fileID: 0}
   numText: {fileID: 3568645350775850105}
-  eCardSpawn: {fileID: 0}
