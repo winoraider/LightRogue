@@ -33,6 +33,10 @@ public class Bullet : MonoBehaviour
     public bool mid;
     public bool max;
 
+    public bool Bubble = false;
+    public float BubbleCount = 0;
+    public int  BubbleCount2 = 0;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
 
@@ -74,11 +78,25 @@ public class Bullet : MonoBehaviour
         isGreen = gameM.isGreen;　//色の情報をGameManagerから受け取る
         isBlue = gameM.isBlue;　//色の情報をGameManagerから受け取る
 
-        numBullet = gameM.BulletNum;　//数字の情報をGameManagerから受け取る
+        //numBullet = gameM.BulletNum;　//数字の情報をGameManagerから受け取る
     }
 
     void Update()
     {
+        if(Bubble)
+        {
+            BubbleCount += 1 * Time.deltaTime;
+            if(BubbleCount  >= 1) {
+                numBullet = numBullet * 1.1f;
+                numBullet = Mathf.CeilToInt(numBullet);
+               BubbleCount = 0;
+                BubbleCount2++;
+            }
+            if(BubbleCount2 >= 10)
+            {
+                Destroy(this.gameObject);
+            }
+        }
 
         ThisColor();　//カラーの表示をする
         numText.text = "" + numBullet;　//弾に数字を表示させる

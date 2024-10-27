@@ -66,6 +66,22 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public float BlueCardAdd;
 
+    public int RedWidePrism = 0;
+    public int GreenWidePrism = 0;
+    public int BlueWidePrism = 0;
+
+    public int RedUpPrism = 0;
+    public int GreenUpPrism = 0;
+    public int BlueUpPrism = 0;
+
+    public bool RedCountSensor;
+    public bool GreenCountSensor;
+    public bool BlueCountSensor;
+
+    public int RedCount;
+    public int GreenCount;
+    public int BlueCount;
+
 
 
     public bool isRed;　//カードから弾に送るための赤の情報
@@ -76,4 +92,6 @@ public class GameManager : MonoBehaviour
     public float mag3color; //三色倍率
 
    
+
+
 }
