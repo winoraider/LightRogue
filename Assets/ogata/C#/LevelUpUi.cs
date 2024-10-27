@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +29,7 @@ public class LevelUpUi : MonoBehaviour
     private GameObject SpawButtan_03;
 
     [SerializeField]
-   private  GameObject[] LevelUpButtans;
+    private List<GameObject> LevelUpButtans;
 
     [SerializeField]
     private GameObject AddDeck;
@@ -73,7 +74,7 @@ public class LevelUpUi : MonoBehaviour
             {
                 while (true)
                 {
-                    RandomNum = UnityEngine.Random.Range(0, LevelUpButtans.Length);
+                    RandomNum = UnityEngine.Random.Range(0, LevelUpButtans.Count);
                     if (usedcard[RandomNum] == true)
                     {
                         return;
