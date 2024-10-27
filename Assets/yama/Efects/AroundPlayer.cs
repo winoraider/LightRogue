@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class AroundPlayer : MonoBehaviour
 {
+    [SerializeField] Transform around;
+    [SerializeField] float angleSpeed;
     [SerializeField] float angle = 0.0f;
     [SerializeField] float radius = 2.0f;
-    [SerializeField] GameObject center = null;
+    [SerializeField] GameObject center;
+
+    private bool isActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +20,10 @@ public class AroundPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = RotateAroundZ(center.transform.position, angle, radius);
-        angle += 0.05f;
+        if (!isActive) return;
+        //transform.position = center.transform.position;
+        around.position = RotateAroundZ(center.transform.position, angle, radius);
+        angle += angleSpeed * Time.deltaTime;
     }
 
     // ZŽ²‰ñ“]
@@ -30,5 +36,16 @@ public class AroundPlayer : MonoBehaviour
         float y = Mathf.Sin(a) * v.x + Mathf.Cos(a) * v.y;
         float z = v.z;
         return new Vector3(x, y, z);
+    }
+
+    public void SetAngle(float angle)
+    {
+        this.angle = angle;
+    }
+
+    public void Active()
+    {
+        around.gameObject.SetActive(true);
+        isActive = true;
     }
 }
