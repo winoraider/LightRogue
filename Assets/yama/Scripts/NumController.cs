@@ -36,7 +36,7 @@ public class NumController : MonoBehaviour
             if (eBullet)
             {
                 counter += 1;
-                if (counter >= 1)//1•b‚½‚Á‚½‚ç
+                if (counter >= 120)//1•b‚½‚Á‚½‚ç
                 {
                     //Debug.Log("before" + enemyNumController.NowPower);
                     bullet.numBullet -= biggerPower / 3;
