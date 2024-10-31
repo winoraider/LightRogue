@@ -102,8 +102,14 @@ public class Bullet : MonoBehaviour
         ThisColor();　//カラーの表示をする
         numText.text = "" + numBullet;　//弾に数字を表示させる
 
-        rb.velocity = new Vector2(0, speed);
-
+        if (gameM.SpeedUpper)
+        {
+            rb.velocity = new Vector2(0, speed * 1.3f);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, speed);
+        }
         if (numBullet <= 0)
         {
             Destroy(this.gameObject);　//弾の数字が0になったら消える
