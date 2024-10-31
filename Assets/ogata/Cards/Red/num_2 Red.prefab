@@ -302,6 +302,7 @@ MonoBehaviour:
   pos01card: 0
   pos02card: 0
   pos03card: 0
+  Bubble: 0
 --- !u!50 &451564953650908104
 Rigidbody2D:
   serializedVersion: 4
@@ -401,7 +402,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 0.8, y: 1.04, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6420454624188229646}
