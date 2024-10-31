@@ -58,6 +58,14 @@ public class GameManager : MonoBehaviour
     public float WhiteMagPowLevel;
     [SerializeField]
     public float WhiteAddPowLevel;
+    [SerializeField]
+    public bool SpeedUpper = false;
+    [SerializeField]
+    public bool LevelUpper = false;
+    [SerializeField]
+    public bool SlowStarter = false;
+
+    
 
     [SerializeField]
     public float RedCardAdd;
@@ -81,6 +89,10 @@ public class GameManager : MonoBehaviour
     public int RedCount;
     public int GreenCount;
     public int BlueCount;
+    public int YellowCount;
+    public int MagentaCount;
+    public int CyanCount;
+    public int WhiteCount;
 
 
 
@@ -91,7 +103,14 @@ public class GameManager : MonoBehaviour
     public float mag2color; //ìÒêFî{ó¶
     public float mag3color; //éOêFî{ó¶
 
-   
-
+    [SerializeField]
+    private GameObject RelicObject;
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            RelicObject.SetActive(true);
+        }
+    }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExpPoint : MonoBehaviour
 {
 
-
+    GameManager gameM;
     EXPbar ExpPos;
 
     private float forcePow;
@@ -29,6 +29,10 @@ public class ExpPoint : MonoBehaviour
         if(collision.gameObject.GetComponent<EXPbar>())
         {
             ExpPos.nowExp++;
+            if (gameM.LevelUpper)
+            {
+                ExpPos.nowExp++;
+            }
             Destroy(this.gameObject);
         }
     }
@@ -36,6 +40,7 @@ public class ExpPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameM = FindObjectOfType<GameManager>();
         transform.parent = GameObject.Find ("GameField").transform;
         ExpPos = FindObjectOfType<EXPbar>();   
         rb = GetComponent<Rigidbody2D>();
