@@ -14,15 +14,12 @@ public class NumController : MonoBehaviour
     Bullet bullet;
 
     private EnemyNumController enemyNumController;
-
     void Start()
     {
         bullet = GetComponent<Bullet>();
         pPower = bullet.numBullet;
         biggerPower = pPower;
     }
-
-    // Update is called once per frame
     void Update()
     {
         pPower = bullet.numBullet;
@@ -38,10 +35,8 @@ public class NumController : MonoBehaviour
                 counter += 1;
                 if (counter >= 1)//1•b‚½‚Á‚½‚ç
                 {
-                    //Debug.Log("before" + enemyNumController.NowPower);
                     bullet.numBullet -= biggerPower / 3;
                     enemyNumController.NowPower -= biggerPower / 3;
-                    //Debug.Log("after" + enemyNumController.NowPower);
                     bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
                     enemyNumController.NowPower = Mathf.FloorToInt(enemyNumController.NowPower);
                     counter = 0;

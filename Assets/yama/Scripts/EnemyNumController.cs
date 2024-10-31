@@ -33,6 +33,8 @@ public class EnemyNumController : MonoBehaviour
         if (nowPower <= 0f)
         {
             Destroy(gameObject);
+            eCard.ECount = -1;
+            Debug.Log("ecount -1 ");
         }
 
         if (hit)
@@ -55,7 +57,7 @@ public class EnemyNumController : MonoBehaviour
         }
 
         numText.text = "" + nowPower;
-        Debug.Log("enum nowpower" + nowPower);
+        //Debug.Log("enum nowpower" + nowPower);
 
     }
 
