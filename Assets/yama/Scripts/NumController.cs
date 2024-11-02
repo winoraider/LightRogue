@@ -9,8 +9,8 @@ public class NumController : MonoBehaviour
     private float pPower;
     float counter = 0;
     [SerializeField] GameObject pBullet;
-    private GameObject eBullet;
     public float biggerPower;
+    bool receiveTwice = false;//ƒ_ƒ[ƒW‚ð“ñ”{Žó‚¯‚é‚©‚Ç‚¤‚©
     Bullet bullet;
 
     private EnemyNumController enemyNumController;
@@ -30,17 +30,31 @@ public class NumController : MonoBehaviour
 
         if (hit)
         {
-            if (eBullet)
+            counter += 1;
+            if (counter >= 120)//1•b‚½‚Á‚½‚ç
             {
-                counter += 1;
-                if (counter >= 1)//1•b‚½‚Á‚½‚ç
+                if (receiveTwice)//“ñ”{‚­‚ç‚¤
                 {
+<<<<<<< HEAD
                     bullet.numBullet -= biggerPower / 3;
                     enemyNumController.NowPower -= biggerPower / 3;
                     bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
                     enemyNumController.NowPower = Mathf.FloorToInt(enemyNumController.NowPower);
                     counter = 0;
+=======
+                    bullet.numBullet -= biggerPower / 3 * 2;
+>>>>>>> EneYama
                 }
+                else
+                {
+                    bullet.numBullet -= biggerPower / 3;
+                }
+                //Debug.Log("before" + enemyNumController.NowPower);
+                enemyNumController.NowPower -= biggerPower / 3;
+                //Debug.Log("after" + enemyNumController.NowPower);
+                bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
+                enemyNumController.NowPower = Mathf.FloorToInt(enemyNumController.NowPower);
+                counter = 0;
             }
         }
     }
@@ -52,8 +66,6 @@ public class NumController : MonoBehaviour
         {
             enemyNumController = collision.gameObject.GetComponent<EnemyNumController>();
             hit = true;
-            eBullet = collision.gameObject;
-
             if (pPower < enemyNumController.NowPower)
             {
                 biggerPower = enemyNumController.NowPower;
@@ -62,22 +74,20 @@ public class NumController : MonoBehaviour
             {
                 biggerPower = pPower;
             }
-            
-            //Debug.Log("‘å‚«‚¢•û‚Ì”Žš" + biggerPower);
         }
-        //GameObject obj = GameObject.Find(objName);
-        //moveEnemy = obj.GetComponent<MoveEnemy>();
-        
-        
-        /*if(collision.gameObject.tag == "enemy")
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<BlindEnemy>())
         {
-        
-        }*/
+            receiveTwice = collision.gameObject.GetComponent<BlindEnemy>().Killer();
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         hit = false;
         biggerPower = pPower;
+        receiveTwice = false;
     }
 }
