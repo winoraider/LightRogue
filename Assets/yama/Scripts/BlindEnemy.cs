@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BlindEnemy : MonoBehaviour
 {
-    Bullet bullet;
-
+    bool toRed;
+    bool toGreen;
+    bool toBlue;
+    bool killer = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,20 @@ public class BlindEnemy : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Bullet>())
         {
-
+            Bullet b = collision.gameObject.GetComponent<Bullet>();
+            if (toRed == b.isRed && toGreen == b.isGreen && toBlue == b.isGreen)
+            {
+                killer = true;
+            }
         }
+    }
+
+    public bool Killer()
+    {
+        return killer;
     }
 }
