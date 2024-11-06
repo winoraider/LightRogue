@@ -4,20 +4,48 @@ using UnityEngine;
 
 public class BlindEnemy : MonoBehaviour
 {
-    bool toRed;
-    bool toGreen;
-    bool toBlue;
+    bool toRed = false;
+    bool toGreen = false;
+    bool toBlue = false;
     bool killer = false;
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        toRed = Random.Range(0, 2) == 0;//toRed、toBlue、toGreenのtrue,falseを最初に決める
+        toBlue = Random.Range(0, 2) == 0;
+        toGreen = Random.Range(0, 2) == 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update()//何色キラーかわからせるためのUI表示をする
     {
-        
+        if(toRed &&  toGreen && toBlue)
+        {
+
+        }
+        else if(!toRed && toGreen && toBlue)
+        {
+
+        }
+        else if (toRed && !toGreen && toBlue)
+        {
+
+        }
+        else if (toRed && toGreen && !toBlue)
+        {
+
+        }
+        else if (!toRed && !toGreen && toBlue)
+        {
+
+        }
+        else if (toRed && !toGreen && !toBlue)
+        {
+
+        }
+        else if (!toRed && !toGreen && !toBlue)
+        {
+
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)

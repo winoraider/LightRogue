@@ -35,20 +35,13 @@ public class NumController : MonoBehaviour
             {
                 if (receiveTwice)//二倍くらう
                 {
-                    bullet.numBullet -= biggerPower / 3;
-                    enemyNumController.NowPower -= biggerPower / 3;
-                    bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
-                    enemyNumController.NowPower = Mathf.FloorToInt(enemyNumController.NowPower);
-                    counter = 0;
                     bullet.numBullet -= biggerPower / 3 * 2;
                 }
                 else
                 {
                     bullet.numBullet -= biggerPower / 3;
                 }
-                //Debug.Log("before" + enemyNumController.NowPower);
                 enemyNumController.NowPower -= biggerPower / 3;
-                //Debug.Log("after" + enemyNumController.NowPower);
                 bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
                 enemyNumController.NowPower = Mathf.FloorToInt(enemyNumController.NowPower);
                 counter = 0;
@@ -58,12 +51,11 @@ public class NumController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //EnemyNumController eNum;
-        if(collision.gameObject.GetComponent<EnemyNumController>())//触れたオブジェクトがMoveEnemyのコンポーネントを持っていたら
+        if(collision.gameObject.GetComponent<EnemyNumController>())//触れたオブジェクトがEnemyNumControllerのコンポーネントを持っていたら
         {
             enemyNumController = collision.gameObject.GetComponent<EnemyNumController>();
             hit = true;
-            if (pPower < enemyNumController.NowPower)
+            if (pPower < enemyNumController.NowPower)//どっちが大きいかを比べる
             {
                 biggerPower = enemyNumController.NowPower;
             }
@@ -73,6 +65,7 @@ public class NumController : MonoBehaviour
             }
         }
     }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<BlindEnemy>())
