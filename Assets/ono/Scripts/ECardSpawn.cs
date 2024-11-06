@@ -20,20 +20,20 @@ public struct SpawnDeray
 
 public class ECardSpawn : MonoBehaviour
 {
-    [SerializeField] GameObject Ebullet; //敵のたま(カード)
-    [SerializeField] GameObject Boss;
-
     [SerializeField] List<GameObject> eSpawmers = new List<GameObject>();
-
-    [SerializeField] float elapsedTime;//経過時間
-    [SerializeField] float durationTime;//↑制限
-
-    [SerializeField]int waves = 0;
-    [SerializeField]float currentTime = 0.0f;
     
     [SerializeField] List<Data> hp = new List<Data>();
 
     [SerializeField] List<SpawnDeray> SpawnDeray = new List<SpawnDeray>();
+
+    [SerializeField] GameObject Ebullet; //敵のたま(カード)
+    [SerializeField] GameObject Boss;
+
+    [SerializeField] float elapsedTime;//経過時間
+    [SerializeField] float durationTime;//↑制限
+
+    [SerializeField] int waves = 0;
+    [SerializeField] float currentTime = 0.0f;
 
     private float nPower;
 
@@ -47,10 +47,6 @@ public class ECardSpawn : MonoBehaviour
     private bool boss = false;
     private float Timer = 0.0f;
 
-    private void Start()
-    {
-        
-    }
     void Update()
     {
         WaveCount();
@@ -105,12 +101,12 @@ public class ECardSpawn : MonoBehaviour
         
 
         //ボス召喚
-        Timer += Time.deltaTime;
+        /*Timer += Time.deltaTime;
         if (Timer >= 60.0f)
         {
             boss = true;
             GameObject BossObj = Instantiate(Boss, eSpawmers[4].transform.position, Quaternion.identity);
-        }
+        }*/
     }
 
     private void WaveCount()
