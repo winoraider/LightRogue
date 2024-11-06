@@ -35,15 +35,12 @@ public class NumController : MonoBehaviour
             {
                 if (receiveTwice)//“ñ”{‚­‚ç‚¤
                 {
-<<<<<<< HEAD
                     bullet.numBullet -= biggerPower / 3;
                     enemyNumController.NowPower -= biggerPower / 3;
                     bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
                     enemyNumController.NowPower = Mathf.FloorToInt(enemyNumController.NowPower);
                     counter = 0;
-=======
                     bullet.numBullet -= biggerPower / 3 * 2;
->>>>>>> EneYama
                 }
                 else
                 {
