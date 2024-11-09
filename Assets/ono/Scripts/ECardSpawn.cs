@@ -103,7 +103,7 @@ public class ECardSpawn : MonoBehaviour
         {
             boss = true;
             Debug.Log("boss is true" + boss);
-            GameObject BossObj = Instantiate(Boss, eSpawmers[4].transform.position, Quaternion.identity);
+            GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
         }
 
 
