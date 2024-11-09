@@ -21,7 +21,7 @@ public class EnemyNumController : MonoBehaviour
 
     [SerializeField] private ECardSpawn eCard;
 
-    [SerializeField] TextMeshProUGUI numText;
+    [SerializeField] TextMeshProUGUI normalenemyText;
 
     public void SetManager(ECardSpawn eCardSpawn)
     {
@@ -56,9 +56,7 @@ public class EnemyNumController : MonoBehaviour
             transform.position += new Vector3(0, -1.0f, 0) * Time.deltaTime;
         }
 
-        numText.text = "" + nowPower;
-        //Debug.Log("enum nowpower" + nowPower);
-
+        normalenemyText.text = "" + nowPower;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
