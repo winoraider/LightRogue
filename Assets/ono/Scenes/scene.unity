@@ -722,6 +722,9 @@ MonoBehaviour:
   CyanMagPowLevel: 0
   WhiteMagPowLevel: 0
   WhiteAddPowLevel: 0
+  SpeedUpper: 0
+  LevelUpper: 0
+  SlowStarter: 0
   RedCardAdd: 0
   GreenCardAdd: 0
   BlueCardAdd: 0
@@ -737,11 +740,16 @@ MonoBehaviour:
   RedCount: 0
   GreenCount: 0
   BlueCount: 0
+  YellowCount: 0
+  MagentaCount: 0
+  CyanCount: 0
+  WhiteCount: 0
   isRed: 0
   isGreen: 0
   isBlue: 0
   mag2color: 1.5
   mag3color: 0
+  RelicObject: {fileID: 0}
 --- !u!1 &287536637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,17 +2858,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b525bf77276764e8118149646e934a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ebullet: {fileID: 8198817303411486090, guid: b94be3562985b7a439de762c81847494, type: 3}
-  Boss: {fileID: 2681801323929597766, guid: 85365222f378a50489eb3d1774ca376d, type: 3}
   eSpawmers:
   - {fileID: 1843212405}
   - {fileID: 1703254430}
   - {fileID: 1754918459}
   - {fileID: 321586875}
-  elapsedTime: 0
-  durationTime: 5
-  waves: 0
-  currentTime: 0
   hp:
   - min: 1
     max: 5
@@ -2893,6 +2895,13 @@ MonoBehaviour:
     max: 5
   - min: 5.1
     max: 10
+  Ebullet: {fileID: 8198817303411486090, guid: b94be3562985b7a439de762c81847494, type: 3}
+  Boss: {fileID: 2681801323929597766, guid: 85365222f378a50489eb3d1774ca376d, type: 3}
+  elapsedTime: 0
+  durationTime: 5
+  waves: 0
+  currentTime: 0
+  timelimit: {fileID: 191044679}
 --- !u!1 &1203877048
 GameObject:
   m_ObjectHideFlags: 0
@@ -4534,6 +4543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image1: {fileID: 1865730822}
+  duration: 60
   numText: {fileID: 0}
 --- !u!114 &1865730822
 MonoBehaviour:

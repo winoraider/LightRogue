@@ -20,13 +20,13 @@ public struct SpawnDeray
 
 public class ECardSpawn : MonoBehaviour
 {
-    [SerializeField] List<GameObject> eSpawmers = new List<GameObject>();
+    [SerializeField] List<GameObject> eSpawmers = new List<GameObject>();//スポーン場所
     
-    [SerializeField] List<Data> hp = new List<Data>();
+    [SerializeField] List<Data> hp = new List<Data>();//敵のhp
 
-    [SerializeField] List<SpawnDeray> SpawnDeray = new List<SpawnDeray>();
+    [SerializeField] List<SpawnDeray> SpawnDeray = new List<SpawnDeray>();//スポーンレート
 
-    [SerializeField] GameObject Ebullet; //敵のたま(カード)
+    [SerializeField] GameObject Ebullet; //通常時の敵のたま(カード)
     [SerializeField] GameObject Boss;
 
     [SerializeField] float elapsedTime;//経過時間
@@ -35,9 +35,9 @@ public class ECardSpawn : MonoBehaviour
     [SerializeField] int waves = 0;
     [SerializeField] float currentTime = 0.0f;
 
-    private float nPower;
+    [SerializeField] private Timelimit timelimit;
 
-    private float eCount;
+    private float eCount;//画面にいる敵の数
     public float ECount
     {
         get { return this.eCount; }
@@ -45,12 +45,12 @@ public class ECardSpawn : MonoBehaviour
     }
 
     private bool boss = false;
-    private float Timer = 0.0f;
 
     void Update()
     {
         WaveCount();
         EnemyCardSpawn();
+
     }
 
     void EnemyCardSpawn()
@@ -71,6 +71,8 @@ public class ECardSpawn : MonoBehaviour
                 enemyObj.transform.localScale = scale * (0.8f + 0.4f * enemyValue / hp[waves].max);
                 r = 0;
                 eCount++;
+
+                ActiveBoss();//1分経ったかの判定
             }
 
             if (eCount <= 3)
@@ -97,16 +99,23 @@ public class ECardSpawn : MonoBehaviour
                 durationTime = dR;
                 //Debug.Log("10以上");
             }
-        }
-        
-
-        //ボス召喚
-        /*Timer += Time.deltaTime;
-        if (Timer >= 60.0f)
+        }else
         {
             boss = true;
+            Debug.Log("boss is true" + boss);
             GameObject BossObj = Instantiate(Boss, eSpawmers[4].transform.position, Quaternion.identity);
-        }*/
+        }
+
+
+    }
+
+    private void ActiveBoss()
+    {
+        if(timelimit.Minutes <= 0 && timelimit.Seconds <= 0)
+        {
+            Debug.Log("1分たった" + timelimit.Minutes);
+            boss = true;
+        }
     }
 
     private void WaveCount()

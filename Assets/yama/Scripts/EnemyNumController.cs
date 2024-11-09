@@ -33,7 +33,7 @@ public class EnemyNumController : MonoBehaviour
         if (nowPower <= 0f)
         {
             Destroy(gameObject);
-            eCard.ECount = -1;
+            eCard.ECount += -1;
             Debug.Log("ecount -1 ");
         }
 

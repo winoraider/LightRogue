@@ -6,11 +6,21 @@ using TMPro;
 
 public class Timelimit : MonoBehaviour
 {
-
     [SerializeField]
     private int minutes;
+    public int Minutes
+    {
+        get { return minutes; }
+        set { minutes = value; }
+    }
+
     [SerializeField]
     private float seconds;
+    public float Seconds
+    {
+        get { return seconds; }
+        set { seconds = value; }
+    }
 
     [SerializeField]
     private TextMeshProUGUI TimeText;　//テキストのコンポーネントを取得
