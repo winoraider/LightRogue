@@ -45,6 +45,7 @@ public class ECardSpawn : MonoBehaviour
     }
 
     private bool boss = false;
+    private bool SpawnedBoss = false;
 
     void Update()
     {
@@ -101,9 +102,11 @@ public class ECardSpawn : MonoBehaviour
             }
         }else
         {
-            boss = true;
-            Debug.Log("boss is true" + boss);
-            GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
+            if(!SpawnedBoss)
+            {
+                GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
+                SpawnedBoss = true;
+            }
         }
 
 
@@ -113,7 +116,8 @@ public class ECardSpawn : MonoBehaviour
     {
         if(timelimit.Minutes <= 0 && timelimit.Seconds <= 0)
         {
-            Debug.Log("1•ª‚½‚Á‚½" + timelimit.Minutes);
+            elapsedTime = 0;
+            durationTime = 100.0f;
             boss = true;
         }
     }

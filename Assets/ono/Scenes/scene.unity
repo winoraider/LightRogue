@@ -4211,7 +4211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4085094781182005625, guid: fd83fa07dd1369f45b5966bf103b99ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.0135517
+      value: 6.08
       objectReference: {fileID: 0}
     - target: {fileID: 4085094781182005625, guid: fd83fa07dd1369f45b5966bf103b99ff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4366,7 +4366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4842671304268045352, guid: 4c6c83a339c79d64789eb12e21d18736, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.993552
+      value: 6.0600004
       objectReference: {fileID: 0}
     - target: {fileID: 4842671304268045352, guid: 4c6c83a339c79d64789eb12e21d18736, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4443,7 +4443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4294007978948984180, guid: 4fc7bb9f186a5bd48af70c3e0eb94fab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.0135517
+      value: 6.08
       objectReference: {fileID: 0}
     - target: {fileID: 4294007978948984180, guid: 4fc7bb9f186a5bd48af70c3e0eb94fab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4543,7 +4543,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image1: {fileID: 1865730822}
-  duration: 60
   numText: {fileID: 0}
 --- !u!114 &1865730822
 MonoBehaviour:
