@@ -194,6 +194,14 @@ public class Card : MonoBehaviour
                     cardspaw.pos03card = false;
                     pos03card = false;
                 }
+                if (gameM.WindBoom)
+                {
+                    gameM.WindBoomcount++;
+                    if(gameM.WindBoomcount >= 20)
+                    {
+                        gameM.KnockBack = true;
+                    }
+                }
                 Instantiate(CoolDown, findpos, Quaternion.identity);
             }
             else

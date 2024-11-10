@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public float BulletNum; //カードから弾に送るための数字の情報
 
+    EnemyNumController enemy;
+
     [SerializeField]
     public float NeedEXP;
     [SerializeField]
@@ -94,7 +96,16 @@ public class GameManager : MonoBehaviour
     public int CyanCount;
     public int WhiteCount;
 
+    public bool SlowTimer = false;
+    private float Slowcount;
 
+    public bool WindBoom;
+    public int WindBoomcount;
+    public bool KnockBack;
+    private float Knockbackcount;
+
+    public bool flash;
+    private float flashcount;
 
     public bool isRed;　//カードから弾に送るための赤の情報
     public bool isGreen;　//カードから弾に送るための緑の情報
@@ -110,6 +121,34 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.P))
         {
             RelicObject.SetActive(true);
+        }
+        if (SlowTimer)
+        {
+            Slowcount += Time.deltaTime;
+            if(Slowcount >= 5)
+            {
+                Slowcount = 0;
+                SlowTimer = false;
+            }
+        }
+        
+        if (KnockBack)
+        {
+            Knockbackcount += Time.deltaTime;
+            if(Knockbackcount >= 0.2)
+            {
+                Knockbackcount = 0;
+                KnockBack = false;
+            }
+        }
+        if (flash)
+        {
+            flashcount += Time.deltaTime;
+            if(flashcount >= 30)
+            {
+                flashcount = 0;
+                enemy = FindObjectOfType<EnemyNumController>();
+            }
         }
     }
 

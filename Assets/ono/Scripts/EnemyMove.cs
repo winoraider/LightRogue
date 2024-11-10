@@ -4,20 +4,40 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+    GameManager gameM; //尾形いじった
     Rigidbody2D rb;
 
     EXPbar expbar;
 
     [SerializeField]float force;
+    [SerializeField] private GameObject EXPPoint;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         expbar = FindObjectOfType<EXPbar>();
+        gameM = FindObjectOfType<GameManager>(); //尾形いじった
         
     }
     private void Update()
     {
-        rb.velocity = new Vector2(0, force);
+        if (gameObject.tag == "Boss" &&gameM.KnockBack)
+        {
+            rb.velocity = new Vector2(0, 10f);
+            return;
+        }
+        else if (gameM.KnockBack)
+        {
+            rb.velocity = new Vector2(0, 20f);
+            return;
+        }
+        if (gameM.SlowTimer)　//尾形いじった
+        {
+            rb.velocity = new Vector2(0, force * 0.8f);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, force);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -31,6 +51,6 @@ public class EnemyMove : MonoBehaviour
     }
     private void OnDestroy()
     {
-        expbar.nowExp += 1;
+        Instantiate(EXPPoint,transform.position, Quaternion.identity);　//尾形いじった 
     }
 }

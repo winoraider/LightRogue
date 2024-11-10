@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7818600795324643897}
   - component: {fileID: 3930302579466627000}
   - component: {fileID: 3563284215315679416}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 582645028359504162}
   - component: {fileID: 1331618617716034291}
   - component: {fileID: 8841824679231552470}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: bhp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,9 +250,9 @@ GameObject:
   - component: {fileID: -3883680660421008999}
   - component: {fileID: 4481631916076037500}
   - component: {fileID: 7536358242637622514}
-  m_Layer: 0
-  m_Name: boss
-  m_TagString: Untagged
+  m_Layer: 9
+  m_Name: Boss
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: -1
+  EXPPoint: {fileID: 0}
 --- !u!114 &7536358242637622514
 MonoBehaviour:
   m_ObjectHideFlags: 0

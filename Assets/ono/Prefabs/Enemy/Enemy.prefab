@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2329543473419389562}
   - component: {fileID: 4103538860809059008}
   - component: {fileID: 4127145540340081032}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4892317627446000547}
   - component: {fileID: 2765315927704549662}
   - component: {fileID: 3568645350775850105}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 1358493465762959874}
   - component: {fileID: 5166771952251710112}
   - component: {fileID: 127502286347666719}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: -1
+  EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
 --- !u!114 &127502286347666719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,4 +426,3 @@ MonoBehaviour:
   comparePower: 0
   eCard: {fileID: 0}
   normalenemyText: {fileID: 3568645350775850105}
-  BossText: {fileID: 0}
