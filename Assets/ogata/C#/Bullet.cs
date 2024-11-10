@@ -104,7 +104,7 @@ public class Bullet : MonoBehaviour
 
         if (this.gameObject.transform.position.y > 3.5f)
         {
-            rb.velocity = new Vector2(0, 0);
+            transform.position = new Vector2(transform.position.x,3.5f);
         }
         else
         {

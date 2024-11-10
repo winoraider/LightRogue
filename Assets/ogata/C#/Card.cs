@@ -59,7 +59,8 @@ public class Card : MonoBehaviour
 
     private GameObject BulletObject;
 
-
+    [SerializeField]
+    private GameObject CoolDown;
 
 
 
@@ -193,6 +194,7 @@ public class Card : MonoBehaviour
                     cardspaw.pos03card = false;
                     pos03card = false;
                 }
+                Instantiate(CoolDown, findpos, Quaternion.identity);
             }
             else
             {
