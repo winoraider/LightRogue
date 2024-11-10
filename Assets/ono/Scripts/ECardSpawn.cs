@@ -64,7 +64,8 @@ public class ECardSpawn : MonoBehaviour
 
     void EnemyCardSpawn()
     {
-        if(!boss)
+        ActiveBoss();//1•ªŒo‚Á‚½‚©‚Ì”»’è
+        if (!boss)
         {
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= durationTime)
@@ -80,8 +81,6 @@ public class ECardSpawn : MonoBehaviour
                 enemyObj.transform.localScale = scale * (0.8f + 0.4f * enemyValue / hp[waves].max);
                 r = 0;
                 eCount++;
-
-                ActiveBoss();//1•ªŒo‚Á‚½‚©‚Ì”»’è
             }
 
             if (eCount <= 3)
@@ -108,9 +107,11 @@ public class ECardSpawn : MonoBehaviour
                 durationTime = dR;
                 //Debug.Log("10ˆÈã");
             }
-        }else
+        }
+        else
         {
-            if(!SpawnedBoss)
+            Debug.Log("Boss");
+            if (!SpawnedBoss)
             {
                 GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
                 BossEnemyNumController bossNumController = BossObj.GetComponent<BossEnemyNumController>();

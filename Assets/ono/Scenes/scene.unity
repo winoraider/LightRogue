@@ -437,8 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb1f41f360301c4ba7873ac48b252f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 2
-  seconds: 0
+  minutes: 0
+  seconds: 5
   TimeText: {fileID: 191044680}
 --- !u!114 &191044680
 MonoBehaviour:
@@ -2730,7 +2730,7 @@ MonoBehaviour:
   - min: 5.1
     max: 10
   Ebullet: {fileID: 8198817303411486090, guid: b94be3562985b7a439de762c81847494, type: 3}
-  Boss: {fileID: 2681801323929597766, guid: 85365222f378a50489eb3d1774ca376d, type: 3}
+  Boss: {fileID: 5491027799425340070, guid: 85365222f378a50489eb3d1774ca376d, type: 3}
   elapsedTime: 0
   durationTime: 5
   waves: 0

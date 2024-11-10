@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            elapsedTime += Time.deltaTime / 2;
+            elapsedTime += Time.deltaTime;
             Image1.fillAmount = Mathf.Lerp(startAmount, 1f, elapsedTime / duration);
             yield return null;
         }
