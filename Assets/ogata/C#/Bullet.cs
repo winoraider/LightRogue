@@ -104,7 +104,7 @@ public class Bullet : MonoBehaviour
 
         if (gameM.SpeedUpper)
         {
-            rb.velocity = new Vector2(0, speed * 1.3f);
+            rb.velocity = new Vector2(0, speed * 1.2f);
         }
         else
         {
