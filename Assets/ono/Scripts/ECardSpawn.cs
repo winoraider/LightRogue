@@ -113,7 +113,7 @@ public class ECardSpawn : MonoBehaviour
             if(!SpawnedBoss)
             {
                 GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
-                EnemyNumController bossNumController = BossObj.GetComponent<EnemyNumController>();
+                BossEnemyNumController bossNumController = BossObj.GetComponent<BossEnemyNumController>();
                 bossNumController.SetManager(this);
                 bossNumController.BossNowPower = bhp[currentBoss].hp;
                 currentBoss++;

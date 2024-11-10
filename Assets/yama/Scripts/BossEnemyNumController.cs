@@ -5,17 +5,11 @@ using UnityEditor;
 using UnityEngine;
 using TMPro;
 
-public class EnemyNumController : MonoBehaviour
+public class BossEnemyNumController : MonoBehaviour
 {
     float counter;
     bool hit = false;
 
-    private float nowPower;
-    public float NowPower
-    {
-        get { return this.nowPower; }
-        set { this.nowPower = value;}
-    }
     private float bossnowPower;
     public float BossNowPower
     {
@@ -26,7 +20,8 @@ public class EnemyNumController : MonoBehaviour
     private string objName;
 
     [SerializeField] private ECardSpawn eCard;
-    [SerializeField] TextMeshProUGUI normalenemyText;
+
+    [SerializeField] TextMeshProUGUI BossText;
 
     public void SetManager(ECardSpawn eCardSpawn)
     {
@@ -35,38 +30,19 @@ public class EnemyNumController : MonoBehaviour
 
     void Update()
     {
-        if (nowPower <= 0f)
+        if (bossnowPower <= 0f)
         {
             Destroy(gameObject);
             eCard.ECount += -1;
             Debug.Log("ecount -1 ");
         }
 
-        if (hit)
-        {
-            /*if (objName == "pCard")
-            {
-                counter += 1 * Time.deltaTime;
-                if (counter >= 60)//1ïbÇΩÇ¡ÇΩÇÁ
-                {
-                    nowPower -= numController.biggerPower / 3;
-                    counter = 0;
-                    Debug.Log("ìGÅF" + nowPower);
-
-                }
-            }*/
-        }
-        else
-        {
-            transform.position += new Vector3(0, -1.0f, 0) * Time.deltaTime;
-        }
-
-        normalenemyText.text = "" + nowPower;
+        BossText.text = "" + bossnowPower;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        comparePower = nowPower;
+        comparePower = bossnowPower;
         objName = collision.gameObject.name;
 
         if(collision.gameObject.GetComponent<NumController>()) { 
