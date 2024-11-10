@@ -16,12 +16,19 @@ public class EnemyNumController : MonoBehaviour
         get { return this.nowPower; }
         set { this.nowPower = value;}
     }
+    private float bossnowPower;
+    public float BossNowPower
+    {
+        get { return this.bossnowPower; }
+        set { this.bossnowPower = value; }
+    }
     public float comparePower;
     private string objName;
 
     [SerializeField] private ECardSpawn eCard;
 
     [SerializeField] TextMeshProUGUI normalenemyText;
+    [SerializeField] TextMeshProUGUI BossText;
 
     public void SetManager(ECardSpawn eCardSpawn)
     {
@@ -57,6 +64,7 @@ public class EnemyNumController : MonoBehaviour
         }
 
         normalenemyText.text = "" + nowPower;
+        BossText.text = "" + bossnowPower;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
