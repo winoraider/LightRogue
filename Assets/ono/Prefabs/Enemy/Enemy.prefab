@@ -424,4 +424,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comparePower: 0
   eCard: {fileID: 0}
-  numText: {fileID: 3568645350775850105}
+  normalenemyText: {fileID: 3568645350775850105}
