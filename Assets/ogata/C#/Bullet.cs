@@ -102,13 +102,20 @@ public class Bullet : MonoBehaviour
         ThisColor();　//カラーの表示をする
         numText.text = "" + numBullet;　//弾に数字を表示させる
 
-        if (gameM.SpeedUpper)
+        if (this.gameObject.transform.position.y > 3.5f)
         {
-            rb.velocity = new Vector2(0, speed * 1.2f);
+            rb.velocity = new Vector2(0, 0);
         }
         else
         {
-            rb.velocity = new Vector2(0, speed);
+            if (gameM.SpeedUpper)
+            {
+                rb.velocity = new Vector2(0, speed * 1.2f);
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, speed);
+            }
         }
         if (numBullet <= 0)
         {
