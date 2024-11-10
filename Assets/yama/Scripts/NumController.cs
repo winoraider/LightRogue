@@ -30,8 +30,8 @@ public class NumController : MonoBehaviour
 
         if (hit)
         {
-            counter += 1;
-            if (counter >= 120)//1•b‚½‚Á‚½‚ç
+            counter += Time.deltaTime;
+            if (counter >= 0.5f)//1•b‚½‚Á‚½‚ç
             {
                 if (receiveTwice)//“ñ”{‚­‚ç‚¤
                 {

@@ -44,25 +44,6 @@ public class EnemyNumController : MonoBehaviour
             Debug.Log("ecount -1 ");
         }
 
-        if (hit)
-        {
-            /*if (objName == "pCard")
-            {
-                counter += 1 * Time.deltaTime;
-                if (counter >= 60)//1ïbÇΩÇ¡ÇΩÇÁ
-                {
-                    nowPower -= numController.biggerPower / 3;
-                    counter = 0;
-                    Debug.Log("ìGÅF" + nowPower);
-
-                }
-            }*/
-        }
-        else
-        {
-            transform.position += new Vector3(0, -1.0f, 0) * Time.deltaTime;
-        }
-
         normalenemyText.text = "" + nowPower;
         BossText.text = "" + bossnowPower;
     }
