@@ -2,12 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEditor;
+using System.Runtime.CompilerServices;
 
 [Serializable]
 public struct Data 
 {
     public float min;
     public float max;
+}
+
+[Serializable]
+public struct bData
+{
+    public float hp;
 }
 
 [Serializable]
@@ -23,7 +30,7 @@ public class ECardSpawn : MonoBehaviour
     [SerializeField] List<GameObject> eSpawmers = new List<GameObject>();//スポーン場所
     
     [SerializeField] List<Data> hp = new List<Data>();//敵のhp
-
+    [SerializeField] List<bData> bhp = new List<bData>();//ボスのhp
     [SerializeField] List<SpawnDeray> SpawnDeray = new List<SpawnDeray>();//スポーンレート
 
     [SerializeField] GameObject Ebullet; //通常時の敵のたま(カード)
@@ -46,6 +53,7 @@ public class ECardSpawn : MonoBehaviour
 
     private bool boss = false;
     private bool SpawnedBoss = false;
+    private int currentBoss = 0;
 
     void Update()
     {
@@ -105,11 +113,13 @@ public class ECardSpawn : MonoBehaviour
             if(!SpawnedBoss)
             {
                 GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
+                EnemyNumController bossNumController = BossObj.GetComponent<EnemyNumController>();
+                bossNumController.SetManager(this);
+                bossNumController.BossNowPower = bhp[currentBoss].hp;
+                currentBoss++;
                 SpawnedBoss = true;
             }
         }
-
-
     }
 
     private void ActiveBoss()

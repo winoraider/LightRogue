@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb1f41f360301c4ba7873ac48b252f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 1
+  minutes: 2
   seconds: 0
   TimeText: {fileID: 191044680}
 --- !u!114 &191044680
@@ -2886,6 +2886,12 @@ MonoBehaviour:
     max: 1000
   - min: 1000
     max: 2000
+  bhp:
+  - hp: 92
+  - hp: 268
+  - hp: 572
+  - hp: 1128
+  - hp: 4000
   SpawnDeray:
   - min: 1
     max: 2
