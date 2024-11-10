@@ -30,8 +30,8 @@ public class NumController : MonoBehaviour
 
         if (hit)
         {
-            counter += 1;
-            if (counter >= 120)//1秒たったら
+            counter += Time.deltaTime;
+            if (counter >= 0.5f)//1秒たったら
             {
                 if (receiveTwice)//二倍くらう
                 {
@@ -53,6 +53,7 @@ public class NumController : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<EnemyNumController>())//触れたオブジェクトがEnemyNumControllerのコンポーネントを持っていたら
         {
+            Debug.Log("敵に触れました");
             enemyNumController = collision.gameObject.GetComponent<EnemyNumController>();
             hit = true;
             if (pPower < enemyNumController.NowPower)//どっちが大きいかを比べる
@@ -68,6 +69,11 @@ public class NumController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        if(collision.gameObject.GetComponent <EnemyNumController>())
+        {
+
+            Debug.Log("てきにふれています");
+        }
         if (collision.gameObject.GetComponent<BlindEnemy>())
         {
             receiveTwice = collision.gameObject.GetComponent<BlindEnemy>().Killer();
@@ -76,8 +82,11 @@ public class NumController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        hit = false;
-        biggerPower = pPower;
-        receiveTwice = false;
+        if(collision.gameObject.GetComponent<EnemyNumController>())
+        {
+            hit = false;
+            biggerPower = pPower;
+            receiveTwice = false;
+        }
     }
 }
