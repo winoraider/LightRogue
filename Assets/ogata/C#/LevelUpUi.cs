@@ -77,7 +77,7 @@ public class LevelUpUi : MonoBehaviour
                     RandomNum = UnityEngine.Random.Range(0, LevelUpButtans.Count);
                     if (usedcard[RandomNum] == true)
                     {
-                        return;
+                        continue;
                     }
                     switch (i)
                     {
