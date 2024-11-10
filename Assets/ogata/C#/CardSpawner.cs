@@ -21,6 +21,9 @@ public class CardSpawner : MonoBehaviour
     [SerializeField]
     private GameObject Spawner03;
 
+    [SerializeField]
+    private GameObject CanvasObject;
+
     private int num;
 
     
