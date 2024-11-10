@@ -425,3 +425,4 @@ MonoBehaviour:
   comparePower: 0
   eCard: {fileID: 0}
   normalenemyText: {fileID: 3568645350775850105}
+  BossText: {fileID: 0}
