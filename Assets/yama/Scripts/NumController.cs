@@ -6,7 +6,6 @@ using UnityEngine.Device;
 public class NumController : MonoBehaviour
 {
     private bool hit = false;
-    public bool Hit {  get { return hit; } }
     bool bosshit = false;
     private float pPower;
     float counter = 0;
@@ -19,17 +18,24 @@ public class NumController : MonoBehaviour
     private EnemyNumController enemyNumController;
     private BossEnemyNumController bossEnemyNumController;
 
+    GameObject aManager;
+    AudioManager AudioManager;
+
     void Start()
     {
         bullet = GetComponent<Bullet>();
         pPower = bullet.numBullet;
         biggerPower = pPower;
+
+        aManager = GameObject.Find("AudioManager");
+        AudioManager = aManager.GetComponent<AudioManager>();
     }
     void Update()
     {
         pPower = bullet.numBullet;
         if (pPower <= 0)
         {
+            AudioManager.BrokenPlay();
             Destroy(gameObject);
         }
 
@@ -38,6 +44,7 @@ public class NumController : MonoBehaviour
             counter += Time.deltaTime;
             if (counter >= 0.5f)//1•b‚½‚Á‚½‚ç
             {
+                AudioManager.RedurcePlay();
                 if (receiveTwice)//“ñ”{‚­‚ç‚¤
                 {
                     bullet.numBullet -= biggerPower / 3 * 2;
@@ -58,6 +65,7 @@ public class NumController : MonoBehaviour
             counter += Time.deltaTime;
             if (counter >= 0.5f)//1•b‚½‚Á‚½‚ç
             {
+                AudioManager.RedurcePlay();
                 bullet.numBullet -= biggerPower * Time.deltaTime;
                 bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
                 bossEnemyNumController.BossNowPower -= biggerPower * Time.deltaTime;

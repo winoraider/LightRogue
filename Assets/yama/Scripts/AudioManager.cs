@@ -6,15 +6,22 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 
 public class AudioManager : MonoBehaviour
 {
-    AudioSource redurceSound;
-    NumController numController;
+    [SerializeField] AudioClip redurceSound;
+    [SerializeField] AudioClip brokenSound;
+    AudioSource AudioSource;
 
-    void Updata()
+    private void Start()
     {
-        if(numController.Counter > 0.5f)
-        {
-            Debug.Log("otonatteru");
-            redurceSound.Play();
-        }
+        AudioSource = this.gameObject.GetComponent<AudioSource>();
+    }
+    public void RedurcePlay()
+    {
+        AudioSource.PlayOneShot(redurceSound);
+    }
+
+    public void BrokenPlay()
+    {
+        Debug.Log("sinnda");
+        AudioSource.PlayOneShot(brokenSound);
     }
 }

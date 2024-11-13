@@ -322,6 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399c44aed7588464d8405b1bfbc3f053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redurceSound: {fileID: 8300000, guid: 4b424b177a6e85246843daf3237d21b6, type: 3}
+  brokenSound: {fileID: 8300000, guid: bbf1b04729296f04fb0b2a83eb159b49, type: 3}
 --- !u!82 &74960383
 AudioSource:
   m_ObjectHideFlags: 0
