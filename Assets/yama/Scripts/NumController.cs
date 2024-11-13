@@ -6,6 +6,7 @@ using UnityEngine.Device;
 public class NumController : MonoBehaviour
 {
     bool hit = false;
+    bool bosshit = false;
     private float pPower;
     float counter = 0;
     [SerializeField] GameObject pBullet;
@@ -14,6 +15,7 @@ public class NumController : MonoBehaviour
     Bullet bullet;
 
     private EnemyNumController enemyNumController;
+    private BossEnemyNumController bossEnemyNumController;
     void Start()
     {
         bullet = GetComponent<Bullet>();
@@ -47,6 +49,19 @@ public class NumController : MonoBehaviour
                 counter = 0;
             }
         }
+
+        if(bosshit)
+        {
+            counter += Time.deltaTime;
+            if (counter >= 0.5f)//1秒たったら
+            {
+                bullet.numBullet -= biggerPower * Time.deltaTime;
+                bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
+                bossEnemyNumController.BossNowPower -= biggerPower * Time.deltaTime;
+                bossEnemyNumController.BossNowPower = Mathf.FloorToInt(bossEnemyNumController.BossNowPower);
+                counter = 0f;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -56,9 +71,26 @@ public class NumController : MonoBehaviour
             Debug.Log("敵に触れました");
             enemyNumController = collision.gameObject.GetComponent<EnemyNumController>();
             hit = true;
+            bosshit = false;
             if (pPower < enemyNumController.NowPower)//どっちが大きいかを比べる
             {
                 biggerPower = enemyNumController.NowPower;
+            }
+            else
+            {
+                biggerPower = pPower;
+            }
+        }
+
+        if (collision.gameObject.GetComponent<BossEnemyNumController>())//触れたオブジェクトがEnemyNumControllerのコンポーネントを持っていたら
+        {
+            Debug.Log("敵に触れました");
+            bossEnemyNumController = collision.gameObject.GetComponent<BossEnemyNumController>();
+            hit = false;
+            bosshit = true;
+            if (pPower < bossEnemyNumController.BossNowPower)//どっちが大きいかを比べる
+            {
+                biggerPower = bossEnemyNumController.BossNowPower;
             }
             else
             {
@@ -69,7 +101,8 @@ public class NumController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent <EnemyNumController>())
+        if(collision.gameObject.GetComponent <EnemyNumController>() || 
+            collision.gameObject.GetComponent<BossEnemyNumController>())
         {
 
             Debug.Log("てきにふれています");
@@ -82,7 +115,7 @@ public class NumController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<EnemyNumController>())
+        if(collision.gameObject.GetComponent<EnemyNumController>() || collision.gameObject.GetComponent<BossEnemyNumController>())
         {
             hit = false;
             biggerPower = pPower;

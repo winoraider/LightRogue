@@ -447,8 +447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb1f41f360301c4ba7873ac48b252f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 0
-  seconds: 5
+  minutes: 1
+  seconds: 0
   TimeText: {fileID: 191044680}
 --- !u!114 &191044680
 MonoBehaviour:
@@ -754,7 +754,10 @@ MonoBehaviour:
   CyanCount: 0
   WhiteCount: 0
   SlowTimer: 0
+  WindBoom: 0
+  WindBoomcount: 0
   KnockBack: 0
+  flash: 0
   isRed: 0
   isGreen: 0
   isBlue: 0
