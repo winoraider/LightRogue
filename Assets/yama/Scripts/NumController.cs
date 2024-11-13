@@ -5,10 +5,12 @@ using UnityEngine.Device;
 
 public class NumController : MonoBehaviour
 {
-    bool hit = false;
+    private bool hit = false;
+    public bool Hit {  get { return hit; } }
     bool bosshit = false;
     private float pPower;
     float counter = 0;
+    public float Counter { get { return counter; } }
     [SerializeField] GameObject pBullet;
     public float biggerPower;
     bool receiveTwice = false;//ƒ_ƒ[ƒW‚ğ“ñ”{ó‚¯‚é‚©‚Ç‚¤‚©
@@ -16,6 +18,7 @@ public class NumController : MonoBehaviour
 
     private EnemyNumController enemyNumController;
     private BossEnemyNumController bossEnemyNumController;
+
     void Start()
     {
         bullet = GetComponent<Bullet>();
