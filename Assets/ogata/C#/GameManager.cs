@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
     private float Knockbackcount;
 
     public bool flash;
+    [SerializeField]
     private float flashcount;
 
     public bool isRed;　//カードから弾に送るための赤の情報
@@ -116,6 +117,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject RelicObject;
+    public GameObject RelicOb
+    {
+        get { return RelicObject; }
+        set { RelicObject = value; }
+    }
+
+    EnemyNumController[] Enemys;
+    BossEnemyNumController Boss;
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.P))
@@ -143,11 +152,23 @@ public class GameManager : MonoBehaviour
         }
         if (flash)
         {
-            flashcount += Time.deltaTime;
-            if(flashcount >= 30)
+            flashcount -= Time.deltaTime;
+            if(flashcount <= 0)
             {
-                flashcount = 0;
-                enemy = FindObjectOfType<EnemyNumController>();
+                flashcount = 30;
+                Enemys = FindObjectsOfType<EnemyNumController>();
+                
+                    Boss = FindObjectOfType<BossEnemyNumController>();
+                if (Boss != null)
+                {
+                    Boss.BossNowPower -= 100;
+                }
+                
+                for(int i = 0; i < Enemys.Length; i++)
+                {
+                    Enemys[i].NowPower -= 100;
+                }
+
             }
         }
     }

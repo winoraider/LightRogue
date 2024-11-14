@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 
 public class Card : MonoBehaviour
 {
@@ -62,6 +63,15 @@ public class Card : MonoBehaviour
     [SerializeField]
     private GameObject CoolDown;
 
+    [SerializeField]
+    private GameObject LevelUpUI;
+
+    [SerializeField]
+    private GameObject childCard;
+    [SerializeField]
+    private GameObject childCanvas;
+
+    LevelUpUi Level;
 
 
     public Card(bool _red, bool _green, bool _blue){　//カードの色を設定する用
@@ -114,6 +124,9 @@ public class Card : MonoBehaviour
 
     void Start()
     {
+
+        childCard = transform.Find("CardObject").gameObject;
+        childCanvas = childCard.transform.Find("Canvas").gameObject;
         gameM = GameObject.FindObjectOfType<GameManager>(); //GameManagerの取得
         cardspaw = GameObject.FindObjectOfType<CardSpawner>(); //CardSpawnerの取得
         findpos = transform.position;
@@ -136,6 +149,12 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+
         if (Bubble)
         {
 
@@ -145,9 +164,18 @@ public class Card : MonoBehaviour
 
         if (leftMouseKey)　//マウスの左キーが押されているとき
         {
+            childCard.GetComponent<SpriteRenderer>().sortingOrder = 10;
+            childCanvas.GetComponent<Canvas>().sortingOrder = 12;
             Vector2 tmpPos = Input.mousePosition;　//マウスカーソルの位置をtmpPosに代入
             MousePos = Camera.main.ScreenToWorldPoint(tmpPos);　//tmpPosを使って、マウスカーソルの位置をUnityのカメラに対応させる
             transform.position = MousePos; //カードの位置をマウスカーソルの位置と同期させる
+
+
+        }
+        else
+        {
+            childCard.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            childCanvas.GetComponent<Canvas>().sortingOrder = 8;
         }
 
         if (Input.GetMouseButtonUp(0)&& leftMouseKey)　//マウスの左キーを離したとき
@@ -155,19 +183,32 @@ public class Card : MonoBehaviour
             leftMouseKey = false;　//左キーの情報を押されていない状態にする
         }
 
+        
 
     }
 
     private void OnMouseDown()　//カードを選択して、マウスのキーを押したとき
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))　//マウスの左キーだった時
         {
             leftMouseKey = true;　//マウスの左キーが押されている状態にする
+            
         }
     }
 
     private void OnMouseUp() //マウスのキーを離した時
     {
+        if (Time.timeScale == 0)
+        {
+            transform.position = findpos;
+            leftMouseKey = false;
+            return;
+        }
+
         if (Input.GetMouseButtonUp(0) && leftMouseKey)　//マウスの左キーを離したとき
         {
             gameM.BulletNum = num; //カードの情報をGameManagerに送る

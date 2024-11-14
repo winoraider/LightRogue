@@ -52,5 +52,9 @@ public class EnemyMove : MonoBehaviour
     private void OnDestroy()
     {
         Instantiate(EXPPoint,transform.position, Quaternion.identity);Å@//îˆå`Ç¢Ç∂Ç¡ÇΩ 
+        if (gameObject.tag == "Boss")
+        {
+            gameM.RelicOb.SetActive(true);
+        }
     }
 }

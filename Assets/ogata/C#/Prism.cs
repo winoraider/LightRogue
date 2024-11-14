@@ -15,13 +15,20 @@ public class Prism : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (Prisms.Count == 0)
+        {
+            Destroy(this.gameObject);
+        }
         num = Random.Range(0, Prisms.Count);
-        Obj = Instantiate(Prisms[num], transform.position, Quaternion.identity);
-        Obj.transform.parent = RelicObject.transform;
-    }
-
-    private void OnDestroy()
-    {
-        Destroy(Obj);
+        while (true)
+        {
+            if (Prisms[num] == null)
+            {
+                continue;
+            }
+            Obj = Instantiate(Prisms[num], transform.position, Quaternion.identity);
+            Obj.transform.parent = RelicObject.transform;
+            break;
+        }
     }
 }

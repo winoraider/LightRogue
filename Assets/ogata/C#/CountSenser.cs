@@ -15,12 +15,20 @@ public class CountSenser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (CountSensers.Count == 0)
+        {
+            Destroy(this.gameObject);
+        }
         num = Random.Range(0, CountSensers.Count);
-        Obj = Instantiate(CountSensers[num], transform.position, Quaternion.identity);
-        Obj.transform.parent = RelicObject.transform.parent;
-    }
-    private void OnDestroy()
-    {
-        Destroy(Obj);
+        while (true)
+        {
+            if (CountSensers[num] == null)
+            {
+                continue;
+            }
+            Obj = Instantiate(CountSensers[num], transform.position, Quaternion.identity);
+            Obj.transform.parent = RelicObject.transform.parent;
+            break;
+        }
     }
 }
