@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class RelicUi : MonoBehaviour
@@ -118,7 +119,7 @@ public class RelicUi : MonoBehaviour
     public void RedWide(){
 
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "レッドカードを出すとき、値を1/2して横に2つの弾を出す\n同じ色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
+        cardtext.text = "レッドカードを出すとき、値を1/2して横に2つの弾を出す\n同色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
         RelicBonus = 0;
         OKButton.SetActive(true);
     }
@@ -126,7 +127,7 @@ public class RelicUi : MonoBehaviour
     {
 
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "グリーンカードを出すとき、値を1/2して横に2つの弾を出す\n同じ色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
+        cardtext.text = "グリーンカードを出すとき、値を1/2して横に2つの弾を出す\n同色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
         RelicBonus = 1;
         OKButton.SetActive(true);
     }
@@ -134,7 +135,7 @@ public class RelicUi : MonoBehaviour
     {
 
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "ブルーカードを出すとき、値を1/2して横に2つの弾を出す\n同じ色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
+        cardtext.text = "ブルーカードを出すとき、値を1/2して横に2つの弾を出す\n同色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
         RelicBonus = 2;
         OKButton.SetActive(true);
     }
@@ -142,7 +143,7 @@ public class RelicUi : MonoBehaviour
     {
 
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "レッドカードを出すとき、値を1/2して縦に2つの弾を出す\n同じ色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
+        cardtext.text = "レッドカードを出すとき、値を1/2して縦に2つの弾を出す\n同色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
         RelicBonus = 3;
         OKButton.SetActive(true);
     }
@@ -150,7 +151,7 @@ public class RelicUi : MonoBehaviour
     {
 
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "グリーンカードを出すとき、値を1/2して縦に2つの弾を出す\n同じ色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
+        cardtext.text = "グリーンカードを出すとき、値を1/2して縦に2つの弾を出す\n同色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
         RelicBonus = 4;
         OKButton.SetActive(true);
     }
@@ -158,7 +159,7 @@ public class RelicUi : MonoBehaviour
     {
 
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "ブルーカードを出すとき、値を1/2して縦に2つの弾を出す\n同じ色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
+        cardtext.text = "ブルーカードを出すとき、値を1/2して縦に2つの弾を出す\n同色のアッププリズムを入手していた場合、値を1/4にして、4つの弾を出す";
         RelicBonus = 5;
         OKButton.SetActive(true);
     }
@@ -215,22 +216,43 @@ public class RelicUi : MonoBehaviour
     public void Bubble()
     {
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "ランダムのカードにシャボンの効果がつく\nシャボンが付くと、1秒ごとに値が1.3倍されていく";
+        cardtext.text = "ランダムのカードにシャボンの効果がつく\nシャボンが付くと、10秒でライトは消滅するが\n1秒ごとに値が1.3倍されていく";
         RelicBonus = 13;
         OKButton.SetActive(true);
     }
     public void LevelUpper()
     {
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "敵から貰える経験値が2倍になる";
+        cardtext.text = "獲得EXPに[+1]をする";
         RelicBonus = 14;
         OKButton.SetActive(true);
     }
     public void SpeedUpper()
     {
         Text cardtext = CardUI.GetComponent<Text>();
-        cardtext.text = "弾の速度が1.3倍になる";
+        cardtext.text = "ライトの速度が1.2倍になる";
         RelicBonus = 15;
+        OKButton.SetActive(true);
+    }
+    public void SlowTimer()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "5秒間、敵の速度が0.8倍になる";
+        RelicBonus = 16;
+        OKButton.SetActive(true);
+    }
+    public void Flash()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "30秒毎に発動、敵全体に100ダメージを与える";
+        RelicBonus = 17;
+        OKButton.SetActive(true);
+    }
+    public void WindBoom()
+    {
+        Text cardtext = CardUI.GetComponent<Text>();
+        cardtext.text = "ライトを20発出す毎に、敵全体を上へ飛ばす";
+        RelicBonus = 18;
         OKButton.SetActive(true);
     }
 
@@ -241,52 +263,80 @@ public class RelicUi : MonoBehaviour
         {
             case 0:
                 gameM.RedWidePrism++;
+                Destroy(GameObject.Find("WideRed"));
                 break;
             case 1:
                 gameM.GreenWidePrism++;
+                Destroy(GameObject.Find("WideGreen"));
                 break;
             case 2:
                 gameM.BlueWidePrism++;
+                Destroy(GameObject.Find("WideBlue"));
                 break;
             case 3:
                 gameM.RedUpPrism++;
+                Destroy(GameObject.Find("UpRed"));
                 break;
             case 4:
                 gameM.GreenUpPrism++;
+                Destroy(GameObject.Find("UpGreen"));
                 break;
             case 5:
                 gameM.BlueUpPrism++;
+                Destroy(GameObject.Find("UpBlue"));
                 break;
             case 6:
                 gameM.RedCount++;
+                Destroy(GameObject.Find("CountRed"));
                 break;
             case 7:
                 gameM.GreenCount++;
+                Destroy(GameObject.Find("CountGreen"));
                 break;
             case 8:
                 gameM.BlueCount++;
+                Destroy(GameObject.Find("CountBlue"));
                 break;
             case 9:
                 gameM.YellowCount++;
+                Destroy(GameObject.Find("CountYellow"));
                 break;
             case 10:
                 gameM.MagentaCount++;
+                Destroy(GameObject.Find("CountMagenta"));
                 break;
                 case 11:
                 gameM.CyanCount++;
+                Destroy(GameObject.Find("CountCyan"));
                 break;
                 case 12:
                 gameM.WhiteCount++;
+                Destroy(GameObject.Find("CountWhite"));
                 break;
                 case 13:
                 int tmp = Random.Range(0, spawner.cards.Count);
                 spawner.cards[tmp].GetComponent<Card>().Bubble = true;
+                Destroy(GameObject.Find("Bubble"));
                 break;
             case 14:
                 gameM.LevelUpper = true;
+                Destroy(GameObject.Find("LevelUpper"));
                 break;
             case 15:
                 gameM.SpeedUpper = true;
+                Destroy(GameObject.Find("SpeedUpper"));
+                break;
+            case 16:
+                gameM.SlowTimer = true;
+                Destroy(GameObject.Find("SlowTimer"));
+                break;
+                case 17:
+                gameM.flash = true;
+                Destroy(GameObject.Find("Flash"));
+                break;
+                case 18:
+                gameM.WindBoom = true;
+                Destroy(GameObject.Find("WindBoom"));
                 break;
         }
 

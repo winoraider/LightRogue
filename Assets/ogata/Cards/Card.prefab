@@ -303,6 +303,10 @@ MonoBehaviour:
   pos02card: 0
   pos03card: 0
   Bubble: 0
+  CoolDown: {fileID: 4760054837087174626, guid: 329a413e34dc2ac41b3ccf7b7cbfb885, type: 3}
+  LevelUpUI: {fileID: 0}
+  childCard: {fileID: 0}
+  childCanvas: {fileID: 0}
 --- !u!50 &451564953650908104
 Rigidbody2D:
   serializedVersion: 4
