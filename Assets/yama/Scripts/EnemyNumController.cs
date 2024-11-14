@@ -16,6 +16,7 @@ public class EnemyNumController : MonoBehaviour
         get { return this.nowPower; }
         set { this.nowPower = value;}
     }
+    private int pToText;
     private float bossnowPower;
     public float BossNowPower
     {
@@ -35,6 +36,7 @@ public class EnemyNumController : MonoBehaviour
 
     void Update()
     {
+        pToText = Mathf.CeilToInt(nowPower);
         if (nowPower <= 0f)
         {
             Destroy(gameObject);
@@ -42,7 +44,7 @@ public class EnemyNumController : MonoBehaviour
             Debug.Log("ecount -1 ");
         }
 
-        normalenemyText.text = "" + nowPower;
+        normalenemyText.text = "" + pToText;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

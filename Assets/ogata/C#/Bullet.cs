@@ -19,6 +19,8 @@ public class Bullet : MonoBehaviour
     private float speed; //弾のスピード
     public float numBullet; //弾の数字
 
+    private int nBToText;//テキスト表示上の弾の数字
+
     [SerializeField]
     private TextMeshProUGUI numText;　//テキストのコンポーネントを取得
 
@@ -83,6 +85,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
+        nBToText = Mathf.CeilToInt(numBullet);
         if(Bubble)
         {
             BubbleCount += 1 * Time.deltaTime;
@@ -100,7 +103,7 @@ public class Bullet : MonoBehaviour
         }
 
         ThisColor();　//カラーの表示をする
-        numText.text = "" + numBullet;　//弾に数字を表示させる
+        numText.text = "" + nBToText;　//弾に数字を表示させる
 
         if (this.gameObject.transform.position.y > 3.5f)
         {

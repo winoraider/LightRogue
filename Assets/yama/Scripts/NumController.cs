@@ -6,10 +6,9 @@ using UnityEngine.Device;
 public class NumController : MonoBehaviour
 {
     private bool hit = false;
+    bool hitNow = false;
     bool bosshit = false;
     private float pPower;
-    float counter = 0;
-    public float Counter { get { return counter; } }
     [SerializeField] GameObject pBullet;
     public float biggerPower;
     bool receiveTwice = false;//É_ÉÅÅ[ÉWÇìÒî{éÛÇØÇÈÇ©Ç«Ç§Ç©
@@ -41,37 +40,23 @@ public class NumController : MonoBehaviour
 
         if (hit)
         {
-            counter += Time.deltaTime;
-            if (counter >= 0.5f)//1ïbÇΩÇ¡ÇΩÇÁ
+            AudioManager.RedurcePlay();
+            if (receiveTwice)//ìÒî{Ç≠ÇÁÇ§
             {
-                AudioManager.RedurcePlay();
-                if (receiveTwice)//ìÒî{Ç≠ÇÁÇ§
-                {
-                    bullet.numBullet -= biggerPower / 3 * 2;
-                }
-                else
-                {
-                    bullet.numBullet -= biggerPower / 3;
-                }
-                enemyNumController.NowPower -= biggerPower / 3;
-                bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
-                enemyNumController.NowPower = Mathf.FloorToInt(enemyNumController.NowPower);
-                counter = 0;
+                bullet.numBullet -= biggerPower * 2;
             }
+            else
+            {
+                bullet.numBullet -= biggerPower / 3 * Time.deltaTime;
+            }
+            enemyNumController.NowPower -= biggerPower / 3 * Time.deltaTime;
         }
 
         if(bosshit)
         {
-            counter += Time.deltaTime;
-            if (counter >= 0.5f)//1ïbÇΩÇ¡ÇΩÇÁ
-            {
-                AudioManager.RedurcePlay();
-                bullet.numBullet -= biggerPower * Time.deltaTime;
-                bullet.numBullet = Mathf.FloorToInt(bullet.numBullet);
-                bossEnemyNumController.BossNowPower -= biggerPower * Time.deltaTime;
-                bossEnemyNumController.BossNowPower = Mathf.FloorToInt(bossEnemyNumController.BossNowPower);
-                counter = 0f;
-            }
+            AudioManager.RedurcePlay();
+            bullet.numBullet -= biggerPower / 3 * Time.deltaTime;
+            bossEnemyNumController.BossNowPower -= biggerPower / 3 * Time.deltaTime;
         }
     }
 
@@ -82,8 +67,13 @@ public class NumController : MonoBehaviour
             Debug.Log("ìGÇ…êGÇÍÇ‹ÇµÇΩ");
             enemyNumController = collision.gameObject.GetComponent<EnemyNumController>();
             hit = true;
+            hitNow = true;
             bosshit = false;
-            if (pPower < enemyNumController.NowPower)//Ç«Ç¡ÇøÇ™ëÂÇ´Ç¢Ç©Çî‰Ç◊ÇÈ
+            if(pPower <= 30 && enemyNumController.NowPower <= 30)
+            {
+                biggerPower = 30;
+            }
+            else if (pPower < enemyNumController.NowPower)//Ç«Ç¡ÇøÇ™ëÂÇ´Ç¢Ç©Çî‰Ç◊ÇÈ
             {
                 biggerPower = enemyNumController.NowPower;
             }
