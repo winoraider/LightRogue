@@ -45,7 +45,7 @@ public class ExpPoint : MonoBehaviour
         ExpPos = FindObjectOfType<EXPbar>();   
         rb = GetComponent<Rigidbody2D>();
         veloX = Random.Range(-5, 5);
-        rb.velocity = new Vector2(veloX,10);
+        rb.velocity = new Vector2(veloX,5);
         veloy = 10;
         velox = 10;
         force = new Vector2(forcex, forcey);

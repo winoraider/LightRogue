@@ -110,6 +110,7 @@ public class CardSpawner : MonoBehaviour
                         }
                         else
                         {
+
                             break;
                         }
 
@@ -137,6 +138,27 @@ public class CardSpawner : MonoBehaviour
                 }
                 else
                 {
+                    for (int i = 0; i < cards.Count; i++)
+                    {
+                        if (spawd[i])
+                        {
+                            if (spawd[cards.Count - 1])
+                            {
+                                for (int n = 0; n < cards.Count; n++)
+                                {
+                                    spawd[n] = false;
+                                }
+
+                            }
+                            continue;
+                        }
+                        else
+                        {
+
+                            break;
+                        }
+
+                    }
                     return;
                 }
             }
@@ -158,6 +180,27 @@ public class CardSpawner : MonoBehaviour
                 }
                 else
                 {
+                    for (int i = 0; i < cards.Count; i++)
+                    {
+                        if (spawd[i])
+                        {
+                            if (spawd[cards.Count - 1])
+                            {
+                                for (int n = 0; n < cards.Count; n++)
+                                {
+                                    spawd[n] = false;
+                                }
+
+                            }
+                            continue;
+                        }
+                        else
+                        {
+
+                            break;
+                        }
+
+                    }
                     return;
                 }
             }
