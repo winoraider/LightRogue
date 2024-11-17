@@ -24,14 +24,16 @@ public struct SpawnDeray
     public float max;
 }
 
-
 public class ECardSpawn : MonoBehaviour
 {
     [SerializeField] List<GameObject> eSpawmers = new List<GameObject>();//スポーン場所
     
     [SerializeField] List<Data> hp = new List<Data>();//敵のhp
     [SerializeField] List<bData> bhp = new List<bData>();//ボスのhp
-    [SerializeField] List<SpawnDeray> SpawnDeray = new List<SpawnDeray>();//スポーンレート
+    [SerializeField] List<SpawnDeray> SpawnDeray = new List<SpawnDeray>();//スポーンレート4
+    
+    [SerializeField] private int LowMiddle = 30;
+    [SerializeField] private int MiddleHigh = 60;
 
     [SerializeField] GameObject Ebullet; //通常時の敵のたま(カード)
     [SerializeField] GameObject Boss;
@@ -71,7 +73,37 @@ public class ECardSpawn : MonoBehaviour
             if (elapsedTime >= durationTime)
             {
                 Vector2 scale = Vector2.one;
-                int r = UnityEngine.Random.Range(0, 3);
+                int rndMin = 0;
+                int rndMax = 90;
+                int rnd = UnityEngine.Random.Range(rndMin, rndMax);
+                int r = 0; //敵の出現場所を決める変数
+                if (rnd >= rndMin && rnd < LowMiddle)//出現場所を決める＆確率の変更
+                {
+                    r = 0;
+                    LowMiddle -= 10;
+                    MiddleHigh -= 5;
+                }
+                else if(rnd >= LowMiddle && rnd < MiddleHigh)
+                {
+                    r = 1;
+                    LowMiddle += 5;
+                    MiddleHigh -= 5;
+                }
+                else if( rnd >= MiddleHigh && rnd < rndMax)
+                {
+                    r = 2;
+                    LowMiddle += 5;
+                    MiddleHigh += 10;
+                }
+                if(LowMiddle < rndMin+5)
+                {
+                    LowMiddle = rndMin+5;
+                }
+                if(MiddleHigh > rndMax-5)
+                {
+                    MiddleHigh = rndMax-5;
+                }
+                Debug.Log("出現場所:" + r + "LowMiddle:" + LowMiddle + "MiddleHigh" + MiddleHigh + "rnd:" + rnd);
                 elapsedTime = 0.0f;
                 float enemyValue = GenerateEnemy();
                 GameObject enemyObj = Instantiate(Ebullet, eSpawmers[r].transform.position, Quaternion.identity);
