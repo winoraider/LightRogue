@@ -15,6 +15,6 @@ public class GameStart : MonoBehaviour
 
     void ClickButton()
     {
-        SceneManager.LoadScene("scene");
+        SceneManager.LoadScene("_GameScene");
     }
 }
