@@ -85,8 +85,7 @@ public class ECardSpawn : MonoBehaviour
 
             if (eCount <= 3)
             {
-                float dR = UnityEngine.Random.Range(SpawnDeray[0].min, SpawnDeray[0].max);
-                durationTime = dR;
+                float dR = UnityEngine.Random.Range(SpawnDeray[0].min, SpawnDeray[0].max);                durationTime = dR;
                 //Debug.Log("1`3");
             }
             else if (eCount <= 6)
