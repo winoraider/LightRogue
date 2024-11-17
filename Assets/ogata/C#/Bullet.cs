@@ -246,4 +246,10 @@ public class Bullet : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+    //private char calc(float num)
+    //{
+    //    char Text;
+
+    //    return 
+    //}
 }
