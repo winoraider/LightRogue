@@ -9,6 +9,7 @@ public class BossEnemyNumController : MonoBehaviour
 {
     float counter;
     bool hit = false;
+    int BossToText;
 
     private float bossnowPower;
     public float BossNowPower
@@ -30,6 +31,7 @@ public class BossEnemyNumController : MonoBehaviour
 
     void Update()
     {
+        BossToText = Mathf.CeilToInt(bossnowPower);
         if (bossnowPower <= 0f)
         {
             Destroy(gameObject);
@@ -37,7 +39,7 @@ public class BossEnemyNumController : MonoBehaviour
             Debug.Log("ecount -1 ");
         }
 
-        BossText.text = "" + bossnowPower;
+        BossText.text = "" + BossToText;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
