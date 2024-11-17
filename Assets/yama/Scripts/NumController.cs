@@ -119,6 +119,7 @@ public class NumController : MonoBehaviour
         if(collision.gameObject.GetComponent<EnemyNumController>() || collision.gameObject.GetComponent<BossEnemyNumController>())
         {
             hit = false;
+            bosshit = false;
             biggerPower = pPower;
             receiveTwice = false;
         }
