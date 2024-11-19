@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEditor;
-using System.Runtime.CompilerServices;
+using UnityEngine.UI;
 
 [Serializable]
 public struct Data 
@@ -12,7 +12,7 @@ public struct Data
 }
 
 [Serializable]
-public struct bData
+public struct bossData
 {
     public float hp;
 }
@@ -29,7 +29,7 @@ public class ECardSpawn : MonoBehaviour
     [SerializeField] List<GameObject> eSpawmers = new List<GameObject>();//スポーン場所
     
     [SerializeField] List<Data> hp = new List<Data>();//敵のhp
-    [SerializeField] List<bData> bhp = new List<bData>();//ボスのhp
+    [SerializeField] List<bossData> bhp = new List<bossData>();//ボスのhp
     [SerializeField] List<SpawnDeray> SpawnDeray = new List<SpawnDeray>();//スポーンレート4
     
     [SerializeField] private int LowMiddle = 30;
@@ -45,6 +45,9 @@ public class ECardSpawn : MonoBehaviour
     [SerializeField] float currentTime = 0.0f;
 
     [SerializeField] private Timelimit timelimit;
+    [SerializeField] private Timer timer;
+
+    [SerializeField] Image Image1;
 
     private float eCount;//画面にいる敵の数
     public float ECount
@@ -52,8 +55,12 @@ public class ECardSpawn : MonoBehaviour
         get { return this.eCount; }
         set { this.eCount = value; }
     }
-
     private bool boss = false;
+    public bool BOSS
+    {
+        get { return this.boss; }
+        set { this.boss = value; }
+    }
     private bool SpawnedBoss = false;
     private int currentBoss = 0;
 
@@ -61,7 +68,6 @@ public class ECardSpawn : MonoBehaviour
     {
         WaveCount();
         EnemyCardSpawn();
-
     }
 
     void EnemyCardSpawn()
@@ -103,7 +109,7 @@ public class ECardSpawn : MonoBehaviour
                 {
                     MiddleHigh = rndMax-5;
                 }
-                Debug.Log("出現場所:" + r + "LowMiddle:" + LowMiddle + "MiddleHigh" + MiddleHigh + "rnd:" + rnd);
+                //Debug.Log("出現場所:" + r + "LowMiddle:" + LowMiddle + "MiddleHigh" + MiddleHigh + "rnd:" + rnd);
                 elapsedTime = 0.0f;
                 float enemyValue = GenerateEnemy();
                 GameObject enemyObj = Instantiate(Ebullet, eSpawmers[r].transform.position, Quaternion.identity);
@@ -146,7 +152,7 @@ public class ECardSpawn : MonoBehaviour
             {
                 GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
                 BossEnemyNumController bossNumController = BossObj.GetComponent<BossEnemyNumController>();
-                bossNumController.SetManager(this);
+                bossNumController.EcardSetManager(this);
                 bossNumController.BossNowPower = bhp[currentBoss].hp;
                 currentBoss++;
                 SpawnedBoss = true;

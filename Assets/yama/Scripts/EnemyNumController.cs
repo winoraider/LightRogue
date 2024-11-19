@@ -16,6 +16,7 @@ public class EnemyNumController : MonoBehaviour
         get { return this.nowPower; }
         set { this.nowPower = value;}
     }
+
     private int pToText;
     private float bossnowPower;
     public float BossNowPower
@@ -41,7 +42,7 @@ public class EnemyNumController : MonoBehaviour
         {
             Destroy(gameObject);
             eCard.ECount += -1;
-            Debug.Log("ecount -1 ");
+            //Debug.Log("ecount -1 ");
         }
 
         normalenemyText.text = "" + pToText;

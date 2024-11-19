@@ -3835,6 +3835,8 @@ MonoBehaviour:
   waves: 0
   currentTime: 0
   timelimit: {fileID: 191044679}
+  timer: {fileID: 1865730821}
+  Image1: {fileID: 1865730822}
 --- !u!1001 &1192356917
 PrefabInstance:
   m_ObjectHideFlags: 0

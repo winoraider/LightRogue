@@ -140,9 +140,9 @@ public class BulletBehind : MonoBehaviour
                 isBlue2 = _blue;
             }
 
-            Debug.Log(isRed2);
-            Debug.Log(isGreen2);
-            Debug.Log(isBlue2);
+            //Debug.Log(isRed2);
+            //Debug.Log(isGreen2);
+            //Debug.Log(isBlue2);
 
             if (isRed2 && isGreen2 && isBlue2)
             {

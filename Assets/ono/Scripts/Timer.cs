@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
         TimerStart();
     }
 
-    IEnumerator TimerStart()
+    public IEnumerator TimerStart()
     {
         float startAmount = Image1.fillAmount;
         float elapsedTime = 0f;

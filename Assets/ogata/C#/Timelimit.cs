@@ -23,14 +23,8 @@ public class Timelimit : MonoBehaviour
     }
 
     [SerializeField]
-    private TextMeshProUGUI TimeText;　//テキストのコンポーネントを取得
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private TextMeshProUGUI TimeText; //テキストのコンポーネントを取得
 
-    // Update is called once per frame
     void Update()
     {
         if (seconds > 0)

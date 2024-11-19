@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class BossEnemyNumController : MonoBehaviour
 {
@@ -24,11 +24,14 @@ public class BossEnemyNumController : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI BossText;
 
-    public void SetManager(ECardSpawn eCardSpawn)
+    [SerializeField] private Timelimit timelimit;
+    [SerializeField] private Timer timer;
+    [SerializeField] Image Image1;
+
+    public void EcardSetManager(ECardSpawn eCardSpawn)
     {
         this.eCard = eCardSpawn;
     }
-
     void Update()
     {
         BossToText = Mathf.CeilToInt(bossnowPower);
@@ -36,9 +39,11 @@ public class BossEnemyNumController : MonoBehaviour
         {
             Destroy(gameObject);
             eCard.ECount += -1;
-            Debug.Log("ecount -1 ");
+            eCard.BOSS = false;
+            timelimit.Minutes = 1;
+            Image1.fillAmount = 0f;
+            //Debug.Log("ecount -1 ");
         }
-
         BossText.text = "" + BossToText;
     }
 

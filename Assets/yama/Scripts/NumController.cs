@@ -64,7 +64,7 @@ public class NumController : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<EnemyNumController>())//触れたオブジェクトがEnemyNumControllerのコンポーネントを持っていたら
         {
-            Debug.Log("敵に触れました");
+            //Debug.Log("敵に触れました");
             enemyNumController = collision.gameObject.GetComponent<EnemyNumController>();
             hit = true;
             hitNow = true;
@@ -106,7 +106,7 @@ public class NumController : MonoBehaviour
             collision.gameObject.GetComponent<BossEnemyNumController>())
         {
 
-            Debug.Log("てきにふれています");
+            //Debug.Log("てきにふれています");
         }
         if (collision.gameObject.GetComponent<BlindEnemy>())
         {
