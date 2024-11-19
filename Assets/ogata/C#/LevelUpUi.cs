@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class LevelUpUi : MonoBehaviour
 {
     GameManager gameM;
     Card card;
     CardSpawner spawner;
+    EventSystem eventSystem;
 
     [SerializeField]
     private GameObject CardUI;
@@ -54,11 +56,17 @@ public class LevelUpUi : MonoBehaviour
     private int Greennum;
     private int Bluenum;
 
+    [SerializeField]
+    public GameObject Arrow;
+    public GameObject CloneArrow;
+    private GameObject tmp;
+
     // Start is called before the first frame update
     void Start()
     {
         spawner = FindObjectOfType<CardSpawner>();
         gameM = FindObjectOfType<GameManager>();
+        eventSystem = FindObjectOfType<EventSystem>();
         OKButton.SetActive(false);
         gameObject.SetActive(false);
         LevelUpstart = true;
@@ -68,48 +76,73 @@ public class LevelUpUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LevelUpstart)
+        if (eventSystem.currentSelectedGameObject != null)
         {
-            for (int i = 0; i < spawcard.Length; i++)
+            if (tmp != eventSystem.currentSelectedGameObject)
             {
-                while (true)
+                tmp = eventSystem.currentSelectedGameObject;
+                Vector2 evPos = eventSystem.currentSelectedGameObject.transform.position;
+                if (eventSystem.currentSelectedGameObject != GameObject.Find("GetButton"))
                 {
-                    RandomNum = UnityEngine.Random.Range(0, LevelUpButtans.Count);
-                    if (usedcard[RandomNum] == true)
+
+                    if (CloneArrow != null)
                     {
-                        continue;
+                        Destroy(CloneArrow);
                     }
-                    switch (i)
-                    {
-                        case 0:
-                            SpawButtan_01 = Instantiate(LevelUpButtans[RandomNum], Spawner_01.transform.position, Quaternion.identity);
-                            SpawButtan_01.transform.parent = gameObject.transform;
-                            usedcard[RandomNum] = true;
-                            break;
-                        case 1:
-                            SpawButtan_02 = Instantiate(LevelUpButtans[RandomNum], Spawner_02.transform.position, Quaternion.identity);
-                            SpawButtan_02.transform.parent = gameObject.transform;
-                            usedcard[RandomNum] = true;
-                            break;
-                        case 2:
-                            SpawButtan_03 = Instantiate(LevelUpButtans[RandomNum], Spawner_03.transform.position, Quaternion.identity);
-                            SpawButtan_03.transform.parent = gameObject.transform;
-                            usedcard[RandomNum] = true;
-                            LevelUpstart = false;
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
+                    CloneArrow = Instantiate(Arrow, new Vector2(evPos.x, evPos.y + 180), Quaternion.identity);
+                    CloneArrow.transform.parent = gameObject.transform;
                 }
             }
         }
-        else
-        {
-            Debug.Log("“®‚¢‚Ä‚¢‚Ü‚·");
+            {
+
+            }
+            if (LevelUpstart)
+            {
+                for (int i = 0; i < spawcard.Length; i++)
+                {
+                    while (true)
+                    {
+                        RandomNum = UnityEngine.Random.Range(0, LevelUpButtans.Count);
+                        if (usedcard[RandomNum] == true)
+                        {
+                            continue;
+                        }
+                        switch (i)
+                        {
+                            case 0:
+                                SpawButtan_01 = Instantiate(LevelUpButtans[RandomNum], Spawner_01.transform.position, Quaternion.identity);
+                                SpawButtan_01.transform.parent = gameObject.transform;
+                                usedcard[RandomNum] = true;
+                                break;
+                            case 1:
+                                SpawButtan_02 = Instantiate(LevelUpButtans[RandomNum], Spawner_02.transform.position, Quaternion.identity);
+                                SpawButtan_02.transform.parent = gameObject.transform;
+                                usedcard[RandomNum] = true;
+                                break;
+                            case 2:
+                                SpawButtan_03 = Instantiate(LevelUpButtans[RandomNum], Spawner_03.transform.position, Quaternion.identity);
+                                SpawButtan_03.transform.parent = gameObject.transform;
+                                usedcard[RandomNum] = true;
+                                LevelUpstart = false;
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("“®‚¢‚Ä‚¢‚Ü‚·");
+            }
+
         }
 
-    }
+    
+
+
 
     public void RedEne()
     {
@@ -391,6 +424,7 @@ public class LevelUpUi : MonoBehaviour
         Destroy(SpawButtan_01);
         Destroy(SpawButtan_02);
         Destroy(SpawButtan_03);
+        Destroy(CloneArrow);
         OKButton.SetActive(false);
         gameObject.SetActive(false);
     }

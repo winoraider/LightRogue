@@ -1783,6 +1783,8 @@ MonoBehaviour:
     max: 5
   - min: 5.1
     max: 10
+  LowMiddle: 30
+  MiddleHigh: 60
   Ebullet: {fileID: 8198817303411486090, guid: b94be3562985b7a439de762c81847494, type: 3}
   Boss: {fileID: 5491027799425340070, guid: 85365222f378a50489eb3d1774ca376d, type: 3}
   elapsedTime: 0
@@ -6005,6 +6007,8 @@ MonoBehaviour:
     max: 2000
   bhp: []
   SpawnDeray: []
+  LowMiddle: 30
+  MiddleHigh: 60
   Ebullet: {fileID: 8198817303411486090, guid: b94be3562985b7a439de762c81847494, type: 3}
   Boss: {fileID: 5491027799425340070, guid: 85365222f378a50489eb3d1774ca376d, type: 3}
   elapsedTime: 0
@@ -11050,6 +11054,10 @@ PrefabInstance:
     - target: {fileID: 1189810801599157907, guid: 6e5b9eda90d25af43bee665353891efa, type: 3}
       propertyPath: m_Text
       value: "\u9078\u3093\u3067\u304F\u3060\u3055\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732300770187276369, guid: 6e5b9eda90d25af43bee665353891efa, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3142050147953874860, guid: 6e5b9eda90d25af43bee665353891efa, type: 3}
       propertyPath: AddCard

@@ -155,10 +155,6 @@ public class Card : MonoBehaviour
             return;
         }
 
-        if (Bubble)
-        {
-
-        }
         ThisColor();　//カードの色の表示
         numText.text = ""+num;　//数字をカードに表示
 
