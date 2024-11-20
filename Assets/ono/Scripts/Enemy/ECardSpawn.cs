@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using UnityEditor;
 using UnityEngine.UI;
+using UnityEditor.Experimental.GraphView;
 
 [Serializable]
 public struct Data 
@@ -62,12 +63,23 @@ public class ECardSpawn : MonoBehaviour
         set { this.boss = value; }
     }
     private bool SpawnedBoss = false;
+    public bool spawnedBoss
+    {
+        get { return SpawnedBoss; }
+        set { this.SpawnedBoss = value;}
+    }
+    private bool DeadBoss = false;
+    public bool deadBoss
+    {
+        get { return DeadBoss; }
+        set { this.DeadBoss = value; }
+    }
     private int currentBoss = 0;
-
     void Update()
     {
         WaveCount();
         EnemyCardSpawn();
+        //Debug.Log("boss + " + boss) ;
     }
 
     void EnemyCardSpawn()
@@ -147,7 +159,6 @@ public class ECardSpawn : MonoBehaviour
         }
         else
         {
-            Debug.Log("Boss");
             if (!SpawnedBoss)
             {
                 GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
@@ -156,17 +167,27 @@ public class ECardSpawn : MonoBehaviour
                 bossNumController.BossNowPower = bhp[currentBoss].hp;
                 currentBoss++;
                 SpawnedBoss = true;
+            }else if(DeadBoss)
+            {
+                timelimit.Minutes = 1;
+                Image1.fillAmount = 0f;
+                DeadBoss = false;
             }
         }
+        
     }
 
     private void ActiveBoss()
     {
-        if(timelimit.Minutes <= 0 && timelimit.Seconds <= 0)
+        if (timelimit.Minutes <= 0 && timelimit.Seconds <= 0)
         {
             elapsedTime = 0;
             durationTime = 100.0f;
             boss = true;
+        }
+        else
+        {
+            boss = false;
         }
     }
 

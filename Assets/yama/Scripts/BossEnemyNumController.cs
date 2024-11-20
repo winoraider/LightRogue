@@ -25,24 +25,22 @@ public class BossEnemyNumController : MonoBehaviour
     [SerializeField] TextMeshProUGUI BossText;
 
     [SerializeField] private Timelimit timelimit;
-    [SerializeField] private Timer timer;
-    [SerializeField] Image Image1;
+    //[SerializeField] private Timer timer;
+    //[SerializeField] Image Image1;
 
     public void EcardSetManager(ECardSpawn eCardSpawn)
     {
         this.eCard = eCardSpawn;
     }
+
     void Update()
     {
         BossToText = Mathf.CeilToInt(bossnowPower);
         if (bossnowPower <= 0f)
         {
             Destroy(gameObject);
-            eCard.ECount += -1;
             eCard.BOSS = false;
-            timelimit.Minutes = 1;
-            Image1.fillAmount = 0f;
-            //Debug.Log("ecount -1 ");
+            eCard.deadBoss = true;
         }
         BossText.text = "" + BossToText;
     }
