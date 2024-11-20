@@ -36,6 +36,5 @@ public class Timer : MonoBehaviour
             Image1.fillAmount = Mathf.Lerp(startAmount, 1f, elapsedTime / duration);
             yield return null;
         }
-        Image1.fillAmount = 1f;
     }
 }

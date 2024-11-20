@@ -135,7 +135,7 @@ public class LevelUpUi : MonoBehaviour
             }
             else
             {
-                Debug.Log("“®‚¢‚Ä‚¢‚Ü‚·");
+                //Debug.Log("“®‚¢‚Ä‚¢‚Ü‚·");
             }
 
         }

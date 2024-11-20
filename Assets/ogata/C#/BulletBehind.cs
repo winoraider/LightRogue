@@ -76,7 +76,7 @@ public class BulletBehind : MonoBehaviour
 
         if (isRed2 == _red && isGreen2 == _green && isBlue2 == _blue)
         {
-            Debug.Log("呼び出し");
+            //Debug.Log("呼び出し");
             tmpN = _num;　//数字の情報を受け取る用
 
             if (isRed2 == _red && !_green && !_blue)
@@ -147,8 +147,8 @@ public class BulletBehind : MonoBehaviour
             if (isRed2 && isGreen2 && isBlue2)
             {
                 bullet.numBullet *= tmpN + gameM.WhiteMag * gameM.WhiteMagPowLevel; //弾の数字の情報を渡す
-                Debug.Log(bullet.numBullet);
-                Debug.Log(tmpN);
+                //Debug.Log(bullet.numBullet);
+                //Debug.Log(tmpN);
                 tmpN = 0; //弾の値を初期化
             }
             else {

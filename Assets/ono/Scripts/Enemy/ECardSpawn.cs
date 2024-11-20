@@ -77,6 +77,7 @@ public class ECardSpawn : MonoBehaviour
     private int currentBoss = 0;
     void Update()
     {
+        ActiveBoss();//1•ªŒo‚Á‚½‚©‚Ì”»’è
         WaveCount();
         EnemyCardSpawn();
         //Debug.Log("boss + " + boss) ;
@@ -84,9 +85,9 @@ public class ECardSpawn : MonoBehaviour
 
     void EnemyCardSpawn()
     {
-        ActiveBoss();//1•ªŒo‚Á‚½‚©‚Ì”»’è
         if (!boss)
         {
+            SpawnedBoss = false;
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= durationTime)
             {
