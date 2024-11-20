@@ -6082,7 +6082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image1: {fileID: 1865730822}
-  numText: {fileID: 0}
+  eCardSpawn: {fileID: 1164089039}
 --- !u!114 &1865730822
 MonoBehaviour:
   m_ObjectHideFlags: 0

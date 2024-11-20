@@ -10,31 +10,25 @@ public class Timer : MonoBehaviour
 
     [SerializeField]  Image Image1;
 
-    float duration = 60.0f;
+    float TimeElapse = 60.0f;
+    float speed = 1.0f;
 
-    [SerializeField] TextMeshProUGUI numText;
-
+    [SerializeField] ECardSpawn eCardSpawn;
     void Start()
     {
         Image1 = GetComponent<Image>();
-        StartCoroutine(TimerStart());
     }
 
     void Update()
     {
-        TimerStart();
+        if(!eCardSpawn.BOSS)
+        {
+            TimerStart();
+        }
     }
 
-    public IEnumerator TimerStart()
+    void TimerStart()
     {
-        float startAmount = Image1.fillAmount;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            Image1.fillAmount = Mathf.Lerp(startAmount, 1f, elapsedTime / duration);
-            yield return null;
-        }
+        Image1.fillAmount += (speed / TimeElapse) * Time.deltaTime;
     }
 }
