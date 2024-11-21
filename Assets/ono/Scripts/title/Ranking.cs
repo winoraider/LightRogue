@@ -6,13 +6,10 @@ using UnityEngine.UI;
 
 public class Ranking : MonoBehaviour
 {
-    Button button;
+    [SerializeField]Button button;
+    [SerializeField] Button button2;
     [SerializeField] GameObject _Ranking;
     private bool OnPage;
-    void Start()
-    {
-        button = GetComponent<Button>();
-    }
 
     private void Update()
     {
@@ -22,7 +19,7 @@ public class Ranking : MonoBehaviour
         }
         else
         {
-            button.onClick.AddListener(ExitButton);
+            button2.onClick.AddListener(ExitButton);
         }
     }
     void ClickButton()

@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-    Button button;
+    [SerializeField]Button button;
+    [SerializeField] Button button2;
     [SerializeField] GameObject _Tutorial;
     private bool OnPage;
     void Start()
     {
-        button = GetComponent<Button>();
+        //button = GetComponent<Button>();
     }
 
     private void Update()
@@ -19,10 +20,12 @@ public class Tutorial : MonoBehaviour
         if(!OnPage)
         {
             button.onClick.AddListener(ClickButton);
+            button.enabled = true;
         }
         else
         {
-            button.onClick.AddListener(ExitButton);
+            button2.onClick.AddListener(ExitButton);
+            button.enabled = false;
         }
     }
     void ClickButton()
