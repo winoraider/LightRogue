@@ -27,8 +27,12 @@ public class CountSenser : MonoBehaviour
                 continue;
             }
             Obj = Instantiate(CountSensers[num], transform.position, Quaternion.identity);
-            Obj.transform.parent = RelicObject.transform.parent;
+            Obj.transform.parent = this.transform.parent;
             break;
         }
+    }
+    private void OnDestroy()
+    {
+       Destroy (Obj);
     }
 }
