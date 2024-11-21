@@ -17,6 +17,7 @@ public class Prism : MonoBehaviour
     {
         if (Prisms.Count == 0)
         {
+            Debug.Log("è¡Ç≥ÇÍÇ‹ÇµÇΩ");
             Destroy(this.gameObject);
         }
         num = Random.Range(0, Prisms.Count);
@@ -30,5 +31,9 @@ public class Prism : MonoBehaviour
             Obj.transform.parent = RelicObject.transform;
             break;
         }
+    }
+    private void OnDestroy()
+    {
+        Destroy(Obj);
     }
 }
