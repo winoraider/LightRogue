@@ -377,6 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b611384a03dce2e4ab728c1af23cd603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 82746658}
+  button2: {fileID: 1733316066}
   Option: {fileID: 1056131598}
 --- !u!1 &153856656
 GameObject:
@@ -2180,6 +2182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dcd8fdf4744c42b85b7ccf8a50347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 943527819}
+  button2: {fileID: 1617917987}
   _Ranking: {fileID: 1326678144}
 --- !u!1 &970379569
 GameObject:
@@ -2269,6 +2273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed1e1240d453fe47bde7c12a2428ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 1581282085}
+  button2: {fileID: 984708728}
   _Tutorial: {fileID: 2021612781}
 --- !u!114 &984708728
 MonoBehaviour:
@@ -3469,6 +3475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed1e1240d453fe47bde7c12a2428ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 1581282085}
+  button2: {fileID: 984708728}
   _Tutorial: {fileID: 2021612781}
 --- !u!1 &1617917984
 GameObject:
@@ -3604,6 +3612,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dcd8fdf4744c42b85b7ccf8a50347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 943527819}
+  button2: {fileID: 1617917987}
   _Ranking: {fileID: 1326678144}
 --- !u!1 &1660823591
 GameObject:
@@ -4018,6 +4028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b611384a03dce2e4ab728c1af23cd603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 82746658}
+  button2: {fileID: 1733316066}
   Option: {fileID: 1056131598}
 --- !u!1 &1785325125
 GameObject:
@@ -4492,7 +4504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2021612782
 RectTransform:
   m_ObjectHideFlags: 0
