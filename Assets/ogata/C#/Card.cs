@@ -18,6 +18,7 @@ public class Card : MonoBehaviour
     [SerializeField]
     private GameObject ObjectColor;　//カードの色の情報を送る用
 
+    [SerializeField]
     private bool leftMouseKey = false;　//マウスの左キーが押されているかの判定
     [SerializeField]
     private GameObject bullet; //弾をインスタンスする用
@@ -63,8 +64,6 @@ public class Card : MonoBehaviour
     [SerializeField]
     private GameObject CoolDown;
 
-    [SerializeField]
-    private GameObject LevelUpUI;
 
     [SerializeField]
     private GameObject childCard;
@@ -152,6 +151,11 @@ public class Card : MonoBehaviour
 
         if (Time.timeScale == 0)
         {
+            if (leftMouseKey)
+            {
+                transform.position = findpos;
+                leftMouseKey = false;
+            }
             return;
         }
 
@@ -174,7 +178,7 @@ public class Card : MonoBehaviour
             childCanvas.GetComponent<Canvas>().sortingOrder = 8;
         }
 
-        if (Input.GetMouseButtonUp(0)&& leftMouseKey)　//マウスの左キーを離したとき
+        if (Input.GetMouseButtonUp(0)&& leftMouseKey && (Lane_01 || Lane_02 || Lane_03))　//マウスの左キーを離したとき
         {
             leftMouseKey = false;　//左キーの情報を押されていない状態にする
         }
