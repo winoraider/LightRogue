@@ -7,9 +7,6 @@ using TMPro;
 
 public class EnemyNumController : MonoBehaviour
 {
-    float counter;
-    bool hit = false;
-
     private float nowPower;
     public float NowPower
     {
@@ -24,8 +21,6 @@ public class EnemyNumController : MonoBehaviour
         get { return this.bossnowPower; }
         set { this.bossnowPower = value; }
     }
-    public float comparePower;
-    private string objName;
 
     [SerializeField] private ECardSpawn eCard;
     [SerializeField] TextMeshProUGUI normalenemyText;
@@ -46,23 +41,5 @@ public class EnemyNumController : MonoBehaviour
         }
 
         normalenemyText.text = "" + pToText;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        comparePower = nowPower;
-        objName = collision.gameObject.name;
-
-        if(collision.gameObject.GetComponent<NumController>()) { 
-        hit = true;
-        }
-        //GameObject obj = GameObject.Find(objName);
-        //playerCard = obj.GetComponent<PlayerCard>();
-        
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        hit = false;
     }
 }

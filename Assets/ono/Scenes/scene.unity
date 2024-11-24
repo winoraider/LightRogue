@@ -3828,8 +3828,14 @@ MonoBehaviour:
     max: 10
   LowMiddle: 30
   MiddleHigh: 60
-  Ebullet: {fileID: 8198817303411486090, guid: b94be3562985b7a439de762c81847494, type: 3}
+  Ebullet:
+  - {fileID: 8198817303411486090, guid: b94be3562985b7a439de762c81847494, type: 3}
+  - {fileID: 8198817303411486090, guid: 08f659bd70526d3428e19f8858d8cf7c, type: 3}
+  - {fileID: 8198817303411486090, guid: 34d906421284b5d4da2a3b7558654fa0, type: 3}
+  - {fileID: 8198817303411486090, guid: 2042df2a14a7c564b8e75a8f908fdadc, type: 3}
   Boss: {fileID: 5491027799425340070, guid: 85365222f378a50489eb3d1774ca376d, type: 3}
+  maxRndEnemy: 12
+  normalEnemy: 10
   elapsedTime: 0
   durationTime: 5
   waves: 0

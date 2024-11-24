@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BlindEnemy : MonoBehaviour
 {
-    bool toRed = false;
-    bool toGreen = false;
-    bool toBlue = false;
-    bool killer = false;
+    public bool toRed = false;
+    public bool toGreen = false;
+    public bool toBlue = false;
 
     void Start()
     {
@@ -20,48 +19,31 @@ public class BlindEnemy : MonoBehaviour
     {
         if(toRed &&  toGreen && toBlue)
         {
-
+            //Debug.Log("ホワイト");
         }
         else if(!toRed && toGreen && toBlue)
         {
-
+            //Debug.Log("シアン");
         }
         else if (toRed && !toGreen && toBlue)
         {
-
+            //Debug.Log("マゼンタ");
         }
         else if (toRed && toGreen && !toBlue)
         {
-
+            //Debug.Log("イエロー");
         }
         else if (!toRed && !toGreen && toBlue)
         {
-
+            //Debug.Log("ブルー");
         }
         else if (toRed && !toGreen && !toBlue)
         {
-
+            //Debug.Log("レッド");
         }
-        else if (!toRed && !toGreen && !toBlue)
+        else if (!toRed && toGreen && !toBlue)
         {
-
+            //Debug.Log("グリーン");
         }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<Bullet>())
-        {
-            Bullet b = collision.gameObject.GetComponent<Bullet>();
-            if (toRed == b.isRed && toGreen == b.isGreen && toBlue == b.isGreen)
-            {
-                killer = true;
-            }
-        }
-    }
-
-    public bool Killer()
-    {
-        return killer;
     }
 }

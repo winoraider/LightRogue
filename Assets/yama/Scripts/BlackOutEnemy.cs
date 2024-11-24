@@ -8,8 +8,8 @@ public class BlackOutEnemy : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<Bullet>())
         {
-            Destroy(this.gameObject);
             Destroy(collision.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

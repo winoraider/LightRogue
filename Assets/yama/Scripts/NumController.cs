@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Device;
+using static UnityEngine.Rendering.DebugUI;
 
 public class NumController : MonoBehaviour
 {
@@ -110,7 +111,11 @@ public class NumController : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<BlindEnemy>())
         {
-            receiveTwice = collision.gameObject.GetComponent<BlindEnemy>().Killer();
+            BlindEnemy killer = collision.gameObject.GetComponent<BlindEnemy>();
+            if (bullet.isRed == killer.toRed && bullet.isGreen == killer.toGreen && bullet.isBlue == killer.toBlue)
+            {
+                receiveTwice = true;
+            }
         }
     }
 
