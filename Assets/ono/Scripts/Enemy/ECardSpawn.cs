@@ -56,18 +56,21 @@ public class ECardSpawn : MonoBehaviour
         get { return this.eCount; }
         set { this.eCount = value; }
     }
+
     private bool boss = false;
     public bool BOSS
     {
         get { return this.boss; }
         set { this.boss = value; }
     }
+
     private bool SpawnedBoss = false;
     public bool spawnedBoss
     {
         get { return SpawnedBoss; }
         set { this.SpawnedBoss = value;}
     }
+
     private bool DeadBoss = false;
     public bool deadBoss
     {

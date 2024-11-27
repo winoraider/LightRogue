@@ -27,6 +27,7 @@ public class Ranking : MonoBehaviour
         }
         else
         {
+            //Debug.Log("Rankingオンページ" + OnPage);
             button2.onClick.AddListener(ExitButton);
             button.enabled = false;
             Sbutton.enabled = false;
