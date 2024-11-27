@@ -27,6 +27,7 @@ public class _Option : MonoBehaviour
         }
         else
         {
+            //Debug.Log("Optionオンページ" + OnPage);
             button2.onClick.AddListener(ExitButton);
             button.enabled = false;
             Sbutton.enabled = false;

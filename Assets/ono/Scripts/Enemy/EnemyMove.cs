@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+
+
     GameManager gameM; //”öŒ`‚¢‚¶‚Á‚½
     Rigidbody2D rb;
 
@@ -44,7 +46,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("‚ ‚½‚Á‚½");
+            //Debug.Log("‚ ‚½‚Á‚½");
             Destroy(this.gameObject);
         }
 
