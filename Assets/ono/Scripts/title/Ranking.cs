@@ -11,15 +11,27 @@ public class Ranking : MonoBehaviour
     [SerializeField] GameObject _Ranking;
     private bool OnPage;
 
+    [SerializeField] Button Sbutton;
+    [SerializeField] Button Tbutton;
+    [SerializeField] Button Obutton;
+
     private void Update()
     {
         if (!OnPage)
         {
             button.onClick.AddListener(ClickButton);
+            button.enabled = true;
+            Sbutton.enabled = true;
+            Tbutton.enabled = true;
+            Obutton.enabled = true;
         }
         else
         {
             button2.onClick.AddListener(ExitButton);
+            button.enabled = false;
+            Sbutton.enabled = false;
+            Tbutton.enabled = false;
+            Obutton.enabled = false;
         }
     }
     void ClickButton()
