@@ -20,6 +20,7 @@ public class Ranking : MonoBehaviour
         if (!OnPage)
         {
             button.onClick.AddListener(ClickButton);
+            button.enabled = true;
             Sbutton.enabled = true;
             Tbutton.enabled = true;
             Obutton.enabled = true;
@@ -27,6 +28,7 @@ public class Ranking : MonoBehaviour
         else
         {
             button2.onClick.AddListener(ExitButton);
+            button.enabled = false;
             Sbutton.enabled = false;
             Tbutton.enabled = false;
             Obutton.enabled = false;

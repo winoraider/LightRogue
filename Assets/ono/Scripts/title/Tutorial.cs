@@ -19,6 +19,7 @@ public class Tutorial : MonoBehaviour
         if(!OnPage)
         {
             button.onClick.AddListener(ClickButton);
+            button.enabled = true;
             Sbutton.enabled = true;
             Rbutton.enabled = true;
             Obutton.enabled = true;
@@ -26,6 +27,7 @@ public class Tutorial : MonoBehaviour
         else
         {
             button2.onClick.AddListener(ExitButton);
+            button.enabled = false;
             Sbutton.enabled = false;
             Rbutton.enabled = false;
             Obutton.enabled = false;
