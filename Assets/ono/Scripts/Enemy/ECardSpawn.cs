@@ -28,8 +28,9 @@ public struct SpawnDeray
 public class ECardSpawn : MonoBehaviour
 {
     [SerializeField] List<GameObject> eSpawmers = new List<GameObject>();//スポーン場所
-    
+
     [SerializeField] List<Data> hp = new List<Data>();//敵のhp
+
     [SerializeField] List<bossData> bhp = new List<bossData>();//ボスのhp
     [SerializeField] List<SpawnDeray> SpawnDeray = new List<SpawnDeray>();//スポーンレート4
     
@@ -78,6 +79,11 @@ public class ECardSpawn : MonoBehaviour
         set { this.DeadBoss = value; }
     }
     private int currentBoss = 0;
+
+    public float FastSpeed;
+    public float SlowSpeed;
+    public int AttackDamage;
+    public float KnockBack;
     void Update()
     {
         ActiveBoss();//1分経ったかの判定
@@ -165,6 +171,8 @@ public class ECardSpawn : MonoBehaviour
         {
             if (!SpawnedBoss)
             {
+                RelicNum();
+                Relic();
                 GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
                 BossEnemyNumController bossNumController = BossObj.GetComponent<BossEnemyNumController>();
                 bossNumController.EcardSetManager(this);
@@ -203,5 +211,30 @@ public class ECardSpawn : MonoBehaviour
     int GenerateEnemy()
     {
         return UnityEngine.Random.Range((int)hp[waves].min,(int)hp[waves].max+1);
+    }
+
+   public void Relic()
+    {
+        if (RelicNum() == 0)
+        {
+            FastSpeed = 1.2f;
+        }
+        if (RelicNum() == 1)
+        {
+            SlowSpeed = 0.8f;
+        }
+        if(RelicNum() == 2)
+        {
+            AttackDamage = 100;
+        }
+        if(RelicNum() == 3)
+        {
+            KnockBack = 5f;
+        }
+    }
+
+    int RelicNum()
+    {
+        return UnityEngine.Random.Range(0, 5);
     }
 }

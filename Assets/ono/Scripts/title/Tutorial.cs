@@ -26,7 +26,7 @@ public class Tutorial : MonoBehaviour
         }
         else
         {
-            Debug.Log("Tutorialオンページ" + OnPage);
+            //Debug.Log("Tutorialオンページ" + OnPage);
             button2.onClick.AddListener(ExitButton);
             button.enabled = false;
             Sbutton.enabled = false;
