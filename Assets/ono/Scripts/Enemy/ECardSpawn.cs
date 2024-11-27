@@ -184,8 +184,6 @@ public class ECardSpawn : MonoBehaviour
     {
         return UnityEngine.Random.Range((int)hp[waves].min,(int)hp[waves].max+1);
     }
-
-<<<<<<< HEAD
     private int DecideSpawnEnemy() //oŒ»‚·‚é“G‚ðŒˆ‚ß‚éŠÖ”
     {
         int enemyNum;
@@ -270,8 +268,6 @@ public class ECardSpawn : MonoBehaviour
 
         return lane;
     }
-
-=======
    public void Relic()
     {
         if (RelicNum() == 0)
@@ -296,5 +292,4 @@ public class ECardSpawn : MonoBehaviour
     {
         return UnityEngine.Random.Range(0, 5);
     }
->>>>>>> kanta
 }
