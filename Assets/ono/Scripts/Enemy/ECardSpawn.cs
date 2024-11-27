@@ -144,7 +144,6 @@ public class ECardSpawn : MonoBehaviour
             if (!SpawnedBoss)
             {
                 RelicNum();
-                Relic();
                 GameObject BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
                 BossEnemyNumController bossNumController = BossObj.GetComponent<BossEnemyNumController>();
                 bossNumController.EcardSetManager(this);
@@ -268,27 +267,7 @@ public class ECardSpawn : MonoBehaviour
 
         return lane;
     }
-   public void Relic()
-    {
-        if (RelicNum() == 0)
-        {
-            FastSpeed = 1.2f;
-        }
-        if (RelicNum() == 1)
-        {
-            SlowSpeed = 0.8f;
-        }
-        if(RelicNum() == 2)
-        {
-            AttackDamage = 100;
-        }
-        if(RelicNum() == 3)
-        {
-            KnockBack = 5f;
-        }
-    }
-
-    int RelicNum()
+    public int RelicNum()
     {
         return UnityEngine.Random.Range(0, 5);
     }

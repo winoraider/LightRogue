@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
         set { RelicObject = value; }
     }
 
+    EnemyMove enemyMove;
     EnemyNumController[] Enemys;
     BossEnemyNumController Boss;
     private void Update()
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
         }
         if (SlowTimer)
         {
+            enemyMove.Action = true;
             Slowcount += Time.deltaTime;
             if(Slowcount >= 5)
             {
@@ -143,6 +145,7 @@ public class GameManager : MonoBehaviour
         
         if (KnockBack)
         {
+            enemyMove.Action = true;
             Knockbackcount += Time.deltaTime;
             if(Knockbackcount >= 0.2)
             {

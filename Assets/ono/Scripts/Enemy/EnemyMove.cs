@@ -4,59 +4,51 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+    [SerializeField] private float force;
+    private bool action = false;
+    public bool Action
+    {
+        get { return action; }
+        set { action = value; }
+    }
 
 
-    GameManager gameM; //尾形いじった
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    EXPbar expbar;
-
-    [SerializeField]float force;
+    private GameManager gameM;
+    private EXPbar expbar;
     [SerializeField] private GameObject EXPPoint;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         expbar = FindObjectOfType<EXPbar>();
-        gameM = FindObjectOfType<GameManager>(); //尾形いじった
+        gameM = FindObjectOfType<GameManager>();
         
     }
     private void Update()
     {
-        if (gameObject.tag == "Boss" &&gameM.KnockBack)
-        {
-            rb.velocity = new Vector2(0, 10f);
-            return;
-        }
-        else if (gameM.KnockBack)
-        {
-            rb.velocity = new Vector2(0, 20f);
-            return;
-        }
-        if (gameM.SlowTimer)　//尾形いじった
-        {
-            rb.velocity = new Vector2(0, force * 0.8f);
-        }
-        else
+        if(!action)
         {
             rb.velocity = new Vector2(0, force);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
+        else
         {
-            //Debug.Log("あたった");
-            Destroy(this.gameObject);
+            HitPlayer();
         }
-
     }
-    private void OnDestroy()
+
+    private void HitPlayer()
     {
-        Instantiate(EXPPoint,transform.position, Quaternion.identity);　//尾形いじった 
-        if (gameObject.tag == "Boss")
+        if (gameM.KnockBack)
         {
-            gameM.RelicOb.SetActive(true);
+            rb.velocity = new Vector2(0, 20f);
+            action = false;
+            return;
+        }
+        if (gameM.SlowTimer)
+        { 
+            rb.velocity = new Vector2(0, force * 0.8f);
+            action = false;
         }
     }
 }
