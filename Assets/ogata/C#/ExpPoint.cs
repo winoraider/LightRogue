@@ -1,28 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 public class ExpPoint : MonoBehaviour
 {
-
+    [SerializeField] private Transform target;
     GameManager gameM;
     EXPbar ExpPos;
-
-    private float forcePow;
-
     Rigidbody2D rb;
-    private float veloX;
+    [SerializeField]
+    private float step;
 
     [SerializeField]
-    Vector2 force;
+    private float currentTime = 0;
+
+    Vector3 startPos;
+    Vector3 force;
+    private float startforce;
+    private float countDown = 0.8f;
 
     [SerializeField]
-    Vector2 forceDeb;
+    private GameObject effe;
 
-    float veloy;
-    float velox;
-    float forcex = 1.5f;
-    float forcey = 5;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,79 +42,38 @@ public class ExpPoint : MonoBehaviour
     {
         gameM = FindObjectOfType<GameManager>();
         transform.parent = GameObject.Find ("GameField").transform;
-        ExpPos = FindObjectOfType<EXPbar>();   
+        ExpPos = FindObjectOfType<EXPbar>();
         rb = GetComponent<Rigidbody2D>();
-        veloX = Random.Range(-5, 5);
-        rb.velocity = new Vector2(veloX,5);
-        veloy = 10;
-        velox = 10;
-        force = new Vector2(forcex, forcey);
+        target = ExpPos.transform;
+        startPos = transform.position;
+
+        startforce = Random.Range(-3, 3);
+        rb.velocity = new Vector2(startforce,6);
+        force = rb.velocity;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        force = new Vector2(forcex, forcey);
-        if(transform.position.x < ExpPos.transform.position.x + 1 && transform.position.x > ExpPos.transform.position.x - 1)
+        Instantiate(effe, transform.position, Quaternion.identity);
+        if (countDown > 0.2f)
         {
-            //Debug.Log("���E");
-            velox -= 10 * Time.deltaTime;
-            if(velox < 0)
-            {
-                velox = 0;
-            }
+            countDown -= Time.deltaTime;
+            rb.velocity = force * countDown;
+            startPos = transform.position;
         }
-        if (transform.position.y < ExpPos.transform.position.y + 1 && transform.position.y > ExpPos.transform.position.y - 1)
-        {
-            //Debug.Log("�㉺");
-            veloy -= 3 * Time.deltaTime;
-            if (veloy < 0)
-            {
-                veloy = 0;
-            }
+        else{
+            Effe();
         }
-
-        
-        if (transform.position.y < ExpPos.transform.position.y)
-        {
-            if (transform.position.x < ExpPos.transform.position.x)
-            {
-                force = new Vector2(forcex, forcey);
-            }
-            if (transform.position.x > ExpPos.transform.position.x)
-            {
-                force = new Vector2(-forcex, forcey);
-            }
-        }
-        if (transform.position.y > ExpPos.transform.position.y)
-        {
-            if (transform.position.x < ExpPos.transform.position.x)
-            {
-                force = new Vector2(forcex, -forcey);
-            }
-            if (transform.position.x > ExpPos.transform.position.x)
-            {
-                force = new Vector2(-forcex, -forcey);
-            }
-        }
-        rb.AddForce(force);
-        if(rb.velocity.y > veloy)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, veloy);
-        }
-        if (rb.velocity.y < -veloy)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, -veloy);
-        }
-        if (rb.velocity.x > velox)
-        {
-            rb.velocity = new Vector2(velox, rb.velocity.y);
-        }
-        if (rb.velocity.x < -velox)
-        {
-            rb.velocity = new Vector2(-velox, rb.velocity.y);
-        }
-        forceDeb = new Vector2(-rb.velocity.x, rb.velocity.y);
     }
-   
+    private void Effe()
+    {
+        {
+            currentTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPos, target.position, (currentTime*currentTime) / step);
+
+        }
+    }
+        
 }
