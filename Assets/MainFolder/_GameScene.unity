@@ -7489,8 +7489,13 @@ MonoBehaviour:
     max: 10
   LowMiddle: 30
   MiddleHigh: 60
-  Ebullet: {fileID: 8198817303411486090, guid: b94be3562985b7a439de762c81847494, type: 3}
+  Ebullet:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Boss: {fileID: 5491027799425340070, guid: 85365222f378a50489eb3d1774ca376d, type: 3}
+  maxRndEnemy: 12
+  normalEnemy: 10
   elapsedTime: 0
   durationTime: 5
   waves: 0
@@ -7498,6 +7503,10 @@ MonoBehaviour:
   timelimit: {fileID: 191044679}
   timer: {fileID: 0}
   Image1: {fileID: 0}
+  FastSpeed: 0
+  SlowSpeed: 0
+  AttackDamage: 0
+  KnockBack: 0
 --- !u!1 &1175215590
 GameObject:
   m_ObjectHideFlags: 0
@@ -10735,6 +10744,8 @@ MonoBehaviour:
   - {fileID: 264680727}
   RelicBonus: 0
   Relicstart: 0
+  Arrow: {fileID: 4463136238746128239, guid: 8b0b697dd0a223f45a27ce9f48c6e51d, type: 3}
+  CloneArrow: {fileID: 0}
 --- !u!114 &1636824447
 MonoBehaviour:
   m_ObjectHideFlags: 0
