@@ -10,6 +10,8 @@ public class RelicUi : MonoBehaviour
     Card card;
     CardSpawner spawner;
 
+    EventSystem eventSystem;
+
     [SerializeField]
     private GameObject CardUI;
 
@@ -51,11 +53,16 @@ public class RelicUi : MonoBehaviour
     private int Greennum;
     private int Bluenum;
 
+    [SerializeField]
+    public GameObject Arrow;
+    public GameObject CloneArrow;
+    private GameObject tmp;
     // Start is called before the first frame update
     void Start()
     {
         spawner = FindObjectOfType<CardSpawner>();
         gameM = FindObjectOfType<GameManager>();
+        eventSystem = FindObjectOfType<EventSystem>();
         OKButton.SetActive(false);
         gameObject.SetActive(false);
         Relicstart = true;
@@ -65,6 +72,24 @@ public class RelicUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (eventSystem.currentSelectedGameObject != null)
+        {
+            if (tmp != eventSystem.currentSelectedGameObject)
+            {
+                tmp = eventSystem.currentSelectedGameObject;
+                Vector2 evPos = eventSystem.currentSelectedGameObject.transform.position;
+                if (eventSystem.currentSelectedGameObject != GameObject.Find("GetButton"))
+                {
+
+                    if (CloneArrow != null)
+                    {
+                        Destroy(CloneArrow);
+                    }
+                    CloneArrow = Instantiate(Arrow, new Vector2(evPos.x, evPos.y + 180), Quaternion.identity);
+                    CloneArrow.transform.parent = gameObject.transform;
+                }
+            }
+        }
         if (Relicstart)
         {
 
@@ -352,6 +377,7 @@ public class RelicUi : MonoBehaviour
         Destroy(SpawButtan_01);
         Destroy(SpawButtan_02);
         Destroy(SpawButtan_03);
+        Destroy(CloneArrow);
         OKButton.SetActive(false);
         gameObject.SetActive(false);
     }
