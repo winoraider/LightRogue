@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class BossMove : MonoBehaviour
@@ -18,21 +19,42 @@ public class BossMove : MonoBehaviour
     [SerializeField] private float KnockBack;
 
     [SerializeField] private float elapsedTime;
-    [SerializeField] private float durationTime = 10f;
+    [SerializeField] private float durationTime = 1f;
 
-    ECardSpawn eCardSpawn;
-    EnemyMove enemyMove;
-    NumController numController;
+    [SerializeField] private float timer;
+
+    private float stopPositionY = 3f; 
+
+    [SerializeField]ECardSpawn eCard;
+    [SerializeField] Bullet bullet;
+
+    public void EcardSetManager(ECardSpawn eCardSpawn)
+    {
+        this.eCard = eCardSpawn;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         expbar = FindObjectOfType<EXPbar>();
         gameM = FindObjectOfType<GameManager>();
     }
-    private void Update()
+    void Update()
     {
-        BossRelic();
-        PlayerHitBoss();
+        if(transform.position.y <= stopPositionY)
+        {
+            transform.position = new Vector2(0, 3);
+        }
+        eCard.bossRelicNum = 2;
+        if(eCard.BOSS)
+        {
+            //Debug.Log("移動スクリプトのNum" + eCard.bossRelicNum);
+            BossRelic();
+            PlayerHitBoss();
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, force);
+        }
     }
 
     void PlayerHitBoss()
@@ -40,50 +62,50 @@ public class BossMove : MonoBehaviour
         if (gameM.KnockBack)
         {
             rb.velocity = new Vector2(0, 10f);
-            enemyMove.Action = false;
             return;
         }
-        if (gameM.SlowTimer)　//尾形いじった
+        if (gameM.SlowTimer)
         {
             rb.velocity = new Vector2(0, force * 0.8f);
-            enemyMove.Action = false;
         }
     }
 
-    private void BossRelic()
+    void BossRelic()
     {
-        if (eCardSpawn.RelicNum() == 0)
+        if (eCard.bossRelicNum == 0)
         {
-            //Debug.Log("ボスのスピードレリック");
             FastSpeed = 1.2f;
             rb.velocity = new Vector2(0, force * FastSpeed);
         }
-        if (eCardSpawn.RelicNum() == 1)
+        if (eCard.bossRelicNum == 1)
         {
-            //Debug.Log("ボスのスローレリック");
             SlowSpeed = 0.8f;
             rb.velocity = new Vector2(0, force * SlowSpeed);
         }
-        if (eCardSpawn.RelicNum() == 2)
+        if (eCard.bossRelicNum == 2)
         {
-            //Debug.Log("ボスの攻撃100レリック");
+            rb.velocity = new Vector2(0, force);
+
             elapsedTime += Time.deltaTime;
             if(elapsedTime >= durationTime)
             {
                 AttackDamage = 100;
-                numController.biggerPower -= AttackDamage;
+                bullet.numBullet -= AttackDamage;
                 elapsedTime = 0;
+                Debug.Log("aaa");
             }
         }
-        if (eCardSpawn.RelicNum() == 3)
+        if (eCard.bossRelicNum == 3)
         {
-            //Debug.Log("ボスのノックバックレリック");
+            rb.velocity = new Vector2(0, -1f);
+
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= durationTime)
             {
-                KnockBack = -20f;
-                rb.velocity = new Vector2(0, KnockBack);
+                KnockBack = -0.1f;
+                rb.velocity = new Vector2(0, force * KnockBack);
                 elapsedTime = 0;
+                Debug.Log("bbb");
             }
         }
     }

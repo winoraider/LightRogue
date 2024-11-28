@@ -248,8 +248,8 @@ GameObject:
   - component: {fileID: 9086530843853989167}
   - component: {fileID: 5106253661639571808}
   - component: {fileID: -3883680660421008999}
-  - component: {fileID: 8884570423725720617}
   - component: {fileID: 7536358242637622514}
+  - component: {fileID: -4849979001010631583}
   m_Layer: 9
   m_Name: Boss
   m_TagString: Boss
@@ -397,26 +397,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &8884570423725720617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5491027799425340070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57cfa586c04892a4784d6ff8af0a6d93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
-  force: 0
-  FastSpeed: 0
-  SlowSpeed: 0
-  AttackDamage: 0
-  KnockBack: 0
-  elapsedTime: 0
-  durationTime: 10
 --- !u!114 &7536358242637622514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,3 +413,26 @@ MonoBehaviour:
   eCard: {fileID: 0}
   BossText: {fileID: 8518988392005881009}
   timelimit: {fileID: 0}
+--- !u!114 &-4849979001010631583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491027799425340070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cfa586c04892a4784d6ff8af0a6d93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
+  force: -1
+  FastSpeed: 0
+  SlowSpeed: 0
+  AttackDamage: 0
+  KnockBack: 0
+  elapsedTime: 0
+  durationTime: 5
+  timer: 0
+  eCard: {fileID: 0}
+  bullet: {fileID: 3817145226735011015, guid: 85eec827990b6b24484c6ba8c7397f7e, type: 3}

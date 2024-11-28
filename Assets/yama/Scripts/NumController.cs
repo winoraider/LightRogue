@@ -10,6 +10,12 @@ public class NumController : MonoBehaviour
     bool hitNow = false;
     bool bosshit = false;
     private float pPower;
+    public float PPower
+    {
+        get { return pPower; }
+        set { pPower = value; }
+    }
+
     [SerializeField] GameObject pBullet;
     public float biggerPower;
     bool receiveTwice = false;//É_ÉÅÅ[ÉWÇìÒî{éÛÇØÇÈÇ©Ç«Ç§Ç©
@@ -17,10 +23,10 @@ public class NumController : MonoBehaviour
 
     private EnemyNumController enemyNumController;
     private BossEnemyNumController bossEnemyNumController;
+    private BossMove bossMove;
 
     GameObject aManager;
     AudioManager AudioManager;
-
     void Start()
     {
         bullet = GetComponent<Bullet>();

@@ -27,7 +27,7 @@ public class EnemyMove : MonoBehaviour
     }
     private void Update()
     {
-        if(!action)
+        if (!action)
         {
             rb.velocity = new Vector2(0, force);
         }
