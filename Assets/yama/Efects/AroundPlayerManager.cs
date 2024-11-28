@@ -7,6 +7,7 @@ public class AroundPlayerManager : MonoBehaviour
     [SerializeField] private AroundPlayer redAround;
     [SerializeField] private AroundPlayer greenAround;
     [SerializeField] private AroundPlayer blueAround;
+    [SerializeField] private Bullet bullet;
 
     private bool isRed = false;
     private bool isGreen = false;
@@ -16,37 +17,40 @@ public class AroundPlayerManager : MonoBehaviour
 
     private void Update()
     {
-        /*if (gameManager.isRed)
+        if (bullet.isRed)
         {
             RedActivate();
         }
-        if (gameManager.isGreen)
+        if (bullet.isGreen)
         {
             GreenActivate();
         }
-        if (gameManager.isBlue)
+        if (bullet.isBlue)
         {
             BlueActivate();
-        }*/
-        if (Input.GetKeyDown(KeyCode.I)) RedActivate();
-        if (Input.GetKeyDown(KeyCode.O)) BlueActivate(); 
-        if (Input.GetKeyDown(KeyCode.P)) GreenActivate(); 
+        }
+        //if (Input.GetKeyDown(KeyCode.I)) RedActivate();
+        //if (Input.GetKeyDown(KeyCode.O)) BlueActivate(); 
+        //if (Input.GetKeyDown(KeyCode.P)) GreenActivate(); 
     }
 
     public void RedActivate()
     {
+        if(isRed) return;
         redAround.Active();
         isRed = true;
         CheckCount();
     }
     public void GreenActivate()
     {
+        if (isGreen) return;
         greenAround.Active();
         isGreen = true;
         CheckCount();
     }
     public void BlueActivate()
     {
+        if (isBlue) return;
         blueAround.Active();    
         isBlue = true;
         CheckCount();
