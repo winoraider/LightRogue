@@ -51,4 +51,8 @@ public class EnemyMove : MonoBehaviour
             action = false;
         }
     }
+    void OnDestroy()
+    {
+        Instantiate(EXPPoint, transform.position, Quaternion.identity);Å@//îˆå`Ç¢Ç∂Ç¡ÇΩ 
+    }
 }
