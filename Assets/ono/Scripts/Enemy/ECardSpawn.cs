@@ -157,9 +157,9 @@ public class ECardSpawn : MonoBehaviour
             if (!SpawnedBoss)
             {
                 RelicNum();
-                Debug.Log("RelicNum" + RelicNum());
+                //Debug.Log("RelicNum" + RelicNum());
                 BossRelicNum = RelicNum();
-                Debug.Log("•ÏŠ·Œã‚ÌRelicNum" + BossRelicNum);
+                //Debug.Log("•ÏŠ·Œã‚ÌRelicNum" + BossRelicNum);
 
                 BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
                 BossEnemyNumController bossNumController = BossObj.GetComponent<BossEnemyNumController>();

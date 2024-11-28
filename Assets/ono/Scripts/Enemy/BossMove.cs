@@ -44,7 +44,6 @@ public class BossMove : MonoBehaviour
         {
             transform.position = new Vector2(0, 3);
         }
-        eCard.bossRelicNum = 2;
         if(eCard.BOSS)
         {
             //Debug.Log("移動スクリプトのNum" + eCard.bossRelicNum);
@@ -92,7 +91,7 @@ public class BossMove : MonoBehaviour
                 AttackDamage = 100;
                 bullet.numBullet -= AttackDamage;
                 elapsedTime = 0;
-                Debug.Log("aaa");
+                //Debug.Log("aaa");
             }
         }
         if (eCard.bossRelicNum == 3)
@@ -105,7 +104,7 @@ public class BossMove : MonoBehaviour
                 KnockBack = -0.1f;
                 rb.velocity = new Vector2(0, force * KnockBack);
                 elapsedTime = 0;
-                Debug.Log("bbb");
+                //Debug.Log("bbb");
             }
         }
     }
