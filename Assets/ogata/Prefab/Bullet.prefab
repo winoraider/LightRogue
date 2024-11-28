@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8923264444113424306}
   m_Layer: 6
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pBullet: {fileID: 1451187787789374251}
   biggerPower: 0
+  BossObj: {fileID: 5491027799425340070, guid: 85365222f378a50489eb3d1774ca376d, type: 3}
 --- !u!1 &1560042517347780248
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class AroundPlayer : MonoBehaviour
     {
         if (!isActive) return;
         //transform.position = center.transform.position;
-        Debug.Log(center.transform.position);
+        //Debug.Log(center.transform.position);
         around.localPosition = RotateAroundZ(center.transform.position, angle, radius);
         angle += angleSpeed * Time.deltaTime;
     }
