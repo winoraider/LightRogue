@@ -105,9 +105,9 @@ public class Bullet : MonoBehaviour
         ThisColor();　//カラーの表示をする
         numText.text = "" + nBToText;　//弾に数字を表示させる
 
-        if (this.gameObject.transform.position.y > 3.5f)
+        if (this.gameObject.transform.position.y > 2.5f)
         {
-            transform.position = new Vector2(transform.position.x,3.5f);
+            transform.position = new Vector2(transform.position.x,2.5f);
         }
         else
         {

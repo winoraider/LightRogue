@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyMove : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class EnemyMove : MonoBehaviour
     private GameManager gameM;
     private EXPbar expbar;
     [SerializeField] private GameObject EXPPoint;
+    private float DeadLineYpos = -2.35f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,4 +58,12 @@ public class EnemyMove : MonoBehaviour
     {
         Instantiate(EXPPoint, transform.position, Quaternion.identity);Å@//îˆå`Ç¢Ç∂Ç¡ÇΩ 
     }
+    void GameOver()
+    {
+        if (transform.position.y <= DeadLineYpos + 0.5f)
+        {
+            SceneManager.LoadScene("_TitleScene");
+        }
+    }
+
 }

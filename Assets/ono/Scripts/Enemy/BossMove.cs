@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossMove : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class BossMove : MonoBehaviour
 
     [SerializeField] private float timer;
 
-    private float stopPositionY = 3f; 
+    private float stopPositionY = 3f;
+    private float DeadLineYpos = -2.35f;
 
     [SerializeField]ECardSpawn eCard;
     [SerializeField] Bullet bullet;
@@ -40,20 +42,18 @@ public class BossMove : MonoBehaviour
     }
     void Update()
     {
-        if(transform.position.y <= stopPositionY)
+        /*if(transform.position.y <= stopPositionY)
         {
             transform.position = new Vector2(0, 3);
-        }
-        if(eCard.BOSS)
+        }*/
+        if (eCard.BOSS)
         {
             //Debug.Log("移動スクリプトのNum" + eCard.bossRelicNum);
-            BossRelic();
+            //BossRelic();
             PlayerHitBoss();
+            rb.velocity = new Vector2(0, force * Time.deltaTime);
         }
-        else
-        {
-            rb.velocity = new Vector2(0, force);
-        }
+        GameOver();
     }
 
     void PlayerHitBoss()
@@ -69,7 +69,8 @@ public class BossMove : MonoBehaviour
         }
     }
 
-    void BossRelic()
+#if false
+void BossRelic()
     {
         if (eCard.bossRelicNum == 0)
         {
@@ -108,9 +109,18 @@ public class BossMove : MonoBehaviour
             }
         }
     }
+#endif
     void OnDestroy()
     {
         Instantiate(EXPPoint, transform.position, Quaternion.identity);　//尾形いじった 
         gameM.RelicOb.SetActive(true);
+    }
+
+    void GameOver()
+    {
+        if(transform.position.y <= DeadLineYpos + 0.75f)
+        {
+            SceneManager.LoadScene("_TitleScene");
+        }
     }
 }
