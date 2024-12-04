@@ -7,7 +7,7 @@ using TMPro;
 
 public class EnemyNumController : MonoBehaviour
 {
-    private float nowPower;
+    [SerializeField] private float nowPower;
     public float NowPower
     {
         get { return this.nowPower; }
@@ -35,6 +35,7 @@ public class EnemyNumController : MonoBehaviour
         pToText = Mathf.CeilToInt(nowPower);
         if (nowPower <= 0f)
         {
+
             Destroy(gameObject);
             eCard.ECount += -1;
             //Debug.Log("ecount -1 ");

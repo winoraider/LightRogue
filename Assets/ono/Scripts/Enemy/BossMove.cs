@@ -42,14 +42,8 @@ public class BossMove : MonoBehaviour
     }
     void Update()
     {
-        /*if(transform.position.y <= stopPositionY)
-        {
-            transform.position = new Vector2(0, 3);
-        }*/
         if (eCard.BOSS)
         {
-            //Debug.Log("移動スクリプトのNum" + eCard.bossRelicNum);
-            //BossRelic();
             PlayerHitBoss();
             rb.velocity = new Vector2(0, force * Time.deltaTime);
         }
@@ -112,7 +106,7 @@ void BossRelic()
 #endif
     void OnDestroy()
     {
-        Instantiate(EXPPoint, transform.position, Quaternion.identity);　//尾形いじった 
+        Instantiate(EXPPoint, transform.position, Quaternion.identity);
         gameM.RelicOb.SetActive(true);
     }
 
@@ -120,7 +114,7 @@ void BossRelic()
     {
         if(transform.position.y <= DeadLineYpos + 0.75f)
         {
-            SceneManager.LoadScene("_TitleScene");
+            SceneManager.LoadScene("TitleScene");
         }
     }
 }

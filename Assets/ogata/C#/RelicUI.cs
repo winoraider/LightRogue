@@ -102,7 +102,7 @@ public class RelicUi : MonoBehaviour
                     RelicRandom = UnityEngine.Random.Range(0, RelicButtans.Count);
                     if (usedcard[RelicRandom] == true || RelicButtans[RelicRandom] == null)
                     {
-                        Debug.Log("すでに出た値"+RelicRandom);
+                        //Debug.Log("すでに出た値"+RelicRandom);
                         continue;
                     }
                     switch (i)
@@ -111,20 +111,20 @@ public class RelicUi : MonoBehaviour
                             SpawButtan_01 = Instantiate(RelicButtans[RelicRandom], Spawner_01.transform.position, Quaternion.identity);
                             SpawButtan_01.transform.parent = gameObject.transform;
                             usedcard[RelicRandom] = true;
-                            Debug.Log("1出た値" + RelicRandom);
+                            //Debug.Log("1出た値" + RelicRandom);
                             break;
                         case 1:
                             SpawButtan_02 = Instantiate(RelicButtans[RelicRandom], Spawner_02.transform.position, Quaternion.identity);
                             SpawButtan_02.transform.parent = gameObject.transform;
                             usedcard[RelicRandom] = true;
 
-                            Debug.Log("2出た値" + RelicRandom);
+                            //Debug.Log("2出た値" + RelicRandom);
                             break;
                         case 2:
                             SpawButtan_03 = Instantiate(RelicButtans[RelicRandom], Spawner_03.transform.position, Quaternion.identity);
                             SpawButtan_03.transform.parent = gameObject.transform;
                             usedcard[RelicRandom] = true;
-                            Debug.Log("3出た値" + RelicRandom);
+                            //Debug.Log("3出た値" + RelicRandom);
                             break;
                         default:
 

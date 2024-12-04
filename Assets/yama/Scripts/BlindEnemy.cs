@@ -10,40 +10,43 @@ public class BlindEnemy : MonoBehaviour
 
     void Start()
     {
-        toRed = Random.Range(0, 2) == 0;//toRed、toBlue、toGreenのtrue,falseを最初に決める
-        toBlue = Random.Range(0, 2) == 0;
-        toGreen = Random.Range(0, 2) == 0;
+        while (toBlue == false && toRed == false && toGreen == false)
+        {
+            toRed = Random.Range(0, 2) == 0;//toRed、toBlue、toGreenのtrue,falseを最初に決める
+            toBlue = Random.Range(0, 2) == 0;
+            toGreen = Random.Range(0, 2) == 0;
+        }
     }
 
     void Update()//何色キラーかわからせるためのUI表示をする
     {
         if(toRed &&  toGreen && toBlue)
         {
-            //Debug.Log("ホワイト");
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);　//赤表示
         }
         else if(!toRed && toGreen && toBlue)
         {
-            //Debug.Log("シアン");
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 1, 1, 1);　//赤表示
         }
         else if (toRed && !toGreen && toBlue)
         {
-            //Debug.Log("マゼンタ");
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 1, 1);　//赤表示
         }
         else if (toRed && toGreen && !toBlue)
         {
-            //Debug.Log("イエロー");
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 0, 1);　//赤表示
         }
         else if (!toRed && !toGreen && toBlue)
         {
-            //Debug.Log("ブルー");
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 1);　//赤表示
         }
         else if (toRed && !toGreen && !toBlue)
         {
-            //Debug.Log("レッド");
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);　//赤表示
         }
         else if (!toRed && toGreen && !toBlue)
         {
-            //Debug.Log("グリーン");
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);　//赤表示
         }
     }
 }

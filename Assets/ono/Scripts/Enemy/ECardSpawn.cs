@@ -169,10 +169,12 @@ public class ECardSpawn : MonoBehaviour
                 bossMove.EcardSetManager(this);
                 currentBoss++;
                 SpawnedBoss = true;
-            }else if(DeadBoss)
+            }
+            if(DeadBoss)
             {
                 timelimit.Minutes = 1;
                 Image1.fillAmount = 0f;
+                //Debug.Log("DeadBoss" + DeadBoss);
                 DeadBoss = false;
             }
         }

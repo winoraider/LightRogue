@@ -38,9 +38,9 @@ public class BossEnemyNumController : MonoBehaviour
         BossToText = Mathf.CeilToInt(bossnowPower);
         if (bossnowPower <= 0f)
         {
-            Destroy(gameObject);
-            eCard.BOSS = false;
             eCard.deadBoss = true;
+            eCard.BOSS = false;
+            Destroy(gameObject);
         }
         BossText.text = "" + BossToText;
     }

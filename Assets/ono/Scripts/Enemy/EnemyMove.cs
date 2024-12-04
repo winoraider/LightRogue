@@ -38,6 +38,7 @@ public class EnemyMove : MonoBehaviour
         {
             HitPlayer();
         }
+        GameOver();
     }
 
     private void HitPlayer()
@@ -56,13 +57,13 @@ public class EnemyMove : MonoBehaviour
     }
     void OnDestroy()
     {
-        Instantiate(EXPPoint, transform.position, Quaternion.identity);Å@//îˆå`Ç¢Ç∂Ç¡ÇΩ 
+        Instantiate(EXPPoint, transform.position, Quaternion.identity);
     }
     void GameOver()
     {
-        if (transform.position.y <= DeadLineYpos + 0.5f)
+        if (transform.position.y <= DeadLineYpos + 0.38f)
         {
-            SceneManager.LoadScene("_TitleScene");
+            SceneManager.LoadScene("TitleScene");
         }
     }
 

@@ -48,15 +48,16 @@ public class NumController : MonoBehaviour
         if (hit)
         {
             AudioManager.RedurcePlay();
+            //“G‚ğæ‚Éí‚é
+            enemyNumController.NowPower -= biggerPower / 3 * Time.deltaTime; //“G‚ÌHP‚ğí‚é
             if (receiveTwice)//“ñ”{‚­‚ç‚¤
             {
-                bullet.numBullet -= biggerPower * 2;
+                bullet.numBullet -= biggerPower / 3 * 2 * Time.deltaTime;
             }
             else
             {
                 bullet.numBullet -= biggerPower / 3 * Time.deltaTime;
             }
-            enemyNumController.NowPower -= biggerPower / 3 * Time.deltaTime;
         }
 
         if(bosshit)
