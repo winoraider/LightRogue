@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,14 +16,18 @@ public class EXPbar : MonoBehaviour
 
     [SerializeField]
     private GameObject LevelUpUi;
-    // Start is called before the first frame update
+
+    private int LevelCount = 0;
+    public int levelCount
+    {
+        get { return LevelCount; }
+        set { LevelCount = value; }
+    }
     void Start()
     {
         slider = GetComponent<Slider>();
         gameM = FindObjectOfType<GameManager>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         slider.value = nowExp / gameM.NeedEXP;
@@ -40,6 +45,7 @@ public class EXPbar : MonoBehaviour
             gameM.PlayerLevel++;
             nowExp = nowExp % gameM.NeedEXP;
             gameM.NeedEXP += gameM.AddNeedEXP;
+            LevelCount++;
             Time.timeScale = 0;
         }
     }

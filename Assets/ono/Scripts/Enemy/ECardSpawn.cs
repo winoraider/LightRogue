@@ -94,6 +94,13 @@ public class ECardSpawn : MonoBehaviour
         get { return BossObj; }
         set { BossObj = value; }
     }
+
+    private GameObject EnemyObj;
+    public GameObject enemyObj
+    {
+        get { return EnemyObj; }
+        set { EnemyObj = value; }
+    }
     private int currentBoss = 0;
 
     public float FastSpeed;
@@ -120,11 +127,11 @@ public class ECardSpawn : MonoBehaviour
                 //Debug.Log("èoåªèÍèä:" + r + "LowMiddle:" + LowMiddle + "MiddleHigh" + MiddleHigh + "rnd:" + rnd);
                 elapsedTime = 0.0f;
                 float enemyValue = GenerateEnemy();
-                GameObject enemyObj = Instantiate(Ebullet[DecideSpawnEnemy()], eSpawmers[SpawnLaneManager()].transform.position, Quaternion.identity);
-                EnemyNumController enemyNumController = enemyObj.GetComponent<EnemyNumController>();
+                EnemyObj = Instantiate(Ebullet[DecideSpawnEnemy()], eSpawmers[SpawnLaneManager()].transform.position, Quaternion.identity);
+                EnemyNumController enemyNumController = EnemyObj.GetComponent<EnemyNumController>();
                 enemyNumController.SetManager(this);
                 enemyNumController.NowPower = enemyValue;
-                enemyObj.transform.localScale = scale * (0.8f + 0.4f * enemyValue / hp[waves].max);
+                EnemyObj.transform.localScale = scale * (0.8f + 0.4f * enemyValue / hp[waves].max);
                 eCount++;
             }
 
@@ -156,9 +163,9 @@ public class ECardSpawn : MonoBehaviour
         {
             if (!SpawnedBoss)
             {
-                RelicNum();
+                //RelicNum();
                 //Debug.Log("RelicNum" + RelicNum());
-                BossRelicNum = RelicNum();
+                //BossRelicNum = RelicNum();
                 //Debug.Log("ïœä∑å„ÇÃRelicNum" + BossRelicNum);
 
                 BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
@@ -188,7 +195,6 @@ public class ECardSpawn : MonoBehaviour
             elapsedTime = 0;
             durationTime = 100.0f;
             boss = true;
-            RelicNum();
         }
         else
         {
@@ -289,8 +295,8 @@ public class ECardSpawn : MonoBehaviour
 
         return lane;
     }
-    public int RelicNum()
-    {
-        return UnityEngine.Random.Range(0, 4);
-    }
+    //public int RelicNum()
+    //{
+    //   return UnityEngine.Random.Range(0, 4);
+    //}
 }

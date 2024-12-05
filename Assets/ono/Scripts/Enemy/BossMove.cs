@@ -25,7 +25,6 @@ public class BossMove : MonoBehaviour
     [SerializeField] private float timer;
 
     private float stopPositionY = 3f;
-    private float DeadLineYpos = -2.35f;
 
     [SerializeField]ECardSpawn eCard;
     [SerializeField] Bullet bullet;
@@ -47,7 +46,6 @@ public class BossMove : MonoBehaviour
             PlayerHitBoss();
             rb.velocity = new Vector2(0, force * Time.deltaTime);
         }
-        GameOver();
     }
 
     void PlayerHitBoss()
@@ -108,13 +106,5 @@ void BossRelic()
     {
         Instantiate(EXPPoint, transform.position, Quaternion.identity);
         gameM.RelicOb.SetActive(true);
-    }
-
-    void GameOver()
-    {
-        if(transform.position.y <= DeadLineYpos + 0.75f)
-        {
-            SceneManager.LoadScene("TitleScene");
-        }
     }
 }

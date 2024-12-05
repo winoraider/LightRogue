@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 5166771952251710112}
   - component: {fileID: 127502286347666719}
   - component: {fileID: 6641983997559089491}
+  - component: {fileID: 4257050315916118710}
   m_Layer: 8
   m_Name: BlindEnemy
   m_TagString: Untagged
@@ -424,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2272735e73cbdff4aa7a2ff978fbec53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nowPower: 0
   eCard: {fileID: 0}
   normalenemyText: {fileID: 3568645350775850105}
 --- !u!114 &6641983997559089491
@@ -441,3 +443,15 @@ MonoBehaviour:
   toRed: 0
   toGreen: 0
   toBlue: 0
+--- !u!114 &4257050315916118710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8198817303411486090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6266e6a2472721e46ad70b25fbab81bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -19,7 +19,6 @@ public class EnemyMove : MonoBehaviour
     private GameManager gameM;
     private EXPbar expbar;
     [SerializeField] private GameObject EXPPoint;
-    private float DeadLineYpos = -2.35f;
 
     void Start()
     {
@@ -38,7 +37,6 @@ public class EnemyMove : MonoBehaviour
         {
             HitPlayer();
         }
-        GameOver();
     }
 
     private void HitPlayer()
@@ -59,12 +57,4 @@ public class EnemyMove : MonoBehaviour
     {
         Instantiate(EXPPoint, transform.position, Quaternion.identity);
     }
-    void GameOver()
-    {
-        if (transform.position.y <= DeadLineYpos + 0.38f)
-        {
-            SceneManager.LoadScene("TitleScene");
-        }
-    }
-
 }

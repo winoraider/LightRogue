@@ -248,8 +248,9 @@ GameObject:
   - component: {fileID: 4397034037506509758}
   - component: {fileID: 6292402381085758740}
   - component: {fileID: 1358493465762959874}
-  - component: {fileID: 5166771952251710112}
   - component: {fileID: 127502286347666719}
+  - component: {fileID: 5166771952251710112}
+  - component: {fileID: -6452160980698595685}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -397,6 +398,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &127502286347666719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8198817303411486090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2272735e73cbdff4aa7a2ff978fbec53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nowPower: 0
+  eCard: {fileID: 0}
+  normalenemyText: {fileID: 3568645350775850105}
 --- !u!114 &5166771952251710112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: -1
   EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
---- !u!114 &127502286347666719
+--- !u!114 &-6452160980698595685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -420,9 +436,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8198817303411486090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2272735e73cbdff4aa7a2ff978fbec53, type: 3}
+  m_Script: {fileID: 11500000, guid: 6266e6a2472721e46ad70b25fbab81bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comparePower: 0
-  eCard: {fileID: 0}
-  normalenemyText: {fileID: 3568645350775850105}
