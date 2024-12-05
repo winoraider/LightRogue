@@ -32,12 +32,8 @@ public class Result : MonoBehaviour
     {
         if (!Opend)
         {
-            currentTime += Time.deltaTime;
-            if (currentTime >= durationTime)
-            {
-                GameOver gameover = eCard.enemyObj.GetComponent<GameOver>();
-                gameover.ResultSetManager(this);
-            }
+            GameOver gameover = eCard.enemyObj.GetComponent<GameOver>();
+            gameover.ResultSetManager(this);
             CountTimer();
             LevelCount();
         }else
