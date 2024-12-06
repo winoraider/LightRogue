@@ -132,8 +132,8 @@ public class ECardSpawn : MonoBehaviour
                 EnemyNumController enemyNumController = EnemyObj.GetComponent<EnemyNumController>();
                 enemyNumController.SetManager(this);
 
-                GameOver gameover = EnemyObj.GetComponent<GameOver>();
-                gameover.ResultSetManager(result);
+                GameOverVersion gameOverVersion = EnemyObj.GetComponent<GameOverVersion>();
+                gameOverVersion.ResultSetManager(result);
 
                 enemyNumController.NowPower = enemyValue;
                 EnemyObj.transform.localScale = scale * (0.8f + 0.4f * enemyValue / hp[waves].max);

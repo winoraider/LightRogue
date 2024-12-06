@@ -68,4 +68,8 @@ public class Result : MonoBehaviour
         level.levelCount = expBar.levelCount;
         LevelText.text = level.levelCount.ToString("");
     }
+
+    void MaxEnergy()
+    {
+    }
 }

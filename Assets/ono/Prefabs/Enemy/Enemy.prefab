@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 1358493465762959874}
   - component: {fileID: 127502286347666719}
   - component: {fileID: 5166771952251710112}
-  - component: {fileID: 4031957463926547553}
+  - component: {fileID: -6782288545777218078}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -428,7 +428,7 @@ MonoBehaviour:
   force: -1
   EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
   enemyNumController: {fileID: 127502286347666719}
---- !u!114 &4031957463926547553
+--- !u!114 &-6782288545777218078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8198817303411486090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6266e6a2472721e46ad70b25fbab81bb, type: 3}
+  m_Script: {fileID: 11500000, guid: d448ec29cd0455d46b98a349c740b627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   result: {fileID: 0}
