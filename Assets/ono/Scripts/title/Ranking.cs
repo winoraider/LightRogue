@@ -15,6 +15,8 @@ public class Ranking : MonoBehaviour
     [SerializeField] Button Tbutton;
     [SerializeField] Button Obutton;
 
+    [SerializeField] RankingText rankingText;
+
     private void Update()
     {
         if (!OnPage)
@@ -24,6 +26,8 @@ public class Ranking : MonoBehaviour
             Sbutton.enabled = true;
             Tbutton.enabled = true;
             Obutton.enabled = true;
+            rankingText.onText = true;
+            //Debug.Log("RanOnText" + rankingText.onText); 
         }
         else
         {

@@ -13,12 +13,19 @@ public class EnemyMove : MonoBehaviour
         set { action = value; }
     }
 
-
     private Rigidbody2D rb;
 
     private GameManager gameM;
     private EXPbar expbar;
+
     [SerializeField] private GameObject EXPPoint;
+    public GameObject expPoint
+    {
+        get { return EXPPoint; }
+        set { EXPPoint = value; }
+    }
+
+    [SerializeField] EnemyNumController enemyNumController;
 
     void Start()
     {
@@ -37,6 +44,8 @@ public class EnemyMove : MonoBehaviour
         {
             HitPlayer();
         }
+        
+        GetExp();
     }
 
     private void HitPlayer()
@@ -53,8 +62,12 @@ public class EnemyMove : MonoBehaviour
             action = false;
         }
     }
-    void OnDestroy()
+
+    void GetExp()
     {
-        Instantiate(EXPPoint, transform.position, Quaternion.identity);
+        if(enemyNumController.NowPower <= 0)
+        {
+            Instantiate(EXPPoint, transform.position, Quaternion.identity);
+        }
     }
 }

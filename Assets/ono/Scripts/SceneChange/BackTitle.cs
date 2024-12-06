@@ -13,8 +13,13 @@ public class BackTitle : MonoBehaviour
         button.onClick.AddListener(ClickButton);
     }
 
+    private void Update()
+    {
+        
+    }
+
     void ClickButton()
     {
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("_TitleScene");
     }
 }

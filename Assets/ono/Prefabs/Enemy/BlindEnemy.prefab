@@ -251,10 +251,10 @@ GameObject:
   - component: {fileID: 5166771952251710112}
   - component: {fileID: 127502286347666719}
   - component: {fileID: 6641983997559089491}
-  - component: {fileID: 4257050315916118710}
+  - component: {fileID: -8734064905455580974}
   m_Layer: 8
   m_Name: BlindEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: -1
   EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
+  enemyNumController: {fileID: 127502286347666719}
 --- !u!114 &127502286347666719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,7 +444,7 @@ MonoBehaviour:
   toRed: 0
   toGreen: 0
   toBlue: 0
---- !u!114 &4257050315916118710
+--- !u!114 &-8734064905455580974
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -455,3 +456,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6266e6a2472721e46ad70b25fbab81bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  result: {fileID: 0}

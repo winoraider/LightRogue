@@ -248,12 +248,12 @@ GameObject:
   - component: {fileID: 4397034037506509758}
   - component: {fileID: 6292402381085758740}
   - component: {fileID: 1358493465762959874}
-  - component: {fileID: 5166771952251710112}
   - component: {fileID: 127502286347666719}
-  - component: {fileID: 3778232295835683907}
+  - component: {fileID: 5166771952251710112}
+  - component: {fileID: 755435752702738818}
   m_Layer: 8
   m_Name: FastEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,20 +398,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &5166771952251710112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8198817303411486090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df1461d4084f80547aff64088d66c863, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: -1.2
-  EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
 --- !u!114 &127502286347666719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +413,22 @@ MonoBehaviour:
   nowPower: 0
   eCard: {fileID: 0}
   normalenemyText: {fileID: 3568645350775850105}
---- !u!114 &3778232295835683907
+--- !u!114 &5166771952251710112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8198817303411486090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1461d4084f80547aff64088d66c863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: -1.2
+  EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
+  enemyNumController: {fileID: 127502286347666719}
+--- !u!114 &755435752702738818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -439,3 +440,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6266e6a2472721e46ad70b25fbab81bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  result: {fileID: 0}

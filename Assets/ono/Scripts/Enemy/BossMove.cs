@@ -12,6 +12,11 @@ public class BossMove : MonoBehaviour
     GameManager gameM;
     EXPbar expbar;
     [SerializeField] private GameObject EXPPoint;
+    public GameObject expPoint
+    {
+        get { return EXPPoint; }
+        set { EXPPoint = value; }
+    }
 
     [SerializeField] float force;
     [SerializeField]private float FastSpeed;
@@ -28,6 +33,7 @@ public class BossMove : MonoBehaviour
 
     [SerializeField]ECardSpawn eCard;
     [SerializeField] Bullet bullet;
+    [SerializeField]BossEnemyNumController bossEnemyNumController;
 
     public void EcardSetManager(ECardSpawn eCardSpawn)
     {
@@ -102,9 +108,12 @@ void BossRelic()
         }
     }
 #endif
-    void OnDestroy()
+    void GetExp()
     {
-        Instantiate(EXPPoint, transform.position, Quaternion.identity);
-        gameM.RelicOb.SetActive(true);
+        if(bossEnemyNumController.BossNowPower <= 0)
+        {
+            Instantiate(EXPPoint, transform.position, Quaternion.identity);
+            gameM.RelicOb.SetActive(true);
+        }
     }
 }

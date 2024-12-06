@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using TMPro;
 
+public  static class timer
+{
+    public static float second = 0;
+    public static int minute = 0;
+}
+public static class level
+{
+    public static int levelCount = 0;
+}
 public class Result : MonoBehaviour
 {
     [SerializeField] ECardSpawn eCard;
     [SerializeField] EXPbar expBar;
+    [SerializeField] GameOver gameOver;
 
     [SerializeField] GameObject ResultObj;
 
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI LevelText;
     [SerializeField] TextMeshProUGUI MaxEnergyText;
-
-    private float second = 0;
-    private int minute = 0;
 
     private float currentTime = 0f;
     private float durationTime = 5f;
@@ -28,12 +34,11 @@ public class Result : MonoBehaviour
         get { return Opend; }
         set { Opend = value; }
     }
+
     private void Update()
     {
         if (!Opend)
         {
-            GameOver gameover = eCard.enemyObj.GetComponent<GameOver>();
-            gameover.ResultSetManager(this);
             CountTimer();
             LevelCount();
         }else
@@ -49,17 +54,18 @@ public class Result : MonoBehaviour
 
     void CountTimer()
     {
-        second += Time.deltaTime;
-         minute = (int)second / 60;
-        if(second >= 60)
+        timer.second += Time.deltaTime;
+         timer.minute = (int)timer.second / 60;
+        if(timer.second >= 60)
         {
-            minute++;
+            timer.minute++;
         }
-        timerText.text = minute.ToString("00") + ":" + second.ToString("00");
+        timerText.text = timer.minute.ToString("00") + ":" + timer.second.ToString("00");
     }
 
     void LevelCount()
     {
-        LevelText.text = expBar.levelCount.ToString("");
+        level.levelCount = expBar.levelCount;
+        LevelText.text = level.levelCount.ToString("");
     }
 }

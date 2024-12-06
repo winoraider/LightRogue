@@ -52,6 +52,7 @@ public class ECardSpawn : MonoBehaviour
     [SerializeField] private Timer timer;
 
     [SerializeField] Image Image1;
+    [SerializeField] private Result result;
 
     private float eCount;//âÊñ Ç…Ç¢ÇÈìGÇÃêî
     public float ECount
@@ -130,6 +131,10 @@ public class ECardSpawn : MonoBehaviour
                 EnemyObj = Instantiate(Ebullet[DecideSpawnEnemy()], eSpawmers[SpawnLaneManager()].transform.position, Quaternion.identity);
                 EnemyNumController enemyNumController = EnemyObj.GetComponent<EnemyNumController>();
                 enemyNumController.SetManager(this);
+
+                GameOver gameover = EnemyObj.GetComponent<GameOver>();
+                gameover.ResultSetManager(result);
+
                 enemyNumController.NowPower = enemyValue;
                 EnemyObj.transform.localScale = scale * (0.8f + 0.4f * enemyValue / hp[waves].max);
                 eCount++;
@@ -169,6 +174,8 @@ public class ECardSpawn : MonoBehaviour
                 //Debug.Log("ïœä∑å„ÇÃRelicNum" + BossRelicNum);
 
                 BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
+                GameOver gameover = BossObj.GetComponent<GameOver>();
+                gameover.ResultSetManager(result);
                 BossEnemyNumController bossNumController = BossObj.GetComponent<BossEnemyNumController>();
                 bossNumController.EcardSetManager(this);
                 bossNumController.BossNowPower = bhp[currentBoss].hp;
