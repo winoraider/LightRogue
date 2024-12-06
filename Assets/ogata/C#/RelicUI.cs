@@ -32,6 +32,9 @@ public class RelicUi : MonoBehaviour
     [SerializeField]
     private List<GameObject> RelicButtans;
 
+    [SerializeField] 
+    GameObject[] pauseRelicText = new GameObject[19];
+
     private int RelicRandom;
     private int ColorRandom;
 
@@ -60,6 +63,10 @@ public class RelicUi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < 18; i++)
+        {
+            pauseRelicText[i].SetActive(false);
+        }
         spawner = FindObjectOfType<CardSpawner>();
         gameM = FindObjectOfType<GameManager>();
         eventSystem = FindObjectOfType<EventSystem>();
@@ -289,54 +296,67 @@ public class RelicUi : MonoBehaviour
             case 0:
                 gameM.RedWidePrism++;
                 Destroy(GameObject.Find("WideRed"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 1:
                 gameM.GreenWidePrism++;
                 Destroy(GameObject.Find("WideGreen"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 2:
                 gameM.BlueWidePrism++;
                 Destroy(GameObject.Find("WideBlue"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 3:
                 gameM.RedUpPrism++;
                 Destroy(GameObject.Find("UpRed"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 4:
                 gameM.GreenUpPrism++;
                 Destroy(GameObject.Find("UpGreen"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 5:
                 gameM.BlueUpPrism++;
                 Destroy(GameObject.Find("UpBlue"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 6:
                 gameM.RedCount++;
                 Destroy(GameObject.Find("CountRed"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 7:
                 gameM.GreenCount++;
                 Destroy(GameObject.Find("CountGreen"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 8:
                 gameM.BlueCount++;
                 Destroy(GameObject.Find("CountBlue"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 9:
                 gameM.YellowCount++;
                 Destroy(GameObject.Find("CountYellow"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 10:
                 gameM.MagentaCount++;
                 Destroy(GameObject.Find("CountMagenta"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
                 case 11:
                 gameM.CyanCount++;
                 Destroy(GameObject.Find("CountCyan"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
                 case 12:
                 gameM.WhiteCount++;
                 Destroy(GameObject.Find("CountWhite"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
                 case 13:
                 int tmp = Random.Range(0, spawner.cards.Count);
@@ -346,22 +366,27 @@ public class RelicUi : MonoBehaviour
             case 14:
                 gameM.LevelUpper = true;
                 Destroy(GameObject.Find("LevelUpper"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 15:
                 gameM.SpeedUpper = true;
                 Destroy(GameObject.Find("SpeedUpper"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
             case 16:
                 gameM.SlowTimer = true;
                 Destroy(GameObject.Find("SlowTimer"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
                 case 17:
                 gameM.flash = true;
                 Destroy(GameObject.Find("Flash"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
                 case 18:
                 gameM.WindBoom = true;
                 Destroy(GameObject.Find("WindBoom"));
+                pauseRelicText[RelicBonus].SetActive(true);
                 break;
         }
 

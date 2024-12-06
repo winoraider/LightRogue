@@ -10,9 +10,16 @@ public class LevelUpUi : MonoBehaviour
     Card card;
     CardSpawner spawner;
     EventSystem eventSystem;
+    PauseLvUI pauseUI;
 
     [SerializeField]
     private GameObject CardUI;
+
+    [SerializeField]
+    private GameObject[] PauseLvUpUI = new GameObject[18];
+
+    [SerializeField]
+    private GameObject[] GetNumUI = new GameObject[18];
 
     [SerializeField]
     private GameObject OKButton;
@@ -64,9 +71,15 @@ public class LevelUpUi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for(int i = 0; i < 18;  i++)
+        {
+            PauseLvUpUI[i].SetActive(false);
+            GetNumUI[i].SetActive(true);
+        }
         spawner = FindObjectOfType<CardSpawner>();
         gameM = FindObjectOfType<GameManager>();
         eventSystem = FindObjectOfType<EventSystem>();
+        pauseUI = FindAnyObjectByType<PauseLvUI>();
         OKButton.SetActive(false);
         gameObject.SetActive(false);
         LevelUpstart = true;
@@ -327,56 +340,104 @@ public class LevelUpUi : MonoBehaviour
     public void OkClick()
     {
         card = FindAnyObjectByType<Card>();
+        Text getnum = GetNumUI[LevelBonus].GetComponent<Text>();
         switch (LevelBonus)
         {
             case 0:
                 gameM.RedPowLevel++;
+                pauseUI.rp++;
+                getnum.text = "+" + pauseUI.rp;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 1:
                 gameM.GreenPowLevel++;
+                pauseUI.gp++;
+                getnum.text = "+" + pauseUI.gp;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 2:
                 gameM.BluePowLevel++;
+                pauseUI.bp++;
+                getnum.text = "+" + pauseUI.bp;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 3:
                 gameM.ALLPowLevel++;
+                pauseUI.allP++;
+                getnum.text = "+" + pauseUI.allP;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 4:
                 gameM.RedAddPowLevel++;
+                pauseUI.rcom++;
+                getnum.text = "+" + pauseUI.rcom;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 5:
                 gameM.GreenAddPowLevel++;
+                pauseUI.gcom++;
+                getnum.text = "+" + pauseUI.gcom;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 6:
                 gameM.BlueAddPowLevel++;
+                pauseUI.bcom++;
+                getnum.text = "+" + pauseUI.bcom;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 7:
                 gameM.YellowAddPowLevel++;
+                pauseUI.ycom++;
+                getnum.text = "+" + pauseUI.ycom;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 8:
                 gameM.MagentaAddPowLevel++;
+                pauseUI.mcom++;
+                getnum.text = "+" + pauseUI.mcom;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 9:
                 gameM.CyanAddPowLevel++;
+                pauseUI.ccom++;
+                getnum.text = "+" + pauseUI.ccom;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 10:
                 gameM.YellowMagPowLevel++;
+                pauseUI.ycomMag++;
+                getnum.text = "+" + pauseUI.ycomMag;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 11:
                 gameM.MagentaMagPowLevel++;
+                pauseUI.mcomMag++;
+                getnum.text = "+" + pauseUI.mcomMag;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 12:
                 gameM.CyanMagPowLevel++;
+                pauseUI.ccomMag++;
+                getnum.text = "+" + pauseUI.ccomMag;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
-                case 13:
+            case 13:
                 gameM.WhiteMagPowLevel++;
+                pauseUI.wcom++;
+                getnum.text = "+" + pauseUI.wcom;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
-                case 14:
+            case 14:
                 gameM.WhiteAddPowLevel++;
+                pauseUI.wcomMag++;
+                getnum.text = "+" + pauseUI.wcomMag;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 15:
                 Rednum++;
-                if(Rednum > 3)
+                pauseUI.addRC++;
+                getnum.text = "+" + pauseUI.addRC;
+                if (Rednum > 3)
                 {
                     Rednum = 1;
                 }
@@ -385,9 +446,12 @@ public class LevelUpUi : MonoBehaviour
                 spawner.cards[spawner.cards.Count - 1].gameObject.GetComponent<Card>().isRed = true;
                 spawner.cards[spawner.cards.Count - 1].gameObject.GetComponent<Card>().num = Rednum;
                 gameObject1.gameObject.transform.parent = AddDeck.transform;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 16:
                 Greennum++;
+                pauseUI.addGC++;
+                getnum.text = "+" + pauseUI.addGC;
                 if (Greennum > 3)
                 {
                     Greennum = 1;
@@ -397,9 +461,12 @@ public class LevelUpUi : MonoBehaviour
                 spawner.cards[spawner.cards.Count-1].gameObject.GetComponent<Card>().isGreen = true;
                 spawner.cards[spawner.cards.Count - 1].gameObject.GetComponent<Card>().num = Greennum;
                 gameObject1.gameObject.transform.parent = AddDeck.transform;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
             case 17:
                 Bluenum++;
+                pauseUI.addBC++;
+                getnum.text = "+" + pauseUI.addBC;
                 if (Bluenum > 3)
                 {
                     Bluenum = 1;
@@ -409,6 +476,7 @@ public class LevelUpUi : MonoBehaviour
                 spawner.cards[spawner.cards.Count-1].gameObject.GetComponent<Card>().isBlue = true;
                 spawner.cards[spawner.cards.Count - 1].gameObject.GetComponent<Card>().num = Bluenum;
                 gameObject1.gameObject.transform.parent = AddDeck.transform;
+                PauseLvUpUI[LevelBonus].SetActive(true);
                 break;
         }
 
