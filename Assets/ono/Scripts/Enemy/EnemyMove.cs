@@ -26,6 +26,7 @@ public class EnemyMove : MonoBehaviour
     }
 
     [SerializeField] EnemyNumController enemyNumController;
+    private bool expInstatited = false;
 
     void Start()
     {
@@ -44,8 +45,8 @@ public class EnemyMove : MonoBehaviour
         {
             HitPlayer();
         }
-        
-        GetExp();
+
+        //GetExp();
     }
 
     private void HitPlayer()
@@ -60,14 +61,6 @@ public class EnemyMove : MonoBehaviour
         { 
             rb.velocity = new Vector2(0, force * 0.8f);
             action = false;
-        }
-    }
-
-    void GetExp()
-    {
-        if(enemyNumController.NowPower <= 0)
-        {
-            Instantiate(EXPPoint, transform.position, Quaternion.identity);
         }
     }
 }

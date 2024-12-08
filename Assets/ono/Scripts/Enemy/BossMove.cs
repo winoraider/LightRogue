@@ -108,12 +108,4 @@ void BossRelic()
         }
     }
 #endif
-    void GetExp()
-    {
-        if(bossEnemyNumController.BossNowPower <= 0)
-        {
-            Instantiate(EXPPoint, transform.position, Quaternion.identity);
-            gameM.RelicOb.SetActive(true);
-        }
-    }
 }

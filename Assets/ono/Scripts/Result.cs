@@ -24,6 +24,8 @@ public class Result : MonoBehaviour
     [SerializeField] TextMeshProUGUI LevelText;
     [SerializeField] TextMeshProUGUI MaxEnergyText;
 
+    [SerializeField] ECardSpawn eCardSpawn;
+
     private float currentTime = 0f;
     private float durationTime = 5f;
 
@@ -55,8 +57,8 @@ public class Result : MonoBehaviour
     void CountTimer()
     {
         timer.second += Time.deltaTime;
-         timer.minute = (int)timer.second / 60;
-        if(timer.second >= 60)
+        timer.minute = (int)timer.second / 60;
+        if (timer.second >= 60)
         {
             timer.minute++;
         }

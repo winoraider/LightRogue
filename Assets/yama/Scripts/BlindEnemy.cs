@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BlindEnemy : MonoBehaviour
 {
+
+    [SerializeField] GameObject ColorCircle;
     public bool toRed = false;
     public bool toGreen = false;
     public bool toBlue = false;
@@ -22,31 +25,31 @@ public class BlindEnemy : MonoBehaviour
     {
         if(toRed &&  toGreen && toBlue)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);　//赤表示
+            this.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);　//赤表示
         }
         else if(!toRed && toGreen && toBlue)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 1, 1, 1);　//赤表示
+            this.gameObject.GetComponent<Image>().color = new Color(0, 1, 1, 1);　//赤表示
         }
         else if (toRed && !toGreen && toBlue)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 1, 1);　//赤表示
+            this.gameObject.GetComponent<Image>().color = new Color(1, 0, 1, 1);　//赤表示
         }
         else if (toRed && toGreen && !toBlue)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 0, 1);　//赤表示
+            this.gameObject.GetComponent<Image>().color = new Color(1, 1, 0, 1);　//赤表示
         }
         else if (!toRed && !toGreen && toBlue)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 1);　//赤表示
+            this.gameObject.GetComponent<Image>().color = new Color(0, 0, 1, 1);　//赤表示
         }
         else if (toRed && !toGreen && !toBlue)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);　//赤表示
+            this.gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);　//赤表示
         }
         else if (!toRed && toGreen && !toBlue)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);　//赤表示
+            this.gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);　//赤表示
         }
     }
 }

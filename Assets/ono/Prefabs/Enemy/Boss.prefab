@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -441.27, y: -802.03}
+  m_AnchoredPosition: {x: -441.2872, y: -802.1591}
   m_SizeDelta: {x: 7.86, y: 2.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4314434780769745731
@@ -410,10 +410,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b22fd0e1d95cef479072fff15e1e26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameM: {fileID: 0}
+  EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
   comparePower: 0
   eCard: {fileID: 0}
   BossText: {fileID: 8518988392005881009}
-  timelimit: {fileID: 0}
 --- !u!114 &-4849979001010631583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EXPPoint: {fileID: 4565044664352340193, guid: 021e09575be3e73409cc3391a794cb7b, type: 3}
-  force: -1
+  force: -1.5
   FastSpeed: 0
   SlowSpeed: 0
   AttackDamage: 0

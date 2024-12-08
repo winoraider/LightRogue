@@ -3922,6 +3922,7 @@ MonoBehaviour:
   timelimit: {fileID: 191044679}
   timer: {fileID: 1865730821}
   Image1: {fileID: 1865730822}
+  result: {fileID: 0}
   FastSpeed: 0
   SlowSpeed: 0
   AttackDamage: 0

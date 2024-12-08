@@ -7,6 +7,16 @@ using UnityEngine.UI;
 
 public class BossEnemyNumController : MonoBehaviour
 {
+
+    [SerializeField]GameManager gameM;
+    EXPbar expbar;
+    [SerializeField] private GameObject EXPPoint;
+    public GameObject expPoint
+    {
+        get { return EXPPoint; }
+        set { EXPPoint = value; }
+    }
+
     float counter;
     bool hit = false;
     int BossToText;
@@ -24,7 +34,7 @@ public class BossEnemyNumController : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI BossText;
 
-    [SerializeField] private Timelimit timelimit;
+    //[SerializeField] private Timelimit timelimit;
     //[SerializeField] private Timer timer;
     //[SerializeField] Image Image1;
 
@@ -33,11 +43,17 @@ public class BossEnemyNumController : MonoBehaviour
         this.eCard = eCardSpawn;
     }
 
+    private void Start()
+    {
+        gameM = FindObjectOfType<GameManager>();
+    }
     void Update()
     {
         BossToText = Mathf.CeilToInt(bossnowPower);
         if (bossnowPower <= 0f)
         {
+            Instantiate(EXPPoint, transform.position, Quaternion.identity);
+            gameM.RelicOb.SetActive(true);
             eCard.deadBoss = true;
             eCard.BOSS = false;
             Destroy(gameObject);

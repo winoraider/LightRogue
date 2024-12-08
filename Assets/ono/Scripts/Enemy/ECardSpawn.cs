@@ -232,7 +232,7 @@ public class ECardSpawn : MonoBehaviour
 
         if(normalEnemy >= UnityEngine.Random.Range(1, 11 + maxRndEnemy)) //oŒ»‚·‚é“G‚ğŒˆ‚ß‚é
         {
-            enemyNum =  2;
+            enemyNum =  0;
         }
         else
         {
@@ -246,6 +246,8 @@ public class ECardSpawn : MonoBehaviour
                 enemyNum = UnityEngine.Random.Range(1, 4);
             }
         }
+        //Debug.Log($"NormalEnemy: {normalEnemy}, MaxRndEnemy: {maxRndEnemy}, Random Range: {UnityEngine.Random.Range(1, 11 + maxRndEnemy)}, EnemyNum: {enemyNum}");
+
         /*
         if(enemyNum == 0)
         {
