@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEditor;
 using UnityEngine.UI;
 
 [Serializable]
@@ -113,7 +112,6 @@ public class ECardSpawn : MonoBehaviour
         ActiveBoss();//1分経ったかの判定
         WaveCount();
         EnemyCardSpawn();
-        //Debug.Log("boss + " + boss) ;
     }
 
     void EnemyCardSpawn()
@@ -125,7 +123,6 @@ public class ECardSpawn : MonoBehaviour
             if (elapsedTime >= durationTime)
             {
                 Vector2 scale = Vector2.one;
-                //Debug.Log("出現場所:" + r + "LowMiddle:" + LowMiddle + "MiddleHigh" + MiddleHigh + "rnd:" + rnd);
                 elapsedTime = 0.0f;
                 float enemyValue = GenerateEnemy();
                 EnemyObj = Instantiate(Ebullet[DecideSpawnEnemy()], eSpawmers[SpawnLaneManager()].transform.position, Quaternion.identity);
@@ -142,37 +139,29 @@ public class ECardSpawn : MonoBehaviour
 
             if (eCount <= 3)
             {
-                float dR = UnityEngine.Random.Range(SpawnDeray[0].min, SpawnDeray[0].max);                durationTime = dR;
-                //Debug.Log("1～3");
+                float dR = UnityEngine.Random.Range(SpawnDeray[0].min, SpawnDeray[0].max);                
+                durationTime = dR;
             }
             else if (eCount <= 6)
             {
                 float dR = UnityEngine.Random.Range(SpawnDeray[1].min, SpawnDeray[1].max);
                 durationTime = dR;
-                //Debug.Log("4～6");
             }
             else if (eCount <= 9)
             {
                 float dR = UnityEngine.Random.Range(SpawnDeray[2].min, SpawnDeray[2].max);
                 durationTime = dR;
-                //Debug.Log("7～9");
             }
             else
             {
                 float dR = UnityEngine.Random.Range(SpawnDeray[3].min, SpawnDeray[3].max);
                 durationTime = dR;
-                //Debug.Log("10以上");
             }
         }
         else
         {
             if (!SpawnedBoss)
             {
-                //RelicNum();
-                //Debug.Log("RelicNum" + RelicNum());
-                //BossRelicNum = RelicNum();
-                //Debug.Log("変換後のRelicNum" + BossRelicNum);
-
                 BossObj = Instantiate(Boss, eSpawmers[3].transform.position, Quaternion.identity);
                 GameOver gameover = BossObj.GetComponent<GameOver>();
                 gameover.ResultSetManager(result);
@@ -188,7 +177,6 @@ public class ECardSpawn : MonoBehaviour
             {
                 timelimit.Minutes = 1;
                 Image1.fillAmount = 0f;
-                //Debug.Log("DeadBoss" + DeadBoss);
                 DeadBoss = false;
             }
         }
@@ -245,27 +233,8 @@ public class ECardSpawn : MonoBehaviour
             {
                 enemyNum = UnityEngine.Random.Range(1, 4);
             }
-        }
-        //Debug.Log($"NormalEnemy: {normalEnemy}, MaxRndEnemy: {maxRndEnemy}, Random Range: {UnityEngine.Random.Range(1, 11 + maxRndEnemy)}, EnemyNum: {enemyNum}");
-
-        /*
-        if(enemyNum == 0)
-        {
-            Debug.Log("ノーマル");
-        }
-        else if (enemyNum == 1)
-        {
-            Debug.Log("ファスト");
-        }
-        else if (enemyNum == 2)
-        {
-            Debug.Log("ブラインド");
-        }
-        else if (enemyNum == 3)
-        {
-            Debug.Log("ブラックアウト");
-        }
-        */ //どの敵が出たかのデバッグ
+        } 
+        //どの敵が出たかのデバッグ
         return enemyNum;
     }
 
@@ -304,8 +273,4 @@ public class ECardSpawn : MonoBehaviour
 
         return lane;
     }
-    //public int RelicNum()
-    //{
-    //   return UnityEngine.Random.Range(0, 4);
-    //}
 }

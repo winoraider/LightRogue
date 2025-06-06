@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
@@ -26,7 +23,6 @@ public class Tutorial : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Tutorialオンページ" + OnPage);
             button2.onClick.AddListener(ExitButton);
             button.enabled = false;
             Sbutton.enabled = false;

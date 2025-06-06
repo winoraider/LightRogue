@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateCircle : MonoBehaviour
@@ -12,7 +10,6 @@ public class RotateCircle : MonoBehaviour
     {
         Vector3 direction = (transform.position - center).normalized;  // 現在位置から中心へのベクトルを正規化
         transform.position = center + direction * distance;  // 指定の距離だけ離す
-
         transform.RotateAround(center, axis, 360 / period * Time.deltaTime);       
     }
 }

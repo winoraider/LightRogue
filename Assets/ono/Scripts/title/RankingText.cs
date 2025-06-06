@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using TMPro;
 
@@ -36,7 +33,6 @@ public class RankingText : MonoBehaviour
         
         if(!OnText)
         {
-            //Debug.Log("OnText" + OnText);
             timerText.text = timer.minute.ToString("00") + ":" + timer.second.ToString("00");
             LevelText.text = level.levelCount.ToString("");
         }

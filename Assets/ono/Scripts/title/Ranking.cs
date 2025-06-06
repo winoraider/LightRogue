@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Ranking : MonoBehaviour
@@ -27,11 +24,9 @@ public class Ranking : MonoBehaviour
             Tbutton.enabled = true;
             Obutton.enabled = true;
             rankingText.onText = true;
-            //Debug.Log("RanOnText" + rankingText.onText); 
         }
         else
         {
-            //Debug.Log("Rankingオンページ" + OnPage);
             button2.onClick.AddListener(ExitButton);
             button.enabled = false;
             Sbutton.enabled = false;

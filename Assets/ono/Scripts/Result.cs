@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -26,9 +24,6 @@ public class Result : MonoBehaviour
 
     [SerializeField] ECardSpawn eCardSpawn;
 
-    private float currentTime = 0f;
-    private float durationTime = 5f;
-
     private bool Opend = false;
 
     public bool opend
@@ -53,7 +48,6 @@ public class Result : MonoBehaviour
         Time.timeScale = 0f;
         ResultObj.SetActive(true);
     }
-
     void CountTimer()
     {
         timer.second += Time.deltaTime;
@@ -64,14 +58,9 @@ public class Result : MonoBehaviour
         }
         timerText.text = timer.minute.ToString("00") + ":" + timer.second.ToString("00");
     }
-
     void LevelCount()
     {
         level.levelCount = expBar.levelCount;
         LevelText.text = level.levelCount.ToString("");
-    }
-
-    void MaxEnergy()
-    {
     }
 }

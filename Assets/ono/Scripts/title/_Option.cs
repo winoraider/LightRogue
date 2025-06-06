@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class _Option : MonoBehaviour
@@ -27,7 +24,6 @@ public class _Option : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Optionオンページ" + OnPage);
             button2.onClick.AddListener(ExitButton);
             button.enabled = false;
             Sbutton.enabled = false;

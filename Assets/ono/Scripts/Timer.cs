@@ -1,13 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Timer : MonoBehaviour
 {
-
     [SerializeField]  Image Image1;
 
     float TimeElapse = 60.0f;
